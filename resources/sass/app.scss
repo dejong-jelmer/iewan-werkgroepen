@@ -5,14 +5,90 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
 
-.footer {
-    margin-top: 100px;
+// fontawesome
+// @import "node_modules/font-awesome/scss/font-awesome.scss";
+@import '~@fortawesome/fontawesome-free/css/all.css';
+.navbar {
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
-.sidebar {
-    padding: 0 .5em 0;
-    background: white;
-    border-right: 1px solid;
+.menu {
+    height: 700px;
+    padding: .5em;
+}
+.main-content {
+    border-left: 1px solid;
+}
+.first-element {
+    margin-top: 2rem !important;
+}
+.dropdown-list {
+    display: none;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+.workgroup-tile {
+    cursor: pointer;
+}
+.card-header {
     border-bottom: 1px solid;
+}
+.message {
+    padding: .5em;
+    border: none !important;
+    border-radius: none !important;
+}
+.dashboard-card .card-table {
+    max-height: 250px;
+    overflow-y: auto;
+}
+.message > p {
+    font-size: .8em;
+}
+.message-row {
+    cursor: pointer;
+}
+.hover-danger:hover {
+    background-color: hsl(348, 100%, 61%);
+    color: white;
+}
+.hover-success:hover {
+    background-color: hsl(171, 100%, 41%);
+    color: white;
+}
+.hidden {
+    display: none;
+}
+.workgroup-column {
+    max-width: 100%;
+}
+.badge {
+    text-align:center;
+    vertical-align:middle;
+    position: relative;
+}
+.workgroup-button {
+    margin-bottom: .5em;
+}
+.badge:after{
+    content: attr(data-count);
+    position: absolute;
+    background: hsl(171, 100%, 41%);
+    height: 1rem;
+    top: -5px;
+    right: -7px;
+    width: 1rem;
+    text-align: center;
+    line-height: .4rem;
+    font-size: .6rem;
+    padding-top: .2rem;
+    border-radius: 50%;
+    color: white;
+    border: 1px solid hsl(171, 100%, 41%);
+}
+ @media only screen and (max-width: 768px) {
+    .main-content {
+        border-left: none;
+    }
 }

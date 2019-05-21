@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" class="has-navbar-fixed-top">
 <head>
     <meta charset="UTF-8">
     <title>Werkgroepensite - @yield('title')</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <style>
@@ -11,31 +12,36 @@
 </head>
 <body>
     @if(auth()->check())
-        <div class="row">
-            <div class="col-12">
-                @include('templates.partials.navbar')
-            </div>
-        </div>
+        @include('templates.partials.navbar')
     @endif
-    <div class="row">
+    <div class="columns is-gapless">
         @if(auth()->check())
-            <div class="col-2">
-                @include('templates.partials.sidebar')
+            <div class="column is-2 is-hidden-mobile sidebar-column">
+                @include('templates.partials.sidebar',[
+                        'workgroups' => isset($workgroups) ? $workgroups : null
+                    ])
             </div>
         @endif
-        <div class="@if(auth()->check()) col-10 @else col-12 @endif">
-            @include('templates.partials.status')
-            <div id="app">
-                @yield('content')
-            </div>
-            <footer class="footer">
-              <div class="content has-text-centered">
-                <p>Iewan - werkgroepensite</p>
-              </div>
-            </footer>
+        @if(!auth()->check()) <div class="column is-3"></div> @endif
+        <div class="column @if(!auth()->check()) is-6 @else is-10 is-full-mobile main-content @endif">
+             <div class="container is-fluid">
+                 @include('templates.partials.status')
+                 @yield('content')
+             </div>
         </div>
     </div>
-</body>
     <script src="{{ mix('js/app.js') }}"></script>
     @yield('script')
+    @stack('script-partials')
+    <script>
+        $(document).ready(function(){
+          $('.notification .delete').each(function() {
+            var notification = this.parentNode;
+            $(this).click(function(){
+                notification.parentNode.removeChild(notification);
+                });
+            });
+        });
+    </script>
+</body>
 </html>

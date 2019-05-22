@@ -18,17 +18,17 @@
                 <i class="far fa-comments is-size-4 @if(auth()->user()->newForumPosts()) badge @endif" data-count="{{ auth()->user()->newForumPosts() }}"></i>
           </a>
 
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
+          {{-- <div class="navbar-item"> --}}
+            <a class="navbar-item" href="{{ route('user-profile') }}">
               <i class="fas fa-user-circle is-size-4"></i>
             </a>
 
-            <div class="navbar-dropdown">
-              <a class="navbar-item" href="{{ route('user-profile') }}">
+            {{-- <div class="navbar-dropdown">
+              <a class="navbar-item" >
                 Profiel
               </a>
-            </div>
-          </div>
+            </div> --}}
+          {{-- </div> --}}
         </div>
 
         <div class="navbar-end">

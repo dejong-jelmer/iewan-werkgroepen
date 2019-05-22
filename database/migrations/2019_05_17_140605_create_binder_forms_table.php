@@ -16,6 +16,7 @@ class CreateBinderFormsTable extends Migration
         Schema::create('binder_forms', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->json('fields');
             $table->timestamps();
         });
     }

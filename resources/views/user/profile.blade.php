@@ -7,8 +7,8 @@
         <div class="column is-6">
             <div class="card">
                 <div class="card-image">
-                    <figure class="image is-1x1">
-                        <img id="profile-image" src="https://bulma.io/images/placeholders/480x480.png" alt="Placeholder image">
+                    <figure class="image is-3by2">
+                        <img id="profile-image" src="https://bulma.io/images/placeholders/480x320.png" alt="Placeholder image">
                     </figure>
                 </div>
             </div>
@@ -62,7 +62,7 @@
             <div class="field">
                 <div class="file has-name @if(!$errors->count()) is-hidden @endif profile-field">
                     <label class="file-label">
-                        <input class="file-input" type="file" name="profile-picture">
+                        <input class="file-input" type="file" name="profile_picture">
                         <span class="file-cta">
                             <span class="file-icon">
                                 <i class="fas fa-upload"></i>

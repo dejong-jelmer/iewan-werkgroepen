@@ -20,8 +20,12 @@
                         @endif
                         <tr class="message-row" data-target="{{ route('show-user-message', ['message_id' => $message->id]) }}">
                             <td class="has-text-centered">
+                                @if(auth()->user()->isUnreadMessage($message->id))
                                     <i class="far fa-envelope"></i>
-                                </td>
+                                @else
+                                    <i class="far fa-envelope-open"></i>
+                                @endif
+                            </td>
                             <td>{{ $message->sender()->name }}</td>
                             <td>{{ $message->title }}</td>
                         </tr>

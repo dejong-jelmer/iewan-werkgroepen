@@ -15,7 +15,6 @@
                     'allowResponse' => false
                 ])
             @empty
-                <p>Nog geen reacties</p>
             @endforelse
             @include('dashboard.partials.forum.response', ['post' => $post])
     </div>

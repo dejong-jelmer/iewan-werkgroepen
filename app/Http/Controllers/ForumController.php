@@ -33,7 +33,7 @@ class ForumController extends Controller
     public function showForumPost($post_id)
     {
         $post = Forumpost::find($post_id);
-        Auth::user()->forumPost()->detach($post);
+        Auth::user()->forumPosts()->detach($post);
         return view('dashboard.forum-post', compact('post'));
     }
 

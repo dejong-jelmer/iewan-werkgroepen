@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/klapper', 'BinderController@showBinderForms')
         ->name('binder-forms');
-    Route::get('/klapper/{binderform_id}', 'BinderController@showBinderForm')
+    Route::get('/klapper/{form_id}', 'BinderController@showBinderForm')
         ->name('binder-form');
 
     Route::get('/bericht-aan/{user_id}', 'MessageController@showCreateMessage')

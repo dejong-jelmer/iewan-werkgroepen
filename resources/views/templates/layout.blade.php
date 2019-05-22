@@ -24,7 +24,7 @@
         @endif
         @if(!auth()->check()) <div class="column is-3"></div> @endif
         <div class="column @if(!auth()->check()) is-6 @else is-10 is-full-mobile main-content @endif">
-             <div class="container is-fluid">
+             <div id="app" class="container is-fluid">
                  @include('templates.partials.status')
                  @yield('content')
              </div>

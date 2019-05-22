@@ -7,14 +7,15 @@ use Illuminate\Http\Request;
 
 class BinderController extends Controller
 {
-    public function showBinderForm($binderform_id)
+    public function showBinderForm($form_id)
     {
-        dd('klapperrrr van de week');
+        $form = BinderForm::find($form_id);
+        return view('binder.show-form', compact('form'));
     }
 
     public function showBinderForms()
     {
         $binderForms = BinderForm::get();
-        dd($binderForms);
+        return view('binder.index', compact('binderForms'));
     }
 }

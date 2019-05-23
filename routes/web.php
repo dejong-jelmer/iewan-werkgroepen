@@ -11,13 +11,12 @@
 |
 */
 
-Route::get('/login', function(){
+Route::get('login', function(){
     return view('auth.login');
-})
-    ->name('login')->middleware('guest');
-Route::post('/login', 'Auth\LoginController@login')
+})->name('show-login')->middleware('guest');
+Route::post('login', 'Auth\LoginController@login')
     ->name('login');
-Route::post('/logout', 'Auth\LoginController@logout')
+Route::post('logout', 'Auth\LoginController@logout')
     ->name('logout');
 
 Route::middleware('auth')->group(function(){

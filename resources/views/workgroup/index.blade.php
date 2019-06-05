@@ -24,13 +24,21 @@
         <div class="tile is-child card">
             <aside class="menu card-content">
                 <ul class="menu-list">
+                    {{-- User is NOT a member of workgroup --}}
                     @if(!auth()->user()->inWorkgroup($workgroup))
                         <li><button class="button is-success is-outlined is-fullwidth workgroup-button" href="#" onclick="$('#join-workgroup-form').submit();">Ga bij</button></li>
                         <li><button class="toggle button is-info is-outlined is-fullwidth workgroup-button" href="#" data-target="message-form">Stuur bericht</button></li>
                     @endif
                         <li><button class="toggle button is-info is-outlined is-fullwidth workgroup-button" href="#">Bestanden</button></li>
                         <li><button class="toggle button is-info is-outlined is-fullwidth workgroup-button" href="{{ route('workgroup-members',['workgroup_id' => $workgroup->id]) }}">Leden</button></li>
+
+
+                    {{-- User is a member of this workgroup --}}
                     @if(auth()->user()->inWorkgroup($workgroup))
+                        {{-- workgroup specific links --}}
+                        @if($workgroup->role->role == 'Aanname')
+                        <li><button class="button is-info is-outlined is-fullwidth workgroup-button" href="{{ route('workgroup-binder-form') }}">Klapper formulier</button></li>
+                        @endif
                         <li><button class="button is-danger is-outlined is-fullwidth workgroup-button" href="#" onclick="$('#leave-workgroup-form').submit();">Verlaten</button></li>
                     @endif
 

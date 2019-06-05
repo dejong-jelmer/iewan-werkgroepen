@@ -11,11 +11,17 @@ class WorkgroupSeeder extends Seeder
      */
     public function run()
     {
-        $workgroups = ['Intern', 'Technische Dienst', 'Webgroep', 'Tuingroep', 'Voko', 'Kleine Wiel', 'Dubbeltje', 'Educatie'];
-        foreach ($workgroups as $workgroup) {
+        $workgroupNames = ['Intern', 'Technische Dienst', 'Webgroep', 'Tuingroep', 'Voko', 'Kleine Wiel', 'Dubbeltje', 'Educatie', 'Aanname'];
+        foreach ($workgroupNames as $workgroup) {
             App\Workgroup::create([
                 'name' => $workgroup
             ]);
+        }
+        $workgroups = App\Workgroup::get();
+        foreach($workgroups as $id => $workgroup) {
+            $role = new App\WorkgroupRole();
+            $role->role = $workgroupNames[$id];
+            $workgroup->role()->save($role);
         }
     }
 }

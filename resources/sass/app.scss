@@ -1,5 +1,4 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
@@ -26,7 +25,7 @@
 .dropdown-list {
     display: none;
     max-height: 200px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .workgroup-tile {
     cursor: pointer;

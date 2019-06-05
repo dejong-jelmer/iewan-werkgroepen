@@ -37,7 +37,9 @@
                         @endisset
                   </ul>
             </li>
-            <li><a {{ Route::currentRouteName() == '' ? 'is_active' : '' }} href="{{ route('binder-forms') }}"><i class="fas fa-address-book is-size-3 @if(auth()->user()->newBinderForms()) badge @endif" data-count="{{ auth()->user()->newBinderForms() }}"></i></a></li>
+            <li>
+                <a {{ Route::currentRouteName() == '' ? 'is_active' : '' }} href="{{ route('binder-forms') }}"><i class="fas fa-address-book is-size-3 @if(auth()->user()->newBinderForms()) badge @endif" data-count="{{ auth()->user()->newBinderForms() }}"></i></a>
+            </li>
           </ul>
     </aside>
 @endif

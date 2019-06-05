@@ -30,15 +30,13 @@ class UserController extends Controller
 
     public function updateProfile(Request $request)
     {
-        $validator = $request->validate([
+        $request->validate([
             // 'name' => 'required|max:255',
             // 'email' => 'required|unique:users|email',
             // 'telephone' => 'string|size:10',
             'profile_picture' => 'image'
         ]);
-        // if($validator->fails()) {
-        //     return redirect()->route('user-profile')->withErrors($validator)->withInput();
-        // }
+
         $file = $request->file('profile_picture');
         $path = Storage::putFile('user_photos', new File($file));
 

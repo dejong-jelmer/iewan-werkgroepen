@@ -7,6 +7,7 @@
             @forelse($binderForms as $form)
                 <a href="{{ route('binder-form', ['form_id' => $form->id]) }}">{{ $form->name }}</a>
             @empty
+                <p>Geen (nieuwe) klapper formulieren</p>
             @endforelse
         </div>
     </div>

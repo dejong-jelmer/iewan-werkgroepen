@@ -5,12 +5,19 @@
                 </p>
             </header>
             <div class="card-content">
-                <div class="columns">
-                    <div class="column is-4">
+                <div class="columns is-multiline">
+                    <div class="column">
                         <a href="{{ route('show-user-messages') }}">
                             <i class="far fa-envelope is-size-4 @if(auth()->user()->unRepliedWorkgroupMessages($workgroup)) badge @endif" data-count="{{ auth()->user()->unRepliedWorkgroupMessages($workgroup) }}"></i>
                         </a>
                     </div>
+                    @if($workgroup->hasRole('aanname'))
+                        <div class="column">
+                            <a href="#">
+                                <i class="fas fa-address-book is-size-4 @if($workgroup->unReleasedForms()->count()) badge @endif" data-count="{{ $workgroup->unReleasedForms()->count() }}"></i>
+                            </a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

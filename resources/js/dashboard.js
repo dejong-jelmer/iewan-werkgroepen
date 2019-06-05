@@ -56,6 +56,23 @@ $(document).ready(function(){
         var newFilePath = URL.createObjectURL(event.target.files[0])
         $('#profile-image').attr('src', newFilePath);
     });
+    $('#add_binderform_field').click(function(){
+        $('.remove_binderform_field').show();
+        var field = $('.binderform_fields_row:last').clone(true);
+        $(field).find('input, select').val('');
+        $(field).find('input[type=hidden]').val('0');
+        $(field).find('input:checkbox').prop('checked', false);
+        $(field).appendTo('.form');
+    });
+
+    $('.remove_binderform_field').click(function(){
+        if($(this).closest('.binderform_fields_row').parent().children('div').length == 2) {
+            $('.form:first-child').find('.remove_binderform_field').hide();
+        }
+        if($(this).closest('.binderform_fields_row').parent().children('div').length >= 2) {
+            $(this).closest('.binderform_fields_row').remove();
+        }
+    });
 
     // text editor
     if(document.querySelector( '.editor' )) {

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBinderFormsTable extends Migration
+class CreateBinderFormFieldsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,9 @@ class CreateBinderFormsTable extends Migration
      */
     public function up()
     {
-        Schema::create('binder_forms', function (Blueprint $table) {
+        Schema::create('binder_form_fields', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('key', 100)->unique();
-            $table->string('name');
             $table->json('fields');
-            $table->binary('response')->nullable();
-            $table->timestamp('expires')->nullable();
-            $table->timestamp('filled_in')->nullable();
-            $table->boolean('released')->default(0);
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ class CreateBinderFormsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('binder_forms');
+        Schema::dropIfExists('binder_form_fields');
     }
 }

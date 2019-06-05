@@ -3,7 +3,7 @@
 @section('content')
 <div class="columns first-element">
     <div class="column is-full">
-        <h2 class="is-size-2">{{ $user->name }}</h2>
+        <h5 class="title is-5">{{ ucfirst($user->name) }}</h5>
         @include('user.partials.send-message',[
                     'user' => $user,
                     'route' => route('send-message', [

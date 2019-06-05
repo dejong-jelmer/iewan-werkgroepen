@@ -17,9 +17,7 @@
     <div class="columns is-gapless">
         @if(auth()->check())
             <div class="column is-2 is-hidden-mobile sidebar-column">
-                @include('templates.partials.sidebar',[
-                        'workgroups' => isset($workgroups) ? $workgroups : null
-                    ])
+                @include('templates.partials.sidebar')
             </div>
         @endif
         @if(!auth()->check()) <div class="column is-3"></div> @endif
@@ -30,6 +28,8 @@
              </div>
         </div>
     </div>
+    @include('templates.partials.footer')
+    @yield('footer')
     <script src="{{ mix('js/app.js') }}"></script>
     @yield('script')
     @stack('script-partials')

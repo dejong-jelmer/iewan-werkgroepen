@@ -47,6 +47,13 @@ class User extends Authenticatable
         return (bool) $this->workgroups()->where('workgroups.id', $workgroup->id)->count();
     }
 
+    public function hasWorkgroupRole($role)
+    {
+        return (bool) $this->workgroups->first(function($workgroup) use ($role){
+            return $workgroup->role->role == ucfirst(strtolower($role));
+        });
+    }
+
     public function messages()
     {
         return $this->belongsToMany('App\Message', 'message_receiver')->withPivot('read');

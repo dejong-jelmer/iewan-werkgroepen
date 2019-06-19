@@ -29,6 +29,10 @@ new Vue({
         },
         isChecked(value) {
             return this.checked = value ? 'checked' : '';
+        },
+        print(string) {
+            string = string.replace(/_/g, ' ');
+            return string.charAt(0).toUpperCase() + string.slice(1);
         }
     }
 });

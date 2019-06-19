@@ -35,12 +35,11 @@
           <div class="navbar-item">
             {{ auth()->user()->name }}
           </div>
-          <div class="navbar-item">
+          {{-- <div class="navbar-item">
             <a class="navbar-item" href="{{ route('show-user-messages') }}">
                 <i class="far fa-envelope is-size-4 @if(auth()->user()->newMessages()) badge @endif" data-count="{{ auth()->user()->newMessages() }}"></i>
             </a>
-
-          </div>
+          </div> --}}
           <div class="navbar-item">
             <div class="buttons">
               <form action="{{ route('logout') }}" method="POST">

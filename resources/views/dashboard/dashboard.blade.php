@@ -18,11 +18,11 @@
         </div>
     </div>
     <div class="columns">
-        <div class="column is-4 dashboard-card">
+        {{-- <div class="column is-4 dashboard-card">
                 @include('dashboard.partials.messages', [
                         'messages' => $messages
                     ])
-        </div>
+        </div> --}}
         <div class="column is-4 dashboard-card">
                 @include('dashboard.partials.forumposts', [
                         'forumPosts' => $forumPosts

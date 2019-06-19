@@ -24,8 +24,9 @@ class UserController extends Controller
     public function showProfile()
     {
         $fileUrl = Storage::disk('local')->url(Auth::user()->photo);
+        // dd(url($fileUrl));
         // $userImg = Storage::get(url($fileUrl));
-        return view('user.profile', ['user' => Auth::user()]);
+        return view('user.profile', ['user' => Auth::user(), 'fileUrl' => $fileUrl]);
     }
 
     public function updateProfile(Request $request)
@@ -36,12 +37,17 @@ class UserController extends Controller
             // 'telephone' => 'string|size:10',
             'profile_picture' => 'image'
         ]);
-
-        $file = $request->file('profile_picture');
-        $path = Storage::putFile('user_photos', new File($file));
-
         $user = Auth::user();
-        $user->photo = $path;
+        if($request->hasFile('profile_picture')){
+            if(!$request->profile_picture->isValid()) {
+                return redirect()->bacK()->with('error', 'Uploaden van foto is mislukt.');
+            }
+            $photo = $request->profile_picture->store('profile_pictures');
+            $user->photo = $photo;
+        }
+        // $file = $request->file('profile_picture');
+        // $path = Storage::putFile('user_photos', new File($file));
+
         $user->save();
         // $user->update([
         //     "name" => $request->name,

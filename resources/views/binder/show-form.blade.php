@@ -13,8 +13,7 @@
         <div class="column is-10 is-offset-1">
             <div class="field is-horizontal" v-for="(response, name, index) in responses">
                 <div class="field-label is-normal">
-                        {{-- @ToDo:string.replace vervangt maar één voorkomen van de unsderscore, een regex gebruiken om alle mogelijke underscores te verwijderen --}}
-                    <label class="label">@{{ name.replace('_', ' ') }}:</label>
+                    <label class="label">@{{ print(name) }}:</label>
                 </div>
                 <div class="field-body">
                     <div class="field">

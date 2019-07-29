@@ -4355,7 +4355,12 @@ readers do not read off random characters that represent icons */
 }
 
 .card-header {
+  background: #e3d2d2;
   border-bottom: 1px solid;
+}
+
+.card-header-title {
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .message {

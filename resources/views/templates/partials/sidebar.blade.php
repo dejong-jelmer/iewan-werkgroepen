@@ -5,27 +5,17 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
 
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-        </div>
-      </div>
-
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Algemeen</li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a {{ Route::currentRouteName() == '' ? 'is_active' : '' }} href="{{ route('users') }}"><i class="fa fa-users"></i> <span>Bewoners</span></a></li>
+        <li {{ Route::currentRouteName() == '' ? 'active' : '' }}><a href="{{ route('dashboard') }}"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
+        
+        <li {{ Route::currentRouteName() == '' ? 'active' : '' }}><a href="{{ route('users') }}"><i class="fa fa-users"></i> <span>Bewoners</span></a></li>
         
         <!-- werkgroepen -->
          <li class="treeview">
-          <a href="#"><i class="fa fa-clipboard"></i> <span>Werkgroepen</span>
+          <a href="#"><i class="fa fa-coffee"></i> <span>Werkgroepen</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>

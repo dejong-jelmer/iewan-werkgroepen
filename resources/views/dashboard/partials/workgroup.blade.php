@@ -14,7 +14,7 @@
                     @if($workgroup->hasRole('aanname'))
                         <div class="column">
                             <a href="#">
-                                <i class="fas fa-address-book is-size-4 @if($workgroup->unReleasedForms()->count()) badge @endif" data-count="{{ $workgroup->unReleasedForms()->count() }}"></i>
+                                <i class="fa fa-address-book is-size-4 @if($workgroup->unReleasedForms()->count()) badge @endif" data-count="{{ $workgroup->unReleasedForms()->count() }}"></i>
                             </a>
                         </div>
                     @endif

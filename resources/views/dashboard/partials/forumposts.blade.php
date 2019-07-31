@@ -9,10 +9,9 @@
             <table class="table is-fullwidth is-narrow">
                 @forelse($forumPosts as $post)
                         <tr class="message-row" data-target="{{ route('forum-posts', ['forum_id' => $post->id]) }}">
-                            <td class="has-text-centered"> <i class="far fa-comments"></i> </td>
+                            <td class="has-text-centered"> <i class="fa fa-comments"></i> </td>
                             <td class="has-text-centered"> {{ $post->title }} </td>
                         </tr>
-                    </tbody>
                 @empty
                     <td>Geen (nieuwe) forum posts</td>
                 @endforelse

@@ -12,9 +12,6 @@
 			<li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}"><a href="{{ route('dashboard') }}"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
 
 
-			<!-- bewoners -->
-			<li class="request()->routeIs('users')"><a href="{{ route('users') }}"><i class="fa fa-users"></i> <span>Bewoners</span></a></li>
-
 			<!-- werkgroepen -->
 			<li class="treeview">
 				<a href="#"><i class="fa fa-coffee"></i> <span>Werkgroepen</span>
@@ -31,6 +28,8 @@
 				</ul>
 			</li>
 
+						<!-- bewoners -->
+			<li class="request()->routeIs('users')"><a href="{{ route('users') }}"><i class="fa fa-users"></i> <span>Bewoners</span></a></li>
 
 			<!-- Forum -->
 			<li>

@@ -1,4 +1,8 @@
-{{--
-    This should be included in main layout file and not be removed. Javascript vars are append to this include.
-    File can be edited and used as an normal footer blade template.
- --}}
+ <footer class="main-footer">
+    <!-- To the right -->
+    <div class="pull-right hidden-xs">
+      Anything you want
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+  </footer>

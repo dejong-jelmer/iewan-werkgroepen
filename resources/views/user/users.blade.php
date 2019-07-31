@@ -3,7 +3,6 @@
 @section('content')
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -14,26 +13,68 @@
         <li class="active">Bewoners</li>
       </ol>
     </section>
-
-    <!-- Main content -->
+    
+    
+        <!-- Main content -->
     <section class="content">
+   
+         <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Responsive Hover Table</h3>
 
-      @forelse($users as $user)
-                     <div class="row">
+              <div class="box-tools">
+                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                  <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
+                  <th>ID</th>
+                  <th>Avatar</th>
+                  <th>Naam</th>
+                  <th>Email</th>
+                  <th>Werkgroepen</th>
+                </tr>
+                
+                
+                      @forelse($users as $user)
+                     <tr>
 
                     @include('workgroup.partials.user', [
                             'user' => $user
                         ])
-                </div>
+                </tr>
                    <!-- /.row -->
             @empty
                 <p>De werkgroep heeft (nog) geen leden</p>
             @endforelse
-            
-      
-          </section>
+               
+      </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+   
+   
+</section>
+   
+
     <!-- /.content -->
-  </div>
   <!-- /.content-wrapper -->
       
      @endsection
+
+
+
+

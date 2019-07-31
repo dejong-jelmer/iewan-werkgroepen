@@ -38,7 +38,7 @@
             <!-- About Me Box -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">About Me</h3>
+              <h3 class="box-title">Menu / Acties</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -61,7 +61,7 @@
                         <button class="btn btn-primary btn-block" href="#" onclick="$('#leave-workgroup-form').submit();">Verlaten</button>
                     @endif
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+              <p>Ik weet niet of dit nog wel meerwaarde heeft.</p>
             </div>
             <!-- /.box-body -->
           </div>

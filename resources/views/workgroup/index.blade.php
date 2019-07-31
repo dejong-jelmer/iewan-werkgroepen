@@ -68,12 +68,14 @@
 
 					<div class="box-tools pull-right">
 
-						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-						</button>
+						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 
 					</div>
 				</div>
 				<!-- /.box-header -->
+
+
+
 				<div class="box-body no-padding">
 					<ul class="users-list clearfix">
 						<li>
@@ -133,6 +135,7 @@
 					<h3 class="box-title">Informatie</h3>
 
 					<div class="box-tools pull-right">
+
 						<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
 							<i class="fa fa-minus"></i></button>
 					</div>
@@ -142,7 +145,16 @@
 				</div>
 				<!-- /.box-body -->
 				<div class="box-footer">
-					Footer ?
+					<div class="box-tools pull-right">
+						@if(auth()->user()->inWorkgroup($workgroup))
+						<button type="button" class="btn btn-box-tool" data-widget="editor"><i class="fa fa-pencil"></i>
+						</button>
+
+						{{-- <div id="text-editor">
+                    <textarea name="body" class="textarea editor"></textarea>
+                </div> --}}
+						@endif
+					</div>
 				</div>
 				<!-- /.box-footer-->
 			</div>

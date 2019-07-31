@@ -37,13 +37,12 @@
           <a class="request()->routeIs('forum')" href="{{ route('forum') }}">
             <i class="fa fa-comments"></i> <span>Forum</span>
             <span class="pull-right-container">
-             @if(auth()->user()->newBinderForms())
-              <small class="label pull-right bg-red">{{ auth()->user()->newBinderForms() }}</small>
+             @if(auth()->user()->newForumPosts())
+              <small class="label pull-right bg-red">{{ auth()->user()->newForumPosts() }}</small>
              @endif
             </span>
           </a>
         </li>
-        
         
                 <!-- klapper -->
         <li>

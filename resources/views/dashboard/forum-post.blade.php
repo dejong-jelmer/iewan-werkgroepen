@@ -5,12 +5,8 @@
     <section class="content-header">
       <h1>
         Forum
-        <small>13 new messages</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">forum</li>
-      </ol>
+             </h1>
+
     </section>
 
     <!-- Main content -->
@@ -27,7 +23,9 @@
             ])
 			</div>
                                      <div class="box">
+                                     <!-- TODO: CommentCheck -->
 										        <div class="box-header with-border">
+										        <!-- TODO CommentCount -->
           <h3 class="box-title">5 reacties</h3>
 
           <div class="box-tools pull-right">

@@ -48,7 +48,7 @@
 					<i class="fa fa-comments"></i> <span>Forum</span>
 					<span class="pull-right-container">
 						@if(auth()->user()->newForumPosts())
-						<small class="label pull-right bg-red">{{ auth()->user()->newForumPosts() }}</small>
+						<small class="label pull-right bg-green">{{ auth()->user()->newForumPosts() }}</small>
 						@endif
 					</span>
 				</a>
@@ -60,7 +60,7 @@
 					<i class="fa fa-address-book"></i> <span>Klapper</span>
 					<span class="pull-right-container">
 						@if(auth()->user()->newBinderForms())
-						<small class="label pull-right bg-red">{{ auth()->user()->newBinderForms() }}</small>
+						<small class="label pull-right bg-green">{{ auth()->user()->newBinderForms() }}</small>
 						@endif
 					</span>
 				</a>

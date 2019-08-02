@@ -9,8 +9,6 @@
 </section>
 
 
-
-
 <section class="content">
 	<div class="row">
 		<div class="col-md-9">
@@ -42,16 +40,16 @@
 								@forelse($posts as $post)
 								@if(!empty($post))
 								<tr>
-									<!-- TODO: New message class -->
+									<!-- TODO: .new message class -->
 									<td class="forum-alert text-yellow" style="width: 30px;"><i class="fa fa-comment-o"></i></td>
 									<td class="forum-date text-muted" style="width: 200px;">{{ $post->created_at->diffForHumans() }}</td>
 									<td class="forum-subject"><a href="{{ route('forum-posts', ['post_id' => $post->id]) }}">{{ $post->title }}</a></td>
 									<td class="forum-user">
 										<!-- TODO: UserProfileUrl --><a href="#">{{ $post->user->name }}</a></td>
-									<td class="forum-comments-count text-muted" style="width: 100px;"><i class="fa fa-comments-o"></i>
+									<td class="forum-comments-count text-muted" style="width: 150px;"><i class="fa fa-comments-o"></i>
 										<!-- TODO: CommentCount -->5 reacties</td>
-									<td class="forum-comments-date text-muted" style="width: 200px;"> @if($post->updated_at != $post->created_at)
-										Laatste reactie: {{ $post->updated_at->diffForHumans() }}
+									<td class="forum-comments-date text-muted" style="width: 300px;"> @if($post->updated_at != $post->created_at)
+										Laatste reactie: {{ $post->updated_at->diffForHumans() }} <!-- TODO: Dit doet het niet! -->
 										@endif</td>
 								</tr>
 

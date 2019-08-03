@@ -16,127 +16,40 @@
 
 		<div class="navbar-custom-menu">
 			<ul class="nav navbar-nav">
-
+<!-- TODO: Notifications werken dus nog niet -->
 				<!-- Notifications: style can be found in dropdown.less -->
 				<li class="dropdown notifications-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="fa fa-bell-o"></i>
-						<span class="label label-warning">10</span>
+						<span class="label label-warning">5</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li class="header">You have 10 notifications</li>
+						<li class="header">Je hebt 5 meldingen</li>
 						<li>
 							<!-- inner menu: contains the actual data -->
 							<ul class="menu">
 								<li>
 									<a href="#">
-										<i class="fa fa-users text-aqua"></i> 5 new members joined today
+										<i class="fa fa-comments text-aqua"></i> 2 reacties op je forumbericht
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-										page and may cause design problems
+										<i class="fa fa-address-book text-yellow"></i> 2 nieuwe klapperinschrijvingen
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<i class="fa fa-users text-red"></i> 5 new members joined
+										<i class="fa fa-coffee text-red"></i> 1 werkgroep aanmelding
 									</a>
 								</li>
-								<li>
-									<a href="#">
-										<i class="fa fa-shopping-cart text-green"></i> 25 sales made
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<i class="fa fa-user text-light-blue"></i> You changed your username
-									</a>
-								</li>
+
 							</ul>
-						</li>
-						<li class="footer"><a href="#">View all</a></li>
-					</ul>
-				</li>
-				<!-- Tasks: style can be found in dropdown.less -->
-				<li class="dropdown tasks-menu">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="fa fa-flag-o"></i>
-						<span class="label label-danger">9</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li class="header">You have 9 tasks</li>
-						<li>
-							<!-- inner menu: contains the actual data -->
-							<ul class="menu">
-								<li>
-									<!-- Task item -->
-									<a href="#">
-										<h3>
-											Design some buttons
-											<small class="pull-right">20%</small>
-										</h3>
-										<div class="progress xs">
-											<div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-												<span class="sr-only">20% Complete</span>
-											</div>
-										</div>
-									</a>
-								</li>
-								<!-- end task item -->
-								<li>
-									<!-- Task item -->
-									<a href="#">
-										<h3>
-											Create a nice theme
-											<small class="pull-right">40%</small>
-										</h3>
-										<div class="progress xs">
-											<div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-												<span class="sr-only">40% Complete</span>
-											</div>
-										</div>
-									</a>
-								</li>
-								<!-- end task item -->
-								<li>
-									<!-- Task item -->
-									<a href="#">
-										<h3>
-											Some task I need to do
-											<small class="pull-right">60%</small>
-										</h3>
-										<div class="progress xs">
-											<div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-												<span class="sr-only">60% Complete</span>
-											</div>
-										</div>
-									</a>
-								</li>
-								<!-- end task item -->
-								<li>
-									<!-- Task item -->
-									<a href="#">
-										<h3>
-											Make beautiful transitions
-											<small class="pull-right">80%</small>
-										</h3>
-										<div class="progress xs">
-											<div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-												<span class="sr-only">80% Complete</span>
-											</div>
-										</div>
-									</a>
-								</li>
-								<!-- end task item -->
-							</ul>
-						</li>
-						<li class="footer">
-							<a href="#">View all tasks</a>
 						</li>
 					</ul>
 				</li>
+
+			<!-- TODO: UserAvatar -->
 				<!-- User Account: style can be found in dropdown.less -->
 				<li class="user user-menu">
 					<a href="{{ route('user-profile') }}">
@@ -147,13 +60,13 @@
 
 				</li>
 
-
+<!-- TODO: Button stylen -->
 				<li class="user user-menu">
 					<form action="{{ route('logout') }}" method="POST">
 						@csrf
-						<button type="submit" class="">
-							<i class="fa fa-sign-out"></i>
-							<span class="hidden-xs">Log uit</span>
+						<button type="submit" class="btn btn-link logout " title="Log uit">
+							<i class="fa fa-sign-out text-mute"></i>
+							<span class="sr-only">Log uit</span>
 						</button>
 					</form>
 

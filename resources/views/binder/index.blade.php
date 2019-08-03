@@ -20,18 +20,13 @@
 
 	<div class="row">
 		<div class="col-xs-12">
+
 			<div class="box">
 				<div class="box-header">
-					<h3 class="box-title">Nieuwe aanmeldingen</h3>
+					<h3 class="box-title">Nieuwe klapper aanmeldingen</h3>
 
 					<div class="box-tools">
-						<div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-							<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
 
-							<div class="input-group-btn">
-								<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-							</div>
-						</div>
 					</div>
 				</div>
 				<!-- /.box-header -->
@@ -39,12 +34,13 @@
 					<table class="table table-hover">
 						<tr>
 
-							<th>Datum</th>
+							<th style="width: 200px">Aanmelding</th>
 							<th>Naam</th>
 							<th>Naam partner</th>
 							<th>Woningvoorkeur (1)</th>
 							<th>woningvoorkeur (2)</th>
-							<th style="width: 40px"></th>
+							<th>Bekeken</th>
+
 							<th style="width: 40px"></th>
 							<th style="width: 40px"></th>
 							<th style="width: 40px"></th>
@@ -53,13 +49,12 @@
 						</tr>
 
 						<tr>
-							<td>2 aug 2019</td>
+							<td>2 aug '19</td>
 							<td><a href="#">Thomas Mennen</a></td>
 							<td>Ani Öhman</td>
 							<td>Eenpersoons</td>
 							<td>Gezinswoning</td>
-							<td style="width: 40px"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
-							<td style="width: 40px"><button class="btn btn-danger" title="Weigeren"><i class="fa fa-ban"></i><span class="sr-only">Weigeren</span></button></td>
+							<td>0</</td> <td style="width: 40px"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
 							<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
 							<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
 						</tr>
@@ -72,13 +67,7 @@
 				</div>
 				<div class="box-footer clearfix">
 					<div class="box-tools pull-right">
-						<div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-							<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
 
-							<div class="input-group-btn">
-								<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-							</div>
-						</div>
 					</div>
 				</div>
 				<!-- /.box-body -->
@@ -90,13 +79,7 @@
 					<h3 class="box-title">Veto Periode</h3>
 
 					<div class="box-tools">
-						<div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-							<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
 
-							<div class="input-group-btn">
-								<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-							</div>
-						</div>
 					</div>
 				</div>
 				<!-- /.box-header -->
@@ -104,8 +87,8 @@
 					<table class="table table-hover">
 						<tr>
 
-							<th>Datum</th>
-							<th>Vetoperiode tot</th>
+							<th style="width: 100px">Aanmelding</th>
+							<th style="width: 100px">Vetoperiode tot</th>
 							<th>Naam</th>
 							<th>Naam partner</th>
 							<th>Woningvoorkeur (1)</th>
@@ -114,14 +97,13 @@
 							<th style="width: 40px"></th>
 							<th style="width: 40px"></th>
 							<th style="width: 40px"></th>
-							<th style="width: 40px"></th>
 
 
 						</tr>
 
 						<tr>
-							<td>2 aug 2019</td>
-							<td>12 aug 2019</td>
+							<td>2 aug '19</td>
+							<td>12 aug '19</td>
 
 							<td><a href="#">Thomas Mennen</a></td>
 							<td>Ani Öhman</td>
@@ -129,7 +111,6 @@
 							<td>Gezinswoning</td>
 							<td>12</td>
 							<td style="width: 40px"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
-							<td style="width: 40px"><button class="btn btn-danger" title="Weigeren"><i class="fa fa-ban"></i><span class="sr-only">Weigeren</span></button></td>
 							<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
 							<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
 						</tr>
@@ -142,13 +123,7 @@
 				</div>
 				<div class="box-footer clearfix">
 					<div class="box-tools pull-right">
-						<div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-							<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
 
-							<div class="input-group-btn">
-								<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-							</div>
-						</div>
 					</div>
 				</div>
 				<!-- /.box-body -->
@@ -173,7 +148,7 @@
 					<table class="table table-hover">
 						<tr>
 
-							<th>Datum</th>
+							<th style="width: 200px">Aanmelding</th>
 							<th>Naam</th>
 							<th>Naam partner</th>
 							<th>Woningvoorkeur (1)</th>
@@ -181,99 +156,116 @@
 							<th>Bekeken</th>
 							<th style="width: 40px"></th>
 							<th style="width: 40px"></th>
+							<th style="width: 40px"></th>
 
 
 						</tr>
 
 						<tr>
-							<td>2 aug 2019</td>
+							<td>2 aug '19</td>
 							<td><a href="#">Thomas Mennen</a></td>
 							<td>Ani Öhman</td>
 							<td>Eenpersoons</td>
 							<td>Gezinswoning</td>
 							<td>12</td>
+							<td style="width: 40px"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
+
 							<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
 							<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
 						</tr>
 
 						<tr>
-							<td>2 aug 2019</td>
+							<td>2 aug '19</td>
 							<td><a href="#">Thomas Mennen</a></td>
 							<td>Ani Öhman</td>
 							<td>Eenpersoons</td>
 							<td>Gezinswoning</td>
 							<td>12</td>
+							<td style="width: 40px"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
+
 							<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
 							<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
 						</tr>
 
 						<tr>
-							<td>2 aug 2019</td>
+							<td>2 aug '19</td>
 							<td><a href="#">Thomas Mennen</a></td>
 							<td>Ani Öhman</td>
 							<td>Eenpersoons</td>
 							<td>Gezinswoning</td>
 							<td>12</td>
+							<td style="width: 40px"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
+
 							<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
 							<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
 						</tr>
 
 						<tr>
-							<td>2 aug 2019</td>
+							<td>2 aug '19</td>
 							<td><a href="#">Thomas Mennen</a></td>
 							<td>Ani Öhman</td>
 							<td>Eenpersoons</td>
 							<td>Gezinswoning</td>
 							<td>12</td>
+							<td style="width: 40px"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
+
 							<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
 							<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
 						</tr>
 						<tr>
-							<td>2 aug 2019</td>
+							<td>2 aug '19</td>
 							<td><a href="#">Thomas Mennen</a></td>
 							<td>Ani Öhman</td>
 							<td>Eenpersoons</td>
 							<td>Gezinswoning</td>
 							<td>12</td>
+							<td style="width: 40px"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
+
 							<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
 							<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
 						</tr>
 
 						<tr>
-							<td>2 aug 2019</td>
+							<td>2 aug '19</td>
 							<td><a href="#">Thomas Mennen</a></td>
 							<td>Ani Öhman</td>
 							<td>Eenpersoons</td>
 							<td>Gezinswoning</td>
 							<td>12</td>
+							<td style="width: 40px"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
+
 							<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
 							<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
 						</tr>
 
 						<tr>
-							<td>2 aug 2019</td>
+							<td>2 aug '19</td>
 							<td><a href="#">Thomas Mennen</a></td>
 							<td>Ani Öhman</td>
 							<td>Eenpersoons</td>
 							<td>Gezinswoning</td>
 							<td>12</td>
+							<td style="width: 40px"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
+
 							<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
 							<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
 						</tr>
 
 						<tr>
-							<td>2 aug 2019</td>
+							<td>2 aug '19</td>
 							<td><a href="#">Thomas Mennen</a></td>
 							<td>Ani Öhman</td>
 							<td>Eenpersoons</td>
 							<td>Gezinswoning</td>
 							<td>12</td>
+							<td style="width: 40px"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
+
 							<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
 							<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
 						</tr>
 
 						<tr>
-							<td>2 aug 2019</td>
+							<td>2 aug '19</td>
 							<td><a href="#">Thomas Mennen</a></td>
 							<td>Ani Öhman</td>
 							<td>Eenpersoons</td>

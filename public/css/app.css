@@ -11,3 +11,9 @@ body,
   font-weight: bold;
 }
 
+.navbar-nav > li .logout {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  line-height: 20px;
+}
+

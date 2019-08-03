@@ -10,7 +10,7 @@
                         @empty
                             <span>Je zit nog niet in een werkgroep</span>
                 @endforelse
-        		
+
         		</td>
         </tr>
 

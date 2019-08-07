@@ -30,38 +30,6 @@
 	<div class="row">
 		<div class="col-md-3">
 
-			<!-- About Me Box -->
-			<div class="box box-primary">
-				<div class="box-header with-border">
-					<h3 class="box-title">Menu / Acties</h3>
-				</div>
-				<!-- /.box-header -->
-				<div class="box-body">
-
-					{{-- User is NOT a member of workgroup --}}
-					@if(!auth()->user()->inWorkgroup($workgroup))
-					<button class="btn btn-primary btn-block" href="#" onclick="$('#join-workgroup-form').submit();">Ga bij</button>
-					<button class="btn btn-primary btn-block" href="#" data-target="message-form">Stuur bericht</button>
-					@endif
-					<button class="btn btn-primary btn-block" href="#">Bestanden</button>
-					<button class="btn btn-primary btn-block" href="{{ route('workgroup-members',['workgroup_id' => $workgroup->id]) }}">Leden</button>
-
-
-					{{-- User is a member of this workgroup --}}
-					@if(auth()->user()->inWorkgroup($workgroup))
-					{{-- workgroup specific links --}}
-					@if($workgroup->role->role == 'Aanname')
-					<button class="btn btn-primary btn-block" href="{{ route('workgroup-binder-form') }}">Klapper formulier</button>
-					@endif
-					<button class="btn btn-primary btn-block" href="#" onclick="$('#leave-workgroup-form').submit();">Verlaten</button>
-					@endif
-
-					<p>Ik weet niet of dit nog wel meerwaarde heeft.</p>
-				</div>
-				<!-- /.box-body -->
-			</div>
-			<!-- /.box -->
-
 			<div class="box">
 				<div class="box-header with-border">
 					<h3 class="box-title">Werkgroep Leden</h3>
@@ -81,27 +49,22 @@
 						<li>
 							<img src="/AdminLTE/dist/img/user1-128x128.jpg" alt="User Image">
 							<a class="users-list-name" href="#">Alexander Pierce</a>
-							<span class="users-list-date">Today</span>
 						</li>
 						<li>
 							<img src="/AdminLTE/dist/img/user8-128x128.jpg" alt="User Image">
 							<a class="users-list-name" href="#">Norman</a>
-							<span class="users-list-date">Yesterday</span>
 						</li>
 						<li>
 							<img src="/AdminLTE/dist/img/user7-128x128.jpg" alt="User Image">
 							<a class="users-list-name" href="#">Jane</a>
-							<span class="users-list-date">12 Jan</span>
 						</li>
 						<li>
 							<img src="/AdminLTE/dist/img/user6-128x128.jpg" alt="User Image">
 							<a class="users-list-name" href="#">John</a>
-							<span class="users-list-date">12 Jan</span>
 						</li>
 						<li>
 							<img src="/AdminLTE/dist/img/user2-160x160.jpg" alt="User Image">
 							<a class="users-list-name" href="#">Alexander</a>
-							<span class="users-list-date">13 Jan</span>
 						</li>
 					</ul>
 					<!-- /.users-list -->
@@ -118,6 +81,7 @@
 				<!-- /.box-footer -->
 			</div>
 
+			<!-- TODO: Accept/ Decline functie instellen -->
 			@if(auth()->user()->inWorkgroup($workgroup))
 
 			<div class="box box-primary box-solid">
@@ -130,6 +94,7 @@
 					</div>
 				</div>
 				<!-- /.box-header -->
+
 				<div class="box-body no-padding">
 					<table class="table">
 
@@ -167,60 +132,112 @@
 		<!-- /.col -->
 		<div class="col-md-9">
 
-			<!-- Default box -->
-			<div class="box">
-				<div class="box-header with-border">
-					<h3 class="box-title">Informatie</h3>
 
-					<div class="box-tools pull-right">
 
-						<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-							<i class="fa fa-minus"></i></button>
-					</div>
-				</div>
-				<div class="box-body">
-					Hier komt werkgroep tekst
-				</div>
-				<!-- /.box-body -->
-				<div class="box-footer">
-					<div class="box-tools pull-right">
-						@if(auth()->user()->inWorkgroup($workgroup))
-						<button type="button" class="btn btn-box-tool" data-widget="editor"><i class="fa fa-pencil"></i>
-						</button>
+			<div class="nav-tabs-custom">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#activity" data-toggle="tab">Informatie</a></li>
+					<li><a href="#timeline" data-toggle="tab">Activiteiten</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="active tab-pane" id="activity">
 
-						{{-- <div id="text-editor">
+						<!-- Default box -->
+
+						<div class="box-header">
+							<h3 class="box-title">Informatie</h3>
+
+							<div class="box-tools pull-right">
+
+							</div>
+						</div>
+						<div class="box-body">
+							Hier komt werkgroep tekst
+						</div>
+						<!-- /.box-body -->
+						<div class="box-footer">
+							<div class="box-tools pull-right">
+								@if(auth()->user()->inWorkgroup($workgroup))
+								<button type="button" class="btn btn-box-tool" data-widget="editor"><i class="fa fa-pencil"></i>
+								</button>
+
+								{{-- <div id="text-editor">
 <textarea name="body" class="textarea editor"></textarea>
 </div> --}}
-						@endif
+								@endif
+							</div>
+						</div>
+						<!-- /.box-footer-->
+						<!-- /.box -->
+
+
 					</div>
+					<!-- /.tab-pane -->
+					<div class="tab-pane" id="timeline">
+
+						<!-- Default box -->
+						<div class="box-header">
+							<h3 class="box-title">Activiteiten</h3>
+
+							<div class="box-tools pull-right">
+
+
+							</div>
+						</div>
+						<div class="box-body">
+							Hier komt werkgroep tekst
+						</div>
+						<!-- /.box-body -->
+						<div class="box-footer">
+							<div class="box-tools pull-right">
+								@if(auth()->user()->inWorkgroup($workgroup))
+								<button type="button" class="btn btn-box-tool" data-widget="editor"><i class="fa fa-pencil"></i>
+								</button>
+
+								{{-- <div id="text-editor">
+<textarea name="body" class="textarea editor"></textarea>
+</div> --}}
+								@endif
+							</div>
+						</div>
+						<!-- /.box-footer-->
+						<!-- /.box -->
+
+
+					</div>
+					<!-- /.tab-pane -->
+
+
 				</div>
-				<!-- /.box-footer-->
+				<!-- /.tab-content -->
 			</div>
-			<!-- /.box -->
+			<!-- /.nav-tabs-custom -->
 
 			<div class="box">
 				<div class="box-header">
 					<h3 class="box-title">Bestanden</h3>
 
-					<div class="box-tools pull-right">
+					<div class="box-tools">
+						<div class="row">
+							<!-- select -->
+							<div class="form-group form-group-sm hidden-xs col-xs-6">
+								<label class="sr-only">soort document</label>
+								<select class="form-control">
+									<option>Filter documenten</option>
+									<option>Notulen</option>
+									<option>Verslagen</option>
+									<option>Voorstellen</option>
+									<option>Handleidingen</option>
+									<option>Overigen</option>
+								</select>
+							</div>
 
-						<div class="form-group">
-							<label>Multiple</label>
-							<select class="form-control select2" multiple="multiple" data-placeholder="Select a State" style="">
-								<option>Alabama</option>
-								<option>Alaska</option>
-								<option>California</option>
-								<option>Delaware</option>
-								<option>Tennessee</option>
-								<option>Texas</option>
-								<option>Washington</option>
-							</select>
-						</div>
-						<div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-							<input type="text" name="table_search" class="form-control" placeholder="Search">
+							<div class="input-group input-group-sm hidden-xs col-xs-5">
+								<input type="text" name="table_search" class="form-control" placeholder="Search">
 
-							<div class="input-group-btn">
-								<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+								<div class="input-group-btn">
+									<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+								</div>
 							</div>
 						</div>
 					</div>

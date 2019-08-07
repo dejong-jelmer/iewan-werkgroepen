@@ -37,9 +37,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 	<!-- Google Font -->
 <!--	<link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
-	
-	
-	
+
+
+
 	    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <style>
         @yield('style')
@@ -168,6 +168,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<script src="/AdminLTE/dist/js/adminlte.min.js"></script>
 	<!-- Select2 voor multiple select bestanden -->
 	<script src="/AdminLTE/bower_components/select2/dist/js/select2.full.min.js"></script>
+
+
 
 	<script src="{{ mix('js/app.js') }}"></script>
 	@yield('script')

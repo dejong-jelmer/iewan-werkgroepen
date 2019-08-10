@@ -213,7 +213,9 @@
 			</div>
 			<!-- /.nav-tabs-custom -->
 
-			<div class="box">
+
+
+<div class="box">
 				<div class="box-header">
 					<h3 class="box-title">Bestanden</h3>
 
@@ -325,6 +327,7 @@
 	<!-- /.row -->
 
 </section>
+<!-- /.content -->
 <!-- /.content -->
 
 @endsection

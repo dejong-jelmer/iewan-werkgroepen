@@ -8,20 +8,13 @@
 		<!-- Sidebar Menu -->
 		<ul class="sidebar-menu" data-widget="tree">
 
-
-
-
 			<!--			<li class="header">Algemeen</li>-->
 			<!-- Optionally, you can add icons to the links -->
 			<li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}"><a href="{{ route('dashboard') }}"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
 
-
-
-
-
 			<!-- werkgroepen -->
 			<li class="treeview">
-				<a href="#"><i class="fa fa-coffee"></i> <span>Werkgroepen</span>
+				<a href="#"><i class="fa fa-clipboard"></i> <span>Werkgroepen</span>
 					<span class="pull-right-container">
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
@@ -31,6 +24,7 @@
 					@foreach($workgroups as $workgroup)
 					<li><a href="{{ route('workgroup',['workgroup_id' =>  $workgroup->id]) }}"><i class="fa fa-circle-o"></i> {{ $workgroup->name  }}</a></li>
 					@endforeach
+					<li><a href="#"><i class="fa fa-plus-circle"></i> Nieuwe werkgroep</a></li>
 					@endisset
 				</ul>
 			</li>
@@ -38,9 +32,17 @@
 			<!-- bewoners -->
 			<li class="request()->routeIs('users')"><a href="{{ route('users') }}"><i class="fa fa-users"></i> <span>Bewoners</span></a></li>
 
-
-			<!-- Profiel -->
-			<li><a href="{{ route('user-profile') }}"><i class="fa fa-user"></i> <span>Mijn profiel</span></a></li>
+			<!-- klapper -->
+			<li>
+				<a class="request()->routeIs('binder-forms')" href="{{ route('binder-forms') }}">
+					<i class="fa fa-address-book"></i> <span>Klapper</span>
+					<span class="pull-right-container">
+						@if(auth()->user()->newBinderForms())
+						<small class="label pull-right bg-green">{{ auth()->user()->newBinderForms() }}</small>
+						@endif
+					</span>
+				</a>
+			</li>
 
 			<!-- Forum -->
 			<li>
@@ -54,17 +56,9 @@
 				</a>
 			</li>
 
-			<!-- klapper -->
-			<li>
-				<a class="request()->routeIs('binder-forms')" href="{{ route('binder-forms') }}">
-					<i class="fa fa-address-book"></i> <span>Klapper</span>
-					<span class="pull-right-container">
-						@if(auth()->user()->newBinderForms())
-						<small class="label pull-right bg-green">{{ auth()->user()->newBinderForms() }}</small>
-						@endif
-					</span>
-				</a>
-			</li>
+			<!-- Profiel -->
+			<li><a href="{{ route('user-profile') }}"><i class="fa fa-user"></i> <span>Mijn profiel</span></a></li>
+
 		</ul>
 		<!-- /.sidebar-menu -->
 	</section>

@@ -9,10 +9,9 @@
 		<div class="col-md-4 col-md-offset-4">
 
 			<div class="box">
-				<div class="box-header with-border">
-					<img src="{{ asset('img/Iewan-logo-kleur-op-wit-300x300.jpg') }}" alt="iewan" height="50" width="50">
-
-					<h1 class="box-title">Werkgroepensite</h1>
+				<div class="box-header with-border text-center">
+					<img src="{{ asset('img/Iewan-logo-kleur-op-wit-300x300.jpg') }}" alt="iewan" class="logo">
+					<h1 class="box-title sr-only">Werkgroepensite</h1>
 
 					<div class="box-tools pull-right">
 

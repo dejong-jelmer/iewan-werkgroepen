@@ -12,14 +12,14 @@
 					<div class="table-responsive forum-messages">
 						<table class="table table-hover table-striped">
 							<tbody>
-                @forelse($forumPosts as $post)
-         							<tr>
+								@forelse($forumPosts as $post)
+								<tr>
 									<!-- TODO: .new message class -->
 									<td class="forum-alert text-yellow" style="width: 30px;"><i class="fa fa-comment-o"></i></td>
 									<td class="forum-date text-muted" style="width: 200px;">{{ $post->created_at->diffForHumans() }}</td>
 									<td class="forum-subject"><a href="{{ route('forum-posts', ['post_id' => $post->id]) }}">{{ $post->title }}</a></td>
 									<td class="forum-user">
-										<!-- TODO: UserProfileUrl --><a href="#">{{ $post->user->name }}</a></td>
+										<!-- TODO: UserProfileUrl --><a href="#">{{ $post->user->id }}</a></td>
 									<td class="forum-comments-count text-muted" style="width: 150px;"><i class="fa fa-comments-o"></i>
 										<!-- TODO: CommentCount -->5 reacties</td>
 									<td class="forum-comments-date text-muted" style="width: 300px;"> @if($post->updated_at != $post->created_at)
@@ -27,11 +27,11 @@
 										@endif</td>
 								</tr>
 
-            @empty
-                    <td>Geen (nieuwe) forum posts</td>
-                @endforelse
+								@empty
+								<td>Geen (nieuwe) forum posts</td>
+								@endforelse
 
-   	</tbody>
+							</tbody>
 						</table>
 						<!-- /.table -->
 					</div>
@@ -39,14 +39,11 @@
 				</div>
 				<!-- /.box-body -->
 				<div class="box-footer">
-    @if(method_exists($forumPosts, 'links'))
-            {{ $forumPosts->links('vendor.pagination.bulma', ['bulmaClasses' => 'is-small is-left', 'next' => 'Volgende', 'previous' => 'Vorige']) }}
-    @endif
+					@if(method_exists($forumPosts, 'links'))
+					{{ $forumPosts->links('vendor.pagination.bulma', ['bulmaClasses' => 'is-small is-left', 'next' => 'Volgende', 'previous' => 'Vorige']) }}
+					@endif
 
 
 				</div>
 			</div>
 			<!-- /. box -->
-
-
-

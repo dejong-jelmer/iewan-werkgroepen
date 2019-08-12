@@ -29,11 +29,10 @@
             @empty
                 <p>De werkgroep heeft (nog) geen leden</p>
             @endforelse
-            
-      
+
           </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-      
-     @endsection
+
+    @endsection

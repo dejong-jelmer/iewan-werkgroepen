@@ -6,6 +6,7 @@
 /vendor
 /public/js
 /public/css
+/000
 .env
 .phpunit.result.cache
 Homestead.json

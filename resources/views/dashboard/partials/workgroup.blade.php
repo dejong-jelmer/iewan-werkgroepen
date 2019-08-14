@@ -4,15 +4,13 @@
 
 		<div class="box-tools pull-right">
 
-			<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-
 		</div>
 	</div>
 	<!-- /.box-header -->
 
 
 	<div class="box-body">
-		<p>Wat komt er dan in deze boxes?</p>
+		<p>Wat komt er dan in deze box?</p>
 
 		@if($workgroup->hasRole('aanname'))
 		<div class="column">

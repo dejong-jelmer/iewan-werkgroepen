@@ -12,8 +12,8 @@
 					<div class="table-responsive forum-messages">
 						<table class="table table-hover table-striped">
 							<tbody>
-                @forelse($forumPosts as $post)
-         							<tr>
+								@forelse($forumPosts as $post)
+								<tr>
 									<!-- TODO: .new message class -->
 									<td class="forum-alert text-yellow" style="width: 30px;"><i class="fa fa-comment-o"></i></td>
 									<td class="forum-date text-muted" style="width: 200px;">{{ $post->created_at->diffForHumans() }}</td>
@@ -27,11 +27,11 @@
 										@endif</td>
 								</tr>
 
-            @empty
-                    <td>Geen (nieuwe) forum posts</td>
-                @endforelse
+								@empty
+								<td>Geen nieuwe forumberichten</td>
+								@endforelse
 
-   	</tbody>
+							</tbody>
 						</table>
 						<!-- /.table -->
 					</div>
@@ -39,14 +39,11 @@
 				</div>
 				<!-- /.box-body -->
 				<div class="box-footer">
-    @if(method_exists($forumPosts, 'links'))
-            {{ $forumPosts->links('vendor.pagination.bulma', ['bulmaClasses' => 'is-small is-left', 'next' => 'Volgende', 'previous' => 'Vorige']) }}
-    @endif
+					@if(method_exists($forumPosts, 'links'))
+					{{ $forumPosts->links('vendor.pagination.bulma', ['bulmaClasses' => 'is-small is-left', 'next' => 'Volgende', 'previous' => 'Vorige']) }}
+					@endif
 
 
 				</div>
 			</div>
 			<!-- /. box -->
-
-
-

@@ -30,11 +30,11 @@
 			</li>
 
 			<!-- bewoners -->
-			<li class="request()->routeIs('users')"><a href="{{ route('users') }}"><i class="fa fa-users"></i> <span>Bewoners</span></a></li>
+			<li class="{{ request()->routeIs('users') ? 'active' : '' }}"><a href="{{ route('users') }}"><i class="fa fa-users"></i> <span>Bewoners</span></a></li>
 
 			<!-- klapper -->
-			<li>
-				<a class="request()->routeIs('binder-forms')" href="{{ route('binder-forms') }}">
+			<li class="{{ request()->routeIs('binder-forms') ? 'active' : '' }}">
+				<a href="{{ route('binder-forms') }}">
 					<i class="fa fa-address-book"></i> <span>Klapper</span>
 					<span class="pull-right-container">
 						@if(auth()->user()->newBinderForms())
@@ -65,7 +65,3 @@
 	<!-- /.sidebar -->
 </aside>
 @endif
-
-
-
-

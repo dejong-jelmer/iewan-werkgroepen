@@ -1,6 +1,6 @@
 			<div class="box">
 				<div class="box-header">
-					<h3 class="box-title">Nieuwe klapper aanmeldingen</h3>
+					<h3 class="box-title"><a href="{{ route('binder-forms') }}">Nieuwe klapper aanmeldingen</a></h3>
 
 					<div class="box-tools">
 

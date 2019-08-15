@@ -44,26 +44,20 @@
 
 				<div class="box-body no-padding">
 					<ul class="users-list clearfix">
+
+
+						@forelse($workgroup->users as $user)
 						<li>
-							<img src="/AdminLTE/dist/img/user1-128x128.jpg" alt="User Image">
-							<a class="users-list-name" href="#">Alexander Pierce</a>
+							<img src="https://i.pravatar.cc/48?u={{$user->id}}" alt="User Image">
+
+							<a class="users-list-name" href="{{ route('user', ['user_id' =>  $user->id]) }}">{{ $user->name }}</a>
+
+
 						</li>
-						<li>
-							<img src="/AdminLTE/dist/img/user8-128x128.jpg" alt="User Image">
-							<a class="users-list-name" href="#">Norman</a>
-						</li>
-						<li>
-							<img src="/AdminLTE/dist/img/user7-128x128.jpg" alt="User Image">
-							<a class="users-list-name" href="#">Jane</a>
-						</li>
-						<li>
-							<img src="/AdminLTE/dist/img/user6-128x128.jpg" alt="User Image">
-							<a class="users-list-name" href="#">John</a>
-						</li>
-						<li>
-							<img src="/AdminLTE/dist/img/user2-160x160.jpg" alt="User Image">
-							<a class="users-list-name" href="#">Alexander</a>
-						</li>
+						@empty
+						<p>De werkgroep heeft geen leden</p>
+						@endforelse
+
 					</ul>
 					<!-- /.users-list -->
 				</div>
@@ -211,10 +205,10 @@
 			</div>
 			<!-- /.nav-tabs-custom -->
 
-  {{-- User is a member of this workgroup --}}
-                    @if(auth()->user()->inWorkgroup($workgroup))
-                        {{-- workgroup specific links --}}
-                        @if($workgroup->role->role == 'Aanname')
+			{{-- User is a member of this workgroup --}}
+			@if(auth()->user()->inWorkgroup($workgroup))
+			{{-- workgroup specific links --}}
+			@if($workgroup->role->role == 'Aanname')
 			<div class="box">
 				<div class="box-header">
 					<h3 class="box-title">Nieuwe klapper aanmeldingen</h3>
@@ -323,11 +317,9 @@
 				<!-- /.box-body -->
 			</div>
 			<!-- /.box -->
-                        @endif
+			@endif
 
-                    @endif
-
-
+			@endif
 
 
 
@@ -337,7 +329,8 @@
 
 
 
-<div class="box">
+
+			<div class="box">
 				<div class="box-header">
 					<h3 class="box-title">Bestanden</h3>
 

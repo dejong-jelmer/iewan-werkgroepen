@@ -5,7 +5,7 @@
  */
 
 require('./bootstrap');
-require('bulma');
+// require('bulma');
 
 window.Vue = require('vue');
 window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');

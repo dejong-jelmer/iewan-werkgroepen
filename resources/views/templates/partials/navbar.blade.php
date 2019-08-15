@@ -1,56 +1,87 @@
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-    <div class="container">
-        <div class="navbar-brand is-full">
-        <a class="navbar-item" href="{{ route('dashboard') }}">
-          <img src="{{ asset('img/Iewan-logo-kleur-op-wit-300x300.jpg') }}" alt="iewan" height="30" width="30">
-        </a>
+<header class="main-header">
 
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar-links">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-        </div>
+	<!-- Logo -->
+	<a href="{{ route('dashboard') }}" class="logo">
+		<img src="{{ asset('img/Iewan-logo-kleur-op-wit-300x300.jpg') }}" alt="iewan" height="30" width="30">
+		<strong>Werkgroepen</strong>
+	</a>
 
-        <div id="navbar-links" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item" href="{{ route('forum') }}">
-                <i class="far fa-comments is-size-4 @if(auth()->user()->newForumPosts()) badge @endif" data-count="{{ auth()->user()->newForumPosts() }}"></i>
-          </a>
+	<!-- Header Navbar -->
+	<nav class="navbar navbar-static-top" role="navigation">
+		<!-- Sidebar toggle button-->
+		<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+			<span class="sr-only">Toggle navigation</span>
+		</a>
+		<!-- Navbar Right Menu -->
 
-          {{-- <div class="navbar-item"> --}}
-            <a class="navbar-item" href="{{ route('user-profile') }}">
-              <i class="fas fa-user-circle is-size-4"></i>
-            </a>
+		<div class="navbar-custom-menu">
+			<ul class="nav navbar-nav">
+<!-- TODO: Notifications werken dus nog niet -->
+				<!-- Notifications: style can be found in dropdown.less -->
+				<li class="dropdown notifications-menu">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<i class="fa fa-bell-o"></i>
+						<span class="label label-warning">5</span>
+					</a>
+					<ul class="dropdown-menu">
+						<li class="header">Je hebt 5 meldingen</li>
+						<li>
+							<!-- inner menu: contains the actual data -->
+							<ul class="menu">
+								<li>
+									<a href="#">
+										<i class="fa fa-comments text-aqua"></i> 2 reacties op je forumbericht
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<i class="fa fa-address-book text-yellow"></i> 2 nieuwe klapperinschrijvingen
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<i class="fa fa-coffee text-red"></i> 1 werkgroep aanmelding
+									</a>
+								</li>
 
-            {{-- <div class="navbar-dropdown">
-              <a class="navbar-item" >
-                Profiel
-              </a>
-            </div> --}}
-          {{-- </div> --}}
-        </div>
+							</ul>
+						</li>
+					</ul>
+				</li>
 
-        <div class="navbar-end">
-          <div class="navbar-item">
-            {{ auth()->user()->name }}
-          </div>
-          {{-- <div class="navbar-item">
-            <a class="navbar-item" href="{{ route('show-user-messages') }}">
-                <i class="far fa-envelope is-size-4 @if(auth()->user()->newMessages()) badge @endif" data-count="{{ auth()->user()->newMessages() }}"></i>
-            </a>
-          </div> --}}
-          <div class="navbar-item">
-            <div class="buttons">
-              <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="button is-primary">
-                        Log uit
-                    </button>
-                </form>
-            </div>
-          </div>
-        </div>
-        </div>
-    </div>
-</nav>
+			<!-- TODO: UserAvatar -->
+				<!-- User Account: style can be found in dropdown.less -->
+				<li class="user user-menu">
+					<a href="{{ route('user-profile') }}">
+						<img src="/AdminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+
+						<span class="hidden-xs">{{ auth()->user()->name }}</span>
+					</a>
+
+				</li>
+
+<!-- TODO: Button stylen -->
+				<li class="user user-menu">
+					<form action="{{ route('logout') }}" method="POST">
+						@csrf
+						<button type="submit" class="btn btn-link logout " title="Log uit">
+							<i class="fa fa-sign-out text-mute"></i>
+							<span class="sr-only">Log uit</span>
+						</button>
+					</form>
+
+				</li>
+
+
+
+
+				<!-- Control Sidebar Toggle Button -->
+				<!-- TODO: Gaan we vast niet gebruiken.
+          <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
+-->
+			</ul>
+		</div>
+	</nav>
+</header>

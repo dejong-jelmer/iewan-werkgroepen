@@ -2,48 +2,30 @@
 @section('title') Dashboard @endsection
 @section('content')
 
-   <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Dashboard
-        <small>Optional description</small>
-      </h1>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+		Dashboard
+		<small>Optional description</small>
+	</h1>
 
-    </section>
+</section>
 
-    <!-- Main content -->
+<!-- Main content -->
 
-               <section class="content">
-
-	<div class="row">
-
-
-                @forelse(auth()->user()->workgroups as $workgroup)
-                       		<div class="col-md-4">
-
-                        @include('dashboard.partials.workgroup', [
-                            'workgroup' => $workgroup
-                        ])
-		</div>
-                        @empty
-                            <p>Je zit nog niet in een werkgroep</p>
-                @endforelse
-            </div>
-
-
-
+<section class="content">
 
 	<div class="row">
 		<div class="col-md-8">
-                @include('dashboard.partials.forumposts', [
-                        'forumPosts' => $forumPosts
-                    ])
+			@include('dashboard.partials.forumposts', [
+			'forumPosts' => $forumPosts
+			])
 
-                @include('dashboard.partials.binder_forms', [
-                        'binderForms' => $binderForms
-                    ])
+			@include('dashboard.partials.binder_forms', [
+			'binderForms' => $binderForms
+			])
 
-				  					<div class="box">
+			<div class="box">
 				<div class="box-header">
 					<h3 class="box-title">Recent geuploade bestanden</h3>
 
@@ -119,17 +101,17 @@
 
 				<div class="box-footer clearfix">
 
+				</div>
 			</div>
-						</div>
 			<!-- /.box -->
 
 
 
-				  	</div>
-				  	<div class="col-md-4">
-				  </div>
-				   </div>
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
 
-    </section>
-    <!-- /.content -->
+</section>
+<!-- /.content -->
 @endsection

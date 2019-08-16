@@ -44,26 +44,20 @@
 
 				<div class="box-body no-padding">
 					<ul class="users-list clearfix">
+
+
+						@forelse($workgroup->users as $user)
 						<li>
-							<img src="/AdminLTE/dist/img/user1-128x128.jpg" alt="User Image">
-							<a class="users-list-name" href="#">Alexander Pierce</a>
+							<img src="https://i.pravatar.cc/48?u={{$user->id}}" alt="User Image">
+
+							<a class="users-list-name" href="{{ route('user', ['user_id' =>  $user->id]) }}">{{ $user->name }}</a>
+
+
 						</li>
-						<li>
-							<img src="/AdminLTE/dist/img/user8-128x128.jpg" alt="User Image">
-							<a class="users-list-name" href="#">Norman</a>
-						</li>
-						<li>
-							<img src="/AdminLTE/dist/img/user7-128x128.jpg" alt="User Image">
-							<a class="users-list-name" href="#">Jane</a>
-						</li>
-						<li>
-							<img src="/AdminLTE/dist/img/user6-128x128.jpg" alt="User Image">
-							<a class="users-list-name" href="#">John</a>
-						</li>
-						<li>
-							<img src="/AdminLTE/dist/img/user2-160x160.jpg" alt="User Image">
-							<a class="users-list-name" href="#">Alexander</a>
-						</li>
+						@empty
+						<p>De werkgroep heeft geen leden</p>
+						@endforelse
+
 					</ul>
 					<!-- /.users-list -->
 				</div>
@@ -135,7 +129,12 @@
 			<div class="nav-tabs-custom">
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#activity" data-toggle="tab">Informatie</a></li>
-					<li><a href="#timeline" data-toggle="tab">Activiteiten</a></li>
+					<li><a href="#activiteiten" data-toggle="tab">Activiteiten</a></li>
+					@if(auth()->user()->inWorkgroup($workgroup))
+
+					<li><a href="#addtab" data-toggle="tab"><i class="fa fa-plus-square-o"></i><span class="sr-only">Nieuw tabblad</span></a></li>
+					@endif
+
 				</ul>
 				<div class="tab-content">
 					<div class="active tab-pane" id="activity">
@@ -146,7 +145,14 @@
 							<h3 class="box-title">Informatie</h3>
 
 							<div class="box-tools pull-right">
+								@if(auth()->user()->inWorkgroup($workgroup))
+								<button type="button" class="btn btn-box-tool" data-widget="editor"><i class="fa fa-pencil"></i>
+									<span class="sr-only">Bewerk tabblad</span></button>
 
+								<button type="button" class="btn btn-box-tool" data-widget="editor"><i class="fa fa-trash"><span class="sr-only">Verwijder tabblad"</span></i>
+								</button>
+
+								@endif
 							</div>
 						</div>
 						<div class="box-body">
@@ -154,16 +160,7 @@
 						</div>
 						<!-- /.box-body -->
 						<div class="box-footer">
-							<div class="box-tools pull-right">
-								@if(auth()->user()->inWorkgroup($workgroup))
-								<button type="button" class="btn btn-box-tool" data-widget="editor"><i class="fa fa-pencil"></i>
-								</button>
 
-								{{-- <div id="text-editor">
-<textarea name="body" class="textarea editor"></textarea>
-</div> --}}
-								@endif
-							</div>
 						</div>
 						<!-- /.box-footer-->
 						<!-- /.box -->
@@ -171,15 +168,21 @@
 
 					</div>
 					<!-- /.tab-pane -->
-					<div class="tab-pane" id="timeline">
+					<div class="tab-pane" id="activiteiten">
 
 						<!-- Default box -->
 						<div class="box-header">
 							<h3 class="box-title">Activiteiten</h3>
 
 							<div class="box-tools pull-right">
+								@if(auth()->user()->inWorkgroup($workgroup))
+								<button type="button" class="btn btn-box-tool" data-widget="editor"><i class="fa fa-pencil"></i>
+									<span class="sr-only">Bewerk tabblad</span></button>
 
+								<button type="button" class="btn btn-box-tool" data-widget="editor"><i class="fa fa-trash"><span class="sr-only">Verwijder tabblad"</span></i>
+								</button>
 
+								@endif
 							</div>
 						</div>
 						<div class="box-body">
@@ -187,16 +190,7 @@
 						</div>
 						<!-- /.box-body -->
 						<div class="box-footer">
-							<div class="box-tools pull-right">
-								@if(auth()->user()->inWorkgroup($workgroup))
-								<button type="button" class="btn btn-box-tool" data-widget="editor"><i class="fa fa-pencil"></i>
-								</button>
 
-								{{-- <div id="text-editor">
-<textarea name="body" class="textarea editor"></textarea>
-</div> --}}
-								@endif
-							</div>
 						</div>
 						<!-- /.box-footer-->
 						<!-- /.box -->
@@ -204,6 +198,51 @@
 
 					</div>
 					<!-- /.tab-pane -->
+					@if(auth()->user()->inWorkgroup($workgroup))
+
+					<div class="tab-pane" id="addtab">
+						<form>
+
+							<!-- Default box -->
+							<div class="box-header">
+								<div class="form-group">
+									<label class="sr-only">Titel van het tablad</label>
+									<input class="form-control" type="text" placeholder="Titel">
+
+								</div>
+
+								<div class="box-tools pull-right">
+
+
+								</div>
+							</div>
+							<div class="box-body">
+								<div class="form-group">
+									<label class="sr-only">Inhoud van het tablad</label>
+									<textarea class="form-control" rows="5"></textarea>
+
+								</div>
+							</div>
+							<!-- /.box-body -->
+							<div class="box-footer">
+								<div class="box-tools pull-right">
+									<div class="form-group">
+										<label class="sr-only">Inhoud van het tablad</label>
+										<button class="btn btn-primary" type="submit">Opslaan</button>
+
+									</div>
+								</div>
+							</div>
+							<!-- /.box-footer-->
+							<!-- /.box -->
+
+						</form>
+					</div>
+					<!-- /.tab-pane -->
+					@endif
+
+
+
 
 
 				</div>
@@ -211,10 +250,10 @@
 			</div>
 			<!-- /.nav-tabs-custom -->
 
-  {{-- User is a member of this workgroup --}}
-                    @if(auth()->user()->inWorkgroup($workgroup))
-                        {{-- workgroup specific links --}}
-                        @if($workgroup->role->role == 'Aanname')
+			{{-- User is a member of this workgroup --}}
+			@if(auth()->user()->inWorkgroup($workgroup))
+			{{-- workgroup specific links --}}
+			@if($workgroup->role->role == 'Aanname')
 			<div class="box">
 				<div class="box-header">
 					<h3 class="box-title">Nieuwe klapper aanmeldingen</h3>
@@ -323,11 +362,9 @@
 				<!-- /.box-body -->
 			</div>
 			<!-- /.box -->
-                        @endif
+			@endif
 
-                    @endif
-
-
+			@endif
 
 
 
@@ -337,7 +374,8 @@
 
 
 
-<div class="box">
+
+			<div class="box">
 				<div class="box-header">
 					<h3 class="box-title">Bestanden</h3>
 

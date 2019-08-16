@@ -15,9 +15,18 @@ Route::get('login', function(){
     return view('auth.login');
 })->name('show-login')->middleware('guest');
 Route::post('login', 'Auth\LoginController@login')
-    ->name('login');
+    ->name('login')->middleware('guest');
 Route::post('logout', 'Auth\LoginController@logout')
-    ->name('logout');
+    ->name('logout')->middleware('auth');
+
+Route::middleware('guest')->group(function(){
+    Route::get('inschrijven/{key}', 'BinderController@showIntakeForm')
+        ->name('show-intake-form');
+    Route::get('formulier-verlopen', 'BinderController@showFormExpired')
+        ->name('show-form-expired');
+    Route::post('inschrijven/{key}', 'BinderController@createNewIntake')
+        ->name('post-send-intake-form');
+});
 
 Route::middleware('auth')->group(function(){
     Route::get('/dashboard', 'DashboardController@showDashboard')
@@ -39,10 +48,23 @@ Route::middleware('auth')->group(function(){
     Route::post('/forum/response/{post_id}', 'ForumController@createForumResponse')
         ->name('user-forum-respone');
 
-    Route::get('/klapper', 'BinderController@showBinderForms')
+    Route::get('klapper', 'BinderController@showForms')
         ->name('binder-forms');
-    Route::get('/klapper/{form_id}', 'BinderController@showBinderForm')
+    Route::get('klapper/formulier/{form_id}', 'BinderController@showForm')
         ->name('binder-form');
+
+    Route::get('werkgroep/klapper/formulieren', 'BinderController@showFormOptions')
+        ->name('workgroup-binder-form');
+    Route::get('werkgroep/klapper/formulier-bewerken', 'BinderController@showEditForm')
+        ->name('show-edit-binder-form');
+     Route::post('werkgroep/klapper/formulier-bewerken', 'BinderController@editForm')
+        ->name('post-edit-binder-form');
+     Route::get('werkgroep/klapper/formulier-versturen', 'BinderController@showSendForm')
+        ->name('show-send-binder-form');
+    Route::post('werkgroep/klapper/formulier-versturen', 'BinderController@sendForm')
+        ->name('post-send-binder-form');
+    Route::get('werkgroep/klapper/formulier/{form_id}/vrijgeven', 'BinderController@releaseForm')
+        ->name('release-form');
 
     Route::get('/bericht-aan/{user_id}', 'MessageController@showCreateMessage')
         ->name('send-user-message');
@@ -74,5 +96,4 @@ Route::middleware('auth')->group(function(){
         ->name('leave-workgroup');
     Route::get('/werkgroep/{workgroup_id}/leden', 'WorkgroupController@showWorkgroupMembers')
         ->name('workgroup-members');
-
 });

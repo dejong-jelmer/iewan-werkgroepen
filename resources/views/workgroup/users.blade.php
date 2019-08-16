@@ -1,20 +1,38 @@
 @extends('templates.layout')
 @section('title') leden @endsection
 @section('content')
-<div class="colums first-element">
-    <div class="column is-full">
-        <div class="columns is-multiline">
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Leden
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Leden</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
             @forelse($workgroup->users as $user)
-                <div class="column is-4">
+                     <div class="row">
+
                     @include('workgroup.partials.user', [
                             'user' => $user
                         ])
                 </div>
+                   <!-- /.row -->
             @empty
                 <p>De werkgroep heeft (nog) geen leden</p>
             @endforelse
-        </div>
-    </div>
-</div>
 
-@endsection
+          </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+    @endsection

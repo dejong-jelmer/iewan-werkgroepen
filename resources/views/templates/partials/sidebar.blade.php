@@ -1,43 +1,67 @@
 @if(auth()->check())
-    <aside id="sidebar-links" class="menu is-hidden-mobile has-text-centered">
-        <ul class="menu-list">
-            <li><a class="{{ Route::currentRouteName() == 'dashboard' ? 'is-active' : '' }}" href={{ route('dashboard') }}><i class="fas fa-tachometer-alt is-size-4"></i></a></li>
-        </ul>
-        <p class="menu-label">
-            Algemeen
-        </p>
-        <ul class="menu-list">
-            <li>
-                <a class="dropdown-toggle" {{ Route::currentRouteName() == '' ? 'is_active' : '' }} href="#"><i class="fas fa-users-cog is-size-4"></i>&nbsp;<i class="fas fa-caret-down"></i></a>
-                <ul class="dropdown-list">
-                    @isset($workgroups)
-                        @foreach($workgroups as $workgroup)
-                            <li><a href="{{ route('workgroup',['workgroup_id' =>  $workgroup->id]) }}">{{ $workgroup->name  }}</a></li>
-                        @endforeach
-                    @endisset
-                  </ul>
-            </li>
-        </ul>
-        <p class="menu-label">
-            Leden
-        </p>
-          <ul class="menu-list">
-            <li>
-                <a class="dropdown-toggle" {{ Route::currentRouteName() == '' ? 'is_active' : '' }} href="{{ route('users') }}"><i class="fas fa-users is-size-4"></i></a>
-            </li>
-            <li>
-                <a class="dropdown-toggle" {{ Route::currentRouteName() == '' ? 'is_active' : '' }} href="#"><i class="fas fa-user is-size-4"></i>&nbsp;<i class="fas fa-caret-down"></i></a>
-                 <ul class="dropdown-list">
-                        @isset($users)
-                            @foreach($users as $user)
-                                @if($user->id != auth()->user()->id)
-                                    <li><a href="{{ route('user', ['user_id' =>  $user->id]) }}">{{ $user->name }}</a></li>
-                                @endif
-                            @endforeach
-                        @endisset
-                  </ul>
-            </li>
-            <li><a {{ Route::currentRouteName() == '' ? 'is_active' : '' }} href="{{ route('binder-forms') }}"><i class="fas fa-address-book is-size-3 @if(auth()->user()->newBinderForms()) badge @endif" data-count="{{ auth()->user()->newBinderForms() }}"></i></a></li>
-          </ul>
-    </aside>
+
+<aside class="main-sidebar">
+
+	<!-- sidebar: style can be found in sidebar.less -->
+	<section class="sidebar">
+
+		<!-- Sidebar Menu -->
+		<ul class="sidebar-menu" data-widget="tree">
+
+			<!--			<li class="header">Algemeen</li>-->
+			<!-- Optionally, you can add icons to the links -->
+			<li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}"><a href="{{ route('dashboard') }}"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
+
+			<!-- werkgroepen -->
+			<li class="treeview">
+				<a href="#"><i class="fa fa-clipboard"></i> <span>Werkgroepen</span>
+					<span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+				</a>
+				<ul class="treeview-menu">
+					@isset($workgroups)
+					@foreach($workgroups as $workgroup)
+					<li><a href="{{ route('workgroup',['workgroup_id' =>  $workgroup->id]) }}"><i class="fa fa-circle-o"></i> {{ $workgroup->name  }}</a></li>
+					@endforeach
+					<li><a href="#"><i class="fa fa-plus-circle"></i> Nieuwe werkgroep</a></li>
+					@endisset
+				</ul>
+			</li>
+
+			<!-- bewoners -->
+			<li class="{{ request()->routeIs('users') ? 'active' : '' }}"><a href="{{ route('users') }}"><i class="fa fa-users"></i> <span>Bewoners</span></a></li>
+
+			<!-- klapper -->
+			<li class="{{ request()->routeIs('binder-forms') ? 'active' : '' }}">
+				<a href="{{ route('binder-forms') }}">
+					<i class="fa fa-address-book"></i> <span>Klapper</span>
+					<span class="pull-right-container">
+						@if(auth()->user()->newBinderForms())
+						<small class="label pull-right bg-green">{{ auth()->user()->newBinderForms() }}</small>
+						@endif
+					</span>
+				</a>
+			</li>
+
+			<!-- Forum -->
+			<li>
+				<a class="request()->routeIs('forum')" href="{{ route('forum') }}">
+					<i class="fa fa-comments"></i> <span>Forum</span>
+					<span class="pull-right-container">
+						@if(auth()->user()->newForumPosts())
+						<small class="label pull-right bg-green">{{ auth()->user()->newForumPosts() }}</small>
+						@endif
+					</span>
+				</a>
+			</li>
+
+			<!-- Profiel -->
+			<li><a href="{{ route('user-profile') }}"><i class="fa fa-user"></i> <span>Mijn profiel</span></a></li>
+
+		</ul>
+		<!-- /.sidebar-menu -->
+	</section>
+	<!-- /.sidebar -->
+</aside>
 @endif

@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-image">
                     <figure class="image is-3by2">
-                        <img id="profile-image" src="https://bulma.io/images/placeholders/480x320.png" alt="Placeholder image">
+                        <img id="profile-image" src="{{ asset("$fileUrl") }}" alt="{{ $fileUrl }}">
                     </figure>
                 </div>
             </div>

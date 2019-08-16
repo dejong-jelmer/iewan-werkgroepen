@@ -1,12 +1,28 @@
 @if (session()->has('error'))
-    <div class="notification is-warning">
-        <button class="delete"></button>
-        {{ session('error') }}
-    </div>
+        <aside class="content-header">
+              <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close delete" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-ban"></i>                         {{ session('error') }}
+</h4>
+
+              </div>
+          </aside>
 @endif
 @if (session()->has('success'))
-    <div class="notification is-success">
-        <button class="delete"></button>
-        {{ session('success') }}
-    </div>
+        <aside class="content-header">
+
+              <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close delete" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check"></i> {{ session('success') }}</h4>
+
+              </div>
+</aside>
 @endif
+
+
+
+
+
+
+
+

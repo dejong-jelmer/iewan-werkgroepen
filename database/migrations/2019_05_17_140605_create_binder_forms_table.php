@@ -15,8 +15,13 @@ class CreateBinderFormsTable extends Migration
     {
         Schema::create('binder_forms', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('key', 100)->unique();
             $table->string('name');
             $table->json('fields');
+            $table->binary('response')->nullable();
+            $table->timestamp('expires')->nullable();
+            $table->timestamp('filled_in')->nullable();
+            $table->boolean('released')->default(0);
             $table->timestamps();
         });
     }

@@ -13,5 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(WorkgroupSeeder::class);
         $this->call(UsersTableSeeder::class);
+        // $this->call(BinderFormFieldsSeeder::class);
+        $this->call(BinderFormSeeder::class);
     }
 }

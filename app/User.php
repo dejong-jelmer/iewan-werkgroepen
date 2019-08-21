@@ -42,9 +42,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Workgroup');
     }
 
-    public function inWorkgroup(\App\Workgroup $workgroup)
+    public function inWorkgroup($id)
     {
-        return (bool) $this->workgroups()->where('workgroups.id', $workgroup->id)->count();
+        return (bool) $this->workgroups()->where('workgroups.id', $id)->count();
     }
 
     public function hasWorkgroupRole($role)

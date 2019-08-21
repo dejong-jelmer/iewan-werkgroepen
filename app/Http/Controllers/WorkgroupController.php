@@ -12,7 +12,7 @@ class WorkgroupController extends Controller
     {
         // dd('Hallo');
         $workgroup = Workgroup::find($workgroup_id);
-        if(Auth::user()->inWorkgroup($workgroup)) {
+        if(Auth::user()->inWorkgroup($workgroup->id)) {
             $workgroup->messages;
         }
         return view('workgroup.index', compact('workgroup'));

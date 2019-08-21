@@ -8,30 +8,42 @@
 		<!-- Sidebar Menu -->
 		<ul class="sidebar-menu" data-widget="tree">
 
-			<!--			<li class="header">Algemeen</li>-->
-			<!-- Optionally, you can add icons to the links -->
-			<li class="{{ Request::route()->getName() == 'dashboard' ? 'active' : '' }}"><a href="{{ route('dashboard') }}"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
+			<li class="{{ Request::route()->getName() == 'dashboard' ? 'active' : '' }}">
+				<a href="{{ route('dashboard') }}"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a>
+			</li>
 
 			<!-- werkgroepen -->
-            <!-- TODO: bepalen of we op een werkgroep pagina zitten, om het menu open te zetten. -->
-			<li class="treeview {{ Request::route()->getName() == 'workgroup' ? 'active menu-open' : '' }}">
+            <li class="treeview {{ Request::route()->getName() == 'workgroup' ? 'active menu-open' : '' }}">
 				<a href="#"><i class="fa fa-clipboard"></i> <span>Werkgroepen</span>
 					<span class="pull-right-container">
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					@isset($workgroups)
-					@foreach($workgroups as $workgroup)
+					
+					<!-- eerst de werkgroepen waar de gebruiker in zit: -->
+					@foreach(auth()->user()->workgroups as $workgroup)
 					<li class="{{ Request::segment(2) == $workgroup->id ? 'active' : '' }}"><a href="{{ route('workgroup',['workgroup_id' =>  $workgroup->id]) }}"><i class="fa @if(auth()->user()->inWorkgroup($workgroup->id)) fa-circle @else fa-circle-o @endif"></i>{{ $workgroup->name  }}</a></li>
 					@endforeach
+
+					<!-- dan de overige werkgroepen: -->
+					@isset($workgroups)
+					@foreach($workgroups as $workgroup)
+					@if(!auth()->user()->inWorkgroup($workgroup->id))
+					<li class="{{ Request::segment(2) == $workgroup->id ? 'active' : '' }}"><a href="{{ route('workgroup',['workgroup_id' =>  $workgroup->id]) }}"><i class="fa @if(auth()->user()->inWorkgroup($workgroup->id)) fa-circle @else fa-circle-o @endif"></i>{{ $workgroup->name  }}</a></li>
+					@endif
+					@endforeach
+					
 					<li><a href="#"><i class="fa fa-plus-circle"></i> Nieuwe werkgroep</a></li>
 					@endisset
+
 				</ul>
 			</li>
 
 			<!-- bewoners -->
-			<li class="{{ request()->routeIs('users') ? 'active' : '' }}"><a href="{{ route('users') }}"><i class="fa fa-users"></i> <span>Bewoners</span></a></li>
+			<li class="{{ Request::route()->getName() == 'users' ? 'active' : '' }}">
+				<a href="{{ route('users') }}"><i class="fa fa-users"></i> <span>Bewoners</span></a>
+			</li>
 
 			<!-- klapper -->
 			<li class="{{ Request::route()->getName() == 'binder-forms' ? 'active' : '' }}">
@@ -46,8 +58,8 @@
 			</li>
 
 			<!-- Forum -->
-			<li>
-				<a class="request()->routeIs('forum')" href="{{ route('forum') }}">
+			<li class="{{ Request::route()->getName() == 'forum' ? 'active' : '' }}">
+				<a href="{{ route('forum') }}">
 					<i class="fa fa-comments"></i> <span>Forum</span>
 					<span class="pull-right-container">
 						@if(auth()->user()->newForumPosts())
@@ -58,7 +70,9 @@
 			</li>
 
 			<!-- Profiel -->
-			<li><a href="{{ route('user-profile') }}"><i class="fa fa-user"></i> <span>Mijn profiel</span></a></li>
+			<li class="{{ Request::route()->getName() == 'user-profile' ? 'active' : '' }}">
+				<a href="{{ route('user-profile') }}"><i class="fa fa-user"></i><span>Mijn profiel</span></a>
+			</li>
 
 		</ul>
 		<!-- /.sidebar-menu -->

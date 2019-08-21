@@ -13,7 +13,8 @@
 			<li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}"><a href="{{ route('dashboard') }}"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
 
 			<!-- werkgroepen -->
-			<li class="treeview">
+            <!-- TODO: bepalen of we op een werkgroep pagina zitten, om het menu open te zetten. -->
+			<li class="treeview {{ request()->routeIs('werkgroep') ? 'active menu-open' : '' }}">
 				<a href="#"><i class="fa fa-clipboard"></i> <span>Werkgroepen</span>
 					<span class="pull-right-container">
 						<i class="fa fa-angle-left pull-right"></i>
@@ -22,7 +23,7 @@
 				<ul class="treeview-menu">
 					@isset($workgroups)
 					@foreach($workgroups as $workgroup)
-					<li><a href="{{ route('workgroup',['workgroup_id' =>  $workgroup->id]) }}"><i class="fa fa-circle-o"></i> {{ $workgroup->name  }}</a></li>
+					<li class="{{ request()->routeIs('$workgroup->id') ? 'active' : '' }}"><a href="{{ route('workgroup',['workgroup_id' =>  $workgroup->id]) }}"><i class="fa fa-circle-o"></i>{{ $workgroup->name  }}</a></li>
 					@endforeach
 					<li><a href="#"><i class="fa fa-plus-circle"></i> Nieuwe werkgroep</a></li>
 					@endisset

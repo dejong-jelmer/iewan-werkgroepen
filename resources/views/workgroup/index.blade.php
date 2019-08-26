@@ -444,7 +444,7 @@
 
 				<div class="box-footer clearfix">
 					<div class="file-upload pull-left">
-						<button class="btn btn-primary" href="#" onclick="alert('TODO')">Bestand uploaden</button>
+						<button class="btn btn-primary toggle scroll" data-target="file-upload">Bestand uploaden</button>
 
 					</div>
 					<ul class="pagination pagination-sm no-margin pull-right">
@@ -457,6 +457,25 @@
 				</div>
 			</div>
 			<!-- /.box -->
+
+			<div id="file-upload" class="box" style="display: none;">
+				<div class="box-header">
+					<h3 class="box-title">Bestand uploaden</h3>
+
+					<div class="pull-right box-tools">
+						<button type="button" class="btn btn-box-tool toggle" data-target="file-upload" data-toggle="tooltip" title="Remove">
+							<i class="fa fa-times"></i></button>
+					</div>
+				</div>
+				<!-- /.box-header -->
+				<div class="box-body table-responsive no-padding">
+
+					File uplooad
+				</div>
+			</div>
+			<!-- /.box -->
+
+
 
 		</div>
 		<!-- /.col -->

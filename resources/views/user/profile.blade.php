@@ -2,105 +2,84 @@
 @section('title') @isset($user) profiel - {{ $user->name }} @endisset @endsection
 @section('content')
 <form action="{{ route('user-profile-post') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    
-    <section class="content-header">
-        <h1>Mijn profiel</h1>
-    </section>
-    
-    
-    <section class="content">
-      <div class="row">
-        <!-- left column -->
-        <div class="col-md-8">
-          <!-- general form elements -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Contactgegevens</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form">
-              <div class="box-body">
-                  
-                <div class="form-group">
-                  <label>Naam</label>
-                  <input type="text" class="form-control" value="{{ $user->name }}" placeholder="Vul je naam in" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
-                </div>
-                  
-                <div class="form-group">
-                  <label for="exampleInputEmail1">E-mailadres</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" value="{{ $user->email }}" placeholder="Vul je E-mailadres in" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
-                </div>
+	@csrf
 
-                <div class="form-group">
-                  <label>Telefoonnummer</label>
-                  <input type="text" class="form-control" value="{{ $user->telephone }}" placeholder="Vul je telefoonnummer in" autocomplete="off" style="">
-                </div>
+	<section class="content-header">
+		<h1>Mijn profiel</h1>
+	</section>
 
-              </div>
-              <!-- /.box-body -->
 
-              <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Opslaan</button>
-              </div>
-            </form>
-          </div>
-          <!-- /.box -->
+	<section class="content">
 
-        </div>
-        <!--/.col (right) -->
-        
-        
-        
-        
-        
-		<div class="col-md-4">
+		<div class="box box-primary">
 
-			<div class="box box-primary">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Profielfoto</h3>
-                </div>
-                
+			<div class="box-header with-border">
+				<h3 class="box-title">Contactgegevens</h3>
+			</div>
+			<!-- /.box-header -->
 
-                <form role="form">
-                
-    				<div class="box-body">
-                    	<img src="https://i.pravatar.cc/400?u={{$user->id}}" alt="User Avatar" class="w-100" width="100%">
-                    
-                
-                        <div class="form-group">
-                          <label for="exampleInputFile">Profielfoto</label>
-                          <input type="file" id="exampleInputFile">
+			<div class="row">
+				<!-- left column -->
+				<div class="col-md-8">
+					<!-- general form elements -->
+					<!-- form start -->
+					<div class="box-body">
 
-                          <p class="help-block">Uitleg wat je kunt uploaden</p>
-                        </div>
+						<div class="form-group">
+							<label>Naam</label>
+							<input type="text" class="form-control" value="{{ $user->name }}" placeholder="Vul je naam in" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+						</div>
 
-    				</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">E-mailadres</label>
+							<input type="email" class="form-control" id="exampleInputEmail1" value="{{ $user->email }}" placeholder="Vul je E-mailadres in" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+						</div>
 
-    				<!-- /.box-body -->
+						<div class="form-group">
+							<label>Telefoonnummer</label>
+							<input type="text" class="form-control" value="{{ $user->telephone }}" placeholder="Vul je telefoonnummer in" autocomplete="off" style="">
+						</div>
 
-                    <!-- <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Opslaan</button>
-                    </div> -->
-                </form>
-                
+
+						<form role="form">
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">Opslaan</button>
+							</div>
+						</form>
+
+					</div>
+					<!-- /.box-body -->
+
+				</div>
+				<!--/.col (left) -->
+
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<img src="https://i.pravatar.cc/400?u={{$user->id}}" alt="User Avatar" class="w-100" width="100%">
+					</div>
+
+					<div class="form-group">
+						<button type="" class="btn btn-primary">Upload een foto</button>
+						<button type="" class="btn btn-warning pull-right">Verwijder foto</button>
+					</div>
+
+				</div>
+				<!--/.col (right) -->
 
 			</div>
+			<!-- /.row -->
 
 		</div>
-        
-        
-        
-      </div>
-      <!-- /.row -->
-    </section>
-    
+		<!-- /.box -->
 
-    
-    
-    
-    <!-- <div class="columns first-element">
+	</section>
+
+
+
+
+
+	<!-- <div class="columns first-element">
         <div class="column is-6">
             <div class="card">
                 <div class="card-image">
@@ -190,6 +169,6 @@
             </div>
         </div>
     </div> -->
-        
+
 </form>
 @endsection

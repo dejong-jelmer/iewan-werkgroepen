@@ -34,11 +34,6 @@
 				<div class="box-header with-border">
 					<h3 class="box-title">Werkgroep Leden</h3>
 
-					<div class="box-tools pull-right">
-
-						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-
-					</div>
 				</div>
 				<!-- /.box-header -->
 
@@ -76,14 +71,11 @@
 			<!-- TODO: Accept/ Decline functie instellen -->
 			@if(auth()->user()->inWorkgroup($workgroup))
 
-			<div class="box box-primary box-solid">
+			<div class="box box-primary">
 				<div class="box-header with-border">
 					<h3 class="box-title">Nieuwe werkgroepleden</h3>
 
-					<div class="box-tools pull-right">
-						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i><span class="sr-only">Sluiten</span></button>
 
-					</div>
 				</div>
 				<!-- /.box-header -->
 
@@ -97,7 +89,6 @@
 							<td><a href="#">Jelmer</a></td>
 							<td style="width: 40px"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
 							<td style="width: 40px"><button class="btn btn-danger" title="Weigeren"><i class="fa fa-ban"></i><span class="sr-only">Weigeren</span></button></td>
-
 						</tr>
 
 						<tr>
@@ -116,9 +107,6 @@
 			<!-- /.box -->
 
 			@endif
-
-
-
 
 		</div>
 		<!-- /.col -->

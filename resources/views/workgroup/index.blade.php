@@ -17,7 +17,7 @@
 
 </section>
 
-@if(!auth()->user()->inWorkgroup($workgroup))
+@if(!auth()->user()->inWorkgroup($workgroup->id))
 <form name="join-workgroup-form" id="join-workgroup-form" action="{{ route('join-workgroup', ['workgroup_id' => $workgroup->id]) }}" method="POST">@csrf</form>
 @else
 <form name="leave-workgroup-form" id="leave-workgroup-form" action="{{ route('leave-workgroup', ['workgroup_id' => $workgroup->id]) }}" method="POST">@csrf</form>
@@ -34,11 +34,6 @@
 				<div class="box-header with-border">
 					<h3 class="box-title">Werkgroep Leden</h3>
 
-					<div class="box-tools pull-right">
-
-						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-
-					</div>
 				</div>
 				<!-- /.box-header -->
 
@@ -74,16 +69,12 @@
 			</div>
 
 			<!-- TODO: Accept/ Decline functie instellen -->
-			@if(auth()->user()->inWorkgroup($workgroup))
+			@if(auth()->user()->inWorkgroup($workgroup->id))
 
-			<div class="box box-primary box-solid">
+			<div class="box box-primary">
 				<div class="box-header with-border">
 					<h3 class="box-title">Nieuwe werkgroepleden</h3>
 
-					<div class="box-tools pull-right">
-						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i><span class="sr-only">Sluiten</span></button>
-
-					</div>
 				</div>
 				<!-- /.box-header -->
 
@@ -130,7 +121,7 @@
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#activity" data-toggle="tab">Informatie</a></li>
 					<li><a href="#activiteiten" data-toggle="tab">Activiteiten</a></li>
-					@if(auth()->user()->inWorkgroup($workgroup))
+					@if(auth()->user()->inWorkgroup($workgroup->id))
 
 					<li><a href="#addtab" data-toggle="tab"><i class="fa fa-plus-square-o"></i><span class="sr-only">Nieuw tabblad</span></a></li>
 					@endif
@@ -145,7 +136,7 @@
 							<h3 class="box-title">Informatie</h3>
 
 							<div class="box-tools pull-right">
-								@if(auth()->user()->inWorkgroup($workgroup))
+								@if(auth()->user()->inWorkgroup($workgroup->id))
 								<button type="button" class="btn btn-box-tool" data-widget="editor"><i class="fa fa-pencil"></i>
 									<span class="sr-only">Bewerk tabblad</span></button>
 
@@ -175,7 +166,7 @@
 							<h3 class="box-title">Activiteiten</h3>
 
 							<div class="box-tools pull-right">
-								@if(auth()->user()->inWorkgroup($workgroup))
+								@if(auth()->user()->inWorkgroup($workgroup->id))
 								<button type="button" class="btn btn-box-tool" data-widget="editor"><i class="fa fa-pencil"></i>
 									<span class="sr-only">Bewerk tabblad</span></button>
 
@@ -198,7 +189,7 @@
 
 					</div>
 					<!-- /.tab-pane -->
-					@if(auth()->user()->inWorkgroup($workgroup))
+					@if(auth()->user()->inWorkgroup($workgroup->id))
 
 					<div class="tab-pane" id="addtab">
 						<form>
@@ -251,7 +242,7 @@
 			<!-- /.nav-tabs-custom -->
 
 			{{-- User is a member of this workgroup --}}
-			@if(auth()->user()->inWorkgroup($workgroup))
+			@if(auth()->user()->inWorkgroup($workgroup->id))
 			{{-- workgroup specific links --}}
 			@if($workgroup->role->role == 'Aanname')
 			<div class="box">
@@ -365,14 +356,6 @@
 			@endif
 
 			@endif
-
-
-
-
-
-
-
-
 
 
 			<div class="box">

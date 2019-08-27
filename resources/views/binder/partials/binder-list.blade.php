@@ -1,20 +1,6 @@
-@extends('templates.layout')
-@section('title') leden @endsection
-@section('content')
-
-<section class="content-header">
-	<h1> Bewoners </h1>
-</section>
-
-
-<!-- Main content -->
-<section class="content">
-
-	<div class="row">
-		<div class="col-xs-12">
 			<div class="box">
 				<div class="box-header">
-					<h3 class="box-title">Bewoners</h3>
+					<h3 class="box-title">Klapper</h3>
 
 					<div class="box-tools">
 						<div class="input-group input-group-sm hidden-xs" style="width: 150px;">
@@ -31,25 +17,29 @@
 					<table class="table table-hover">
 						<tr>
 
-							<th>Foto</th>
+							<th style="width: 240px">Aanmelding</th>
 							<th>Naam</th>
-							<th>Email</th>
-							<th>Werkgroepen</th>
+							<th>Naam partner</th>
+							<th>Woningvoorkeur (1)</th>
+							<th>woningvoorkeur (2)</th>
 							<th style="width: 40px"></th>
+							<th style="width: 40px"></th>
+							<th style="width: 40px"></th>
+
+
+
 						</tr>
 
-
-						@forelse($users as $user)
 						<tr>
-
-							@include('user.partials.user', [
-							'user' => $user
-							])
+							<td>2 aug '19</td>
+							<td><a href="#">Thomas Mennen</a></td>
+							<td>Ani Öhman</td>
+							<td>Eenpersoons</td>
+							<td>Gezinswoning</td>
+							<td></td>
+							<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
+							<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
 						</tr>
-						<!-- /.row -->
-						@empty
-						<p>Er woont helemaal niemand bij Iewan</p>
-						@endforelse
 
 					</table>
 				</div>
@@ -67,14 +57,3 @@
 				<!-- /.box-body -->
 			</div>
 			<!-- /.box -->
-		</div>
-	</div>
-
-
-</section>
-
-
-<!-- /.content -->
-<!-- /.content-wrapper -->
-
-@endsection

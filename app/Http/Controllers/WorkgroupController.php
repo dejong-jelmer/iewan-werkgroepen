@@ -22,7 +22,7 @@ class WorkgroupController extends Controller
     {
         $workgroup = Workgroup::find($workgroup_id);
 
-        Auth::user()->workgroups()->save($workgroup);
+        Auth::user()->workgroups()->sync($workgroup);
         return redirect()->route('workgroup', ['workgroup_id' => $workgroup->id])->with('success', "Je bent nu lid van $workgroup->name");
     }
 

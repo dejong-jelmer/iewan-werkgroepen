@@ -63,10 +63,10 @@
 				</div>
 				<!-- /.box-body -->
 				<div class="box-footer text-center">
-					@if(!auth()->user()->inWorkgroup($workgroup))
+					@if(!auth()->user()->inWorkgroup($workgroup->id))
 					<button class="btn btn-primary" href="#" onclick="$('#join-workgroup-form').submit();">Ga bij deze werkgroep</button>
 					@endif
-					@if(auth()->user()->inWorkgroup($workgroup))
+					@if(auth()->user()->inWorkgroup($workgroup->id))
 					<button class="btn btn-default" href="#" onclick="$('#leave-workgroup-form').submit();">Werkgroep verlaten</button>
 					@endif
 				</div>

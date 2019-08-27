@@ -2,12 +2,8 @@
 @section('title') leden @endsection
 @section('content')
 
-<!-- Content Wrapper. Contains page content -->
-<!-- Content Header (Page header) -->
 <section class="content-header">
-	<h1>
-		Bewoners
-	</h1>
+	<h1> Bewoners </h1>
 </section>
 
 
@@ -35,8 +31,7 @@
 					<table class="table table-hover">
 						<tr>
 
-							<th>ID</th>
-							<th>Avatar</th>
+							<th>Foto</th>
 							<th>Naam</th>
 							<th>Email</th>
 							<th>Werkgroepen</th>
@@ -46,13 +41,13 @@
 						@forelse($users as $user)
 						<tr>
 
-							@include('workgroup.partials.user', [
+							@include('user.partials.user', [
 							'user' => $user
 							])
 						</tr>
 						<!-- /.row -->
 						@empty
-						<p>De werkgroep heeft (nog) geen leden</p>
+						<p>Er woont helemaal niemand bij Iewan</p>
 						@endforelse
 
 					</table>

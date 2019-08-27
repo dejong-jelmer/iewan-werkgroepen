@@ -42,7 +42,7 @@ class UserController extends Controller
             if(!$request->profile_picture->isValid()) {
                 return redirect()->bacK()->with('error', 'Uploaden van foto is mislukt.');
             }
-            $photo = $request->profile_picture->store('profile_pictures');
+            $photo = $request->profile_picture->store('public/profile_pictures');
             $user->photo = $photo;
         }
         // $file = $request->file('profile_picture');

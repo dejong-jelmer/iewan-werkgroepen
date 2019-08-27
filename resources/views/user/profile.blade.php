@@ -56,11 +56,13 @@
 
 				<div class="col-md-4">
 					<div class="form-group">
-						<img src="https://i.pravatar.cc/400?u={{$user->id}}" alt="User Avatar" class="w-100" width="100%">
+						<img id="profile-image" src="{{ Storage::url($user->photo) }}{{-- https://i.pravatar.cc/400?u={{$user->id}} --}}" alt="User Avatar" class="w-100" width="100%">
 					</div>
 
 					<div class="form-group">
-						<button type="" class="btn btn-primary">Upload een foto</button>
+						<input type="button" class="input-file btn btn-primary" value="Upload een foto" onclick="$(this).next().trigger('click')">
+                        <input class="file-input" type="file" name="profile_picture" style="display: none">
+
 						<button type="" class="btn btn-warning pull-right">Verwijder foto</button>
 					</div>
 
@@ -79,7 +81,7 @@
 
 
 
-	<!-- <div class="columns first-element">
+	{{-- <div class="columns first-element">
         <div class="column is-6">
             <div class="card">
                 <div class="card-image">
@@ -168,7 +170,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
-
+    </div>
+ --}}
 </form>
 @endsection

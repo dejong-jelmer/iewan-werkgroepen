@@ -11,4 +11,5 @@
         		@endforelse
 
         	</td>
+        	<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
         </tr>

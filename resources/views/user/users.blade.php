@@ -35,6 +35,7 @@
 							<th>Naam</th>
 							<th>Email</th>
 							<th>Werkgroepen</th>
+							<th style="width: 40px"></th>
 						</tr>
 
 

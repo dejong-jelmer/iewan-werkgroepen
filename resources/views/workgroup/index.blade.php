@@ -53,13 +53,14 @@
 
 			@include('files.partials.files-overview')
 
+
 		</div>
 		<!-- /.col -->
 	</div>
 
 	<div class="row">
 		<div class="col-xs-12">
-
+			<button class="btn btn-default btn-sm margin-top text-muted pull-right"><i class="fa fa-archive"></i> Werkgroep archiveren</button>
 		</div>
 	</div>
 	<!-- /.row -->

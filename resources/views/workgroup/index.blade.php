@@ -1,7 +1,10 @@
+<!--
+TODO: archive workgroup function
+------------------------->
+
 @extends('templates.layout')
 @section('title') {{ $workgroup->name }} @endsection
 @section('content')
-
 
 <!-- Content Header (Page header) -->
 <section class="content-header">

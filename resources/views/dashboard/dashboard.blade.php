@@ -6,7 +6,6 @@
 <section class="content-header">
 	<h1>
 		Dashboard
-		<small>Optional description</small>
 	</h1>
 
 </section>
@@ -16,30 +15,59 @@
 <section class="content">
 
 	<div class="row">
-		<div class="col-md-8">
+
+		<div class="col-md-3 pull-right">
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h3 class="box-title">Mijn werkgroepen</h3>
+
+				</div>
+				<div class="box-body">
+					<ul class="list-group">
+						@forelse(auth()->user()->workgroups as $workgroup)
+
+						<li class="list-group-item"><a href="{{ route('workgroup', ['workgroup_id' => $workgroup->id]) }}">{{ $workgroup->name }}</a></li>
+
+						@empty
+						<span>Je zit nog niet in een werkgroep</span>
+						@endforelse
+
+					</ul>
+				</div>
+				<!-- /.box-body -->
+
+				<div class="box-footer"></div>
+			</div>
+			<!-- /. box -->
+
+			<!-- /.box -->
+		</div>
+		<!-- /.col -->
+
+
+
+		<div class="col-md-9">
 			@include('dashboard.partials.forumposts', [
 			'forumPosts' => $forumPosts
 			])
 
-			@include('dashboard.partials.binder_forms', [
-			'binderForms' => $binderForms
-			])
+			@include('binder.partials.veto')
 
 			<div class="box">
-                
+
 				<div class="box-header">
 					<h3 class="box-title">Recent geuploade bestanden</h3>
 
 
-                    <div class="box-tools">
-                        <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+					<div class="box-tools">
+						<div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+							<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
 
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                            </div>
-                        </div>
-                    </div>
+							<div class="input-group-btn">
+								<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+							</div>
+						</div>
+					</div>
 
 				</div>
 				<!-- /.box-header -->

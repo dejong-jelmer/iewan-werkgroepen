@@ -78,6 +78,11 @@
 
 						<button type="submit" name="delete_profile_picture" class="btn btn-warning pull-right">Verwijder foto</button>
 					</div>
+                    @if($errors->has('profile_picture'))
+                        <div class="text-danger">
+                            <small>{{ $errors->first('profile_picture') }}</small>
+                        </div>
+                    @endif
 
 				</div>
 				<!--/.col (right) -->

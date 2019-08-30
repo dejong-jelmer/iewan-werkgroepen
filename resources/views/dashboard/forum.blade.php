@@ -83,7 +83,7 @@
 		<!-- /.col -->
 
 		<div class="col-md-3">
-			<button href="compose.html" class="btn btn-primary btn-block margin-bottom toggle-forumpost-field">Nieuw bericht</button>
+			<button class="btn btn-primary btn-block margin-bottom toggle" data-target="forum-post">Nieuw bericht</button>
 
 			<div class="box box-solid">
 				<div class="box-header with-border">

@@ -66,13 +66,13 @@ $(document).ready(function () {
 		$('#toggle-edit-profile').click(function () {
 			$('.profile-field').toggleClass('is-hidden').prev().toggleClass('is-hidden');
 		});
-
-	//	$('.file-input').change(function (event) {
-	//		var filename = $(this).val().split('\\').pop();
-	//		$('.file-name').html(filename);
-	//		var newFilePath = URL.createObjectURL(event.target.files[0])
-	//		$('#profile-image').attr('src', newFilePath);
-	//	});
+        // profile picuter is loaded on the profile page so user can see the uploaded file
+		$('.file-input').change(function (event) {
+			var filename = $(this).val().split('\\').pop();
+			$('.file-name').html(filename);
+			var newFilePath = URL.createObjectURL(event.target.files[0])
+			$('#profile-image').attr('src', newFilePath);
+		});
 	//	$('#add_binderform_field').click(function () {
 	//		$('.remove_binderform_field').show();
 	//		var field = $('.binderform_fields_row:last').clone(true);

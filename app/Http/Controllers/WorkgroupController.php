@@ -21,8 +21,11 @@ class WorkgroupController extends Controller
     public function joinWorkgroup($workgroup_id)
     {
         $workgroup = Workgroup::find($workgroup_id);
+        if(Auth::user()->inWorkgroup($workgroup->id)) {
+            return redirect()->back();
+        }
 
-        Auth::user()->workgroups()->sync($workgroup);
+        Auth::user()->workgroups()->attach($workgroup);
         return redirect()->route('workgroup', ['workgroup_id' => $workgroup->id])->with('success', "Je bent nu lid van $workgroup->name");
     }
 

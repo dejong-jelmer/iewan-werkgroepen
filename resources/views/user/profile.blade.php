@@ -25,21 +25,34 @@
 					<!-- form start -->
 					<div class="box-body">
 
-						<div class="form-group">
-							<label>Naam</label>
-							<input type="text" class="form-control" value="{{ $user->name }}" placeholder="Vul je naam in" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+						<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+							<label for="name" class="control-label">Naam</label>
+							<input type="text" class="form-control" name="name" value="{{ $user->name }}" placeholder="Vul je naam in" autocomplete="off" {{-- style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" --}}>
+                            @if($errors->has('name'))
+                                <div class="text-danger">
+                                    <small>{{ $errors->first('name') }}</small>
+                                </div>
+                            @endif
 						</div>
 
-						<div class="form-group">
-							<label for="exampleInputEmail1">E-mailadres</label>
-							<input type="email" class="form-control" id="exampleInputEmail1" value="{{ $user->email }}" placeholder="Vul je E-mailadres in" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+						<div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+							<label for="email" class="control-label">E-mailadres</label>
+							<input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" placeholder="Vul je E-mailadres in" autocomplete="off" {{-- style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;" --}}>
 						</div>
-
-						<div class="form-group">
+                        @if($errors->has('email'))
+                            <div class="text-danger">
+                                <small>{{ $errors->first('email') }}</small>
+                            </div>
+                        @endif
+						<div class="form-group {{ $errors->has('telephone') ? 'has-error' : '' }}">
 							<label>Telefoonnummer</label>
-							<input type="text" class="form-control" value="{{ $user->telephone }}" placeholder="Vul je telefoonnummer in" autocomplete="off" style="">
+							<input type="text" class="form-control" name="telephone" value="{{ $user->telephone }}" placeholder="Vul je telefoonnummer in" autocomplete="off" style="">
 						</div>
-
+                         @if($errors->has('telephone'))
+                            <div class="text-danger">
+                                <small>{{ $errors->first('telephone') }}</small>
+                            </div>
+                        @endif
 
 						<form role="form">
 							<div class="form-group">
@@ -56,15 +69,20 @@
 
 				<div class="col-md-4">
 					<div class="form-group">
-						<img id="profile-image" src="{{ Storage::url($user->photo) }}{{-- https://i.pravatar.cc/400?u={{$user->id}} --}}" alt="User Avatar" class="w-100" width="100%">
+						<img id="profile-image" src="{{ !empty($user->photo) ? Storage::url($user->photo) : asset('img/empty-avatar.jpg') }}" alt="User Avatar" class="w-100" width="100%">
 					</div>
 
 					<div class="form-group">
 						<input type="button" class="input-file btn btn-primary" value="Upload een foto" onclick="$(this).next().trigger('click')">
                         <input class="file-input" type="file" name="profile_picture" style="display: none">
 
-						<button type="" class="btn btn-warning pull-right">Verwijder foto</button>
+						<button type="submit" name="delete_profile_picture" class="btn btn-warning pull-right">Verwijder foto</button>
 					</div>
+                    @if($errors->has('profile_picture'))
+                        <div class="text-danger">
+                            <small>{{ $errors->first('profile_picture') }}</small>
+                        </div>
+                    @endif
 
 				</div>
 				<!--/.col (right) -->

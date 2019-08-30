@@ -6,6 +6,7 @@ use Auth;
 use App\User;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -31,32 +32,30 @@ class UserController extends Controller
 
     public function updateProfile(Request $request)
     {
+        $user = Auth::user();
+        if($request->has('delete_profile_picture')) {
+            $user->photo = null;
+        }
         $request->validate([
-            // 'name' => 'required|max:255',
-            // 'email' => 'required|unique:users|email',
-            // 'telephone' => 'string|size:10',
+            'name' => 'required|min:3|max:255',
+            'email' => 'required',
+            Rule::unique('users')->ignore($user->id),
+            'telephone' => 'string|size:10',
             'profile_picture' => 'image'
         ]);
-        $user = Auth::user();
         if($request->hasFile('profile_picture')){
             if(!$request->profile_picture->isValid()) {
                 return redirect()->bacK()->with('error', 'Uploaden van foto is mislukt.');
             }
-            $photo = $request->profile_picture->store('public/profile_pictures');
-            $user->photo = $photo;
+            $path = $request->profile_picture->store('public/profile_pictures');
         }
-        // $file = $request->file('profile_picture');
-        // $path = Storage::putFile('user_photos', new File($file));
-
-        $user->save();
-        // $user->update([
-        //     "name" => $request->name,
-        //     "email" => $request->email,
-        //     "telephone" => $request->telephone,
-        //     'photo' => $path
-        // ]);
+        $user->update([
+            "name" => $request->name,
+            "email" => $request->email,
+            "telephone" => $request->telephone,
+            'photo' => $path ?? $user->photo
+        ]);
 
         return redirect()->bacK()->with('success', 'Profiel aangepast.');
-        // Storage::putFile('local')->put($user->name . '.jpg', $request->profile_picture);
     }
 }

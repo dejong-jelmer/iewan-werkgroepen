@@ -21,7 +21,7 @@
 	<div class="row">
 
 		<div class="col-md-3 pull-right">
-			<button class="btn btn-primary btn-block margin-bottom toggle" data-target="email-form">Email nieuw formulier</button>
+			<button class="btn btn-primary btn-block margin-bottom toggle" data-target="email-form">Stuur een nieuw formulier</button>
 
 			<div class="box box-solid">
 				<div class="box-header with-border">

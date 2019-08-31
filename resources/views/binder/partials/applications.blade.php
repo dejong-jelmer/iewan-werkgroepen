@@ -16,9 +16,9 @@
 				<th>Woningvoorkeur (1)</th>
 				<th>woningvoorkeur (2)</th>
 
-				<th style="width: 40px"></th>
-				<th style="width: 40px"></th>
-				<th style="width: 40px"></th>
+				<th class="iw-icon-cell"></th>
+				<th class="iw-icon-cell"></th>
+				<th class="iw-icon-cell"></th>
 
 			</tr>
 
@@ -28,7 +28,7 @@
 				<td>Ani Öhman</td>
 				<td>Eenpersoons</td>
 				<td>Gezinswoning</td>
-				<td style="width: 40px"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
+				<td class="iw-icon-cell"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
 				<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
 				<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
 			</tr>

@@ -22,9 +22,9 @@
 							<th>Naam partner</th>
 							<th>Woningvoorkeur (1)</th>
 							<th>woningvoorkeur (2)</th>
-							<th style="width: 40px"></th>
-							<th style="width: 40px"></th>
-							<th style="width: 40px"></th>
+							<th class="iw-icon-cell"></th>
+							<th class="iw-icon-cell"></th>
+							<th class="iw-icon-cell"></th>
 
 
 

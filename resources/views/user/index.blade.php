@@ -18,7 +18,7 @@
 			<div class="box">
 
 				<div class="box-body">
-					<img src="https://i.pravatar.cc/400?u={{$user->id}}" alt="User Avatar" class="w-100" width="100%">
+					<img src="{{ !empty($user->photo) ? Storage::url($user->photo) : asset('img/empty-avatar.jpg') }}" alt="Profielfoto" class="w-100" width="100%">
 				</div>
 				<!-- /.box-body -->
 
@@ -43,8 +43,10 @@
 							<b>Email</b> <a href="mailto:{{ ucfirst($user->email) }}" class="pull-right">{{ ucfirst($user->email) }}</a>
 						</li>
 						<li class="list-group-item">
-							<b>Telefoon</b> <a href="tel:0612345678" class="pull-right">{{ ucfirst($user->tel) }} </a>
+							<b>Telefoon</b> <a href="tel:{{ ucfirst($user->telephone) }}" class="pull-right">{{ ucfirst($user->telephone) }}</a>
 						</li>
+
+
 
 					</ul>
 				</div>

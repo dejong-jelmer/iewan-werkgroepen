@@ -33,8 +33,6 @@
 				<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
 			</tr>
 
-
-
 		</table>
 	</div>
 	<!-- /.box-body -->

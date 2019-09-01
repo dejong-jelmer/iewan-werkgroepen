@@ -28,13 +28,11 @@
 					<h3 class="box-title">In afwachting</h3>
 
 				</div>
-				<div class="box-body no-padding">
+				<div class="box-body">
 					<ul class="list-group">
-						<li class="list-group-item">thomas@darkroast.nu<br> <span class="text-muted">27 aug '19</span></li>
-						<li class="list-group-item">thomas@darkroast.nu<br> <span class="text-muted">27 aug '19</span></li>
-						<li class="list-group-item">thomas@darkroast.nu<br> <span class="text-muted">27 aug '19</span></li>
-						<li class="list-group-item">thomas@darkroast.nu<br> <span class="text-muted">27 aug '19</span></li>
-
+						<li class="list-group-item"><strong>Thomas Mennen</strong><br>thomas@darkroast.nu <span class="text-muted pull-right">27 aug '19</span></li>
+						<li class="list-group-item"><strong>Thomas Mennen</strong><br>thomas@darkroast.nu <span class="text-muted pull-right">27 aug '19</span></li>
+						<li class="list-group-item"><strong>Thomas Mennen</strong><br>thomas@darkroast.nu <span class="text-muted pull-right">27 aug '19</span></li>
 					</ul>
 
 				</div>
@@ -62,12 +60,6 @@
 
 
 </section>
-
-@forelse($binderForms as $form)
-<a href="{{ route('binder-form', ['form_id' => $form->id]) }}">{{ $form->name }}</a>
-@empty
-<p>Geen (nieuwe) klapper formulieren</p>
-@endforelse
 
 
 <!-- /.content -->

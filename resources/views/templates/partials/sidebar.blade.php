@@ -13,27 +13,27 @@
 			</li>
 
 			<!-- werkgroepen -->
-            <li class="treeview {{ Request::route()->getName() == 'workgroup' ? 'active menu-open' : '' }}">
+			<li class="treeview {{ Request::route()->getName() == 'workgroup' ? 'active menu-open' : '' }}">
 				<a href="#"><i class="fa fa-clipboard"></i> <span>Werkgroepen</span>
 					<span class="pull-right-container">
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					
+
 					<!-- eerst de werkgroepen waar de gebruiker in zit: -->
 					@foreach(auth()->user()->workgroups as $workgroup)
-					<li class="{{ Request::segment(2) == $workgroup->id ? 'active' : '' }}"><a href="{{ route('workgroup',['workgroup_id' =>  $workgroup->id]) }}"><i class="fa @if(auth()->user()->inWorkgroup($workgroup->id)) fa-circle @else fa-circle-o @endif"></i>{{ $workgroup->name  }}</a></li>
+					<li class="{{ Request::segment(2) == $workgroup->id ? 'active' : '' }}"><a href="{{ route('workgroup',['workgroup_id' => $workgroup->id]) }}"><i class="fa @if(auth()->user()->inWorkgroup($workgroup->id)) fa-circle @else fa-circle-o @endif"></i>{{ $workgroup->name  }}</a></li>
 					@endforeach
 
 					<!-- dan de overige werkgroepen: -->
 					@isset($workgroups)
 					@foreach($workgroups as $workgroup)
 					@if(!auth()->user()->inWorkgroup($workgroup->id))
-					<li class="{{ Request::segment(2) == $workgroup->id ? 'active' : '' }}"><a href="{{ route('workgroup',['workgroup_id' =>  $workgroup->id]) }}"><i class="fa @if(auth()->user()->inWorkgroup($workgroup->id)) fa-circle @else fa-circle-o @endif"></i>{{ $workgroup->name  }}</a></li>
+					<li class="{{ Request::segment(2) == $workgroup->id ? 'active' : '' }}"><a href="{{ route('workgroup',['workgroup_id' => $workgroup->id]) }}"><i class="fa @if(auth()->user()->inWorkgroup($workgroup->id)) fa-circle @else fa-circle-o @endif"></i>{{ $workgroup->name  }}</a></li>
 					@endif
 					@endforeach
-					
+
 					<li><a href="#"><i class="fa fa-plus-circle"></i> Nieuwe werkgroep</a></li>
 					@endisset
 

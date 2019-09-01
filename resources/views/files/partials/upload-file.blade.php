@@ -10,15 +10,15 @@
 		<!-- /.box-header -->
 
 		<form role="form">
-			<div class="box-body table-responsive">
+			<div class="box-body">
 
-				<div class="form-group">
+				<div class="form-group col-md-12">
 					<label for="exampleInputFile">Selecteer je bestand</label>
 					<input type="file" id="exampleInputFile" class="btn btn-default btn-flat">
 
 				</div>
 
-				<div class="form-group form-group-sm col-xs-4 pull-left">
+				<div class="form-group form-group-sm col-md-5 pull-left">
 					<label class="sr-only">soort document</label>
 					<select class="form-control">
 						<option>Selecteer documentsoort</option>
@@ -31,15 +31,14 @@
 				</div>
 
 				<!-- On files template -->
-				<div class="form-group form-group-sm col-xs-4 pull-left">
+				<div class="form-group form-group-sm col-md-5 pull-left">
 					<label class="sr-only">Werkgroep</label>
 					<select class="form-control">
 						<option>Selecteer Werkgroep</option>
-						@isset($workgroups)
 						@foreach(auth()->user()->workgroups as $workgroup)
 						<option value="{{ $workgroup->id}}">{{ $workgroup->name  }}</option>
 						@endforeach
-						@endisset
+
 					</select>
 				</div>
 

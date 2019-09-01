@@ -33,8 +33,7 @@ TODO: Pagination
 					<label class="sr-only">Werkgroep</label>
 					<select class="form-control">
 						<option>Filter op Werkgroep</option>
-						@isset($workgroups)
-						@foreach($workgroups as $workgroup)
+						@isset($workgroups)						@foreach($workgroups as $workgroup)
 						<option value="{{ $workgroup->id}}">{{ $workgroup->name  }}</option>
 						@endforeach
 						@endisset

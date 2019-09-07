@@ -24,19 +24,6 @@ TODO: archive workgroup function
 <section class="content">
 
 	<div class="row">
-		<div class="col-md-3">
-
-			@include('workgroup.partials.members')
-
-			@if(auth()->user()->inWorkgroup($workgroup->id))
-
-			@include('workgroup.partials.new-members')
-
-			@endif
-
-		</div>
-		<!-- /.col -->
-
 		<div class="col-md-9">
 
 			@include('workgroup.partials.tabs')
@@ -59,6 +46,21 @@ TODO: archive workgroup function
 
 		</div>
 		<!-- /.col -->
+
+		<div class="col-md-3">
+
+			@include('workgroup.partials.members')
+
+			@if(auth()->user()->inWorkgroup($workgroup->id))
+
+			@include('workgroup.partials.new-members')
+
+			@endif
+
+		</div>
+		<!-- /.col -->
+
+        
 	</div>
 
 	<div class="row">

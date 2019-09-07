@@ -11,7 +11,7 @@ TODO: User image function
 	<div class="box-body no-padding">
 		<ul class="users-list clearfix">
 
-			@forelse($workgroup->users as $user)
+			@forelse($workgroup->activeUsers as $user)
 			<li>
 				<img src="https://i.pravatar.cc/48?u={{$user->id}}" alt="Profielfoto">
 				<a class="users-list-name" href="{{ route('user', ['user_id' =>  $user->id]) }}">{{ $user->name }}</a>

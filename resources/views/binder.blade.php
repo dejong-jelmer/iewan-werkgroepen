@@ -1,9 +1,5 @@
-@extends('templates.layout')
+@extends('layout.layout')
 @section('title') Klapper @endsection
-@section('content')
-
-
-@section('title') leden @endsection
 @section('content')
 
 <!-- Content Wrapper. Contains page content -->
@@ -30,9 +26,9 @@
 				</div>
 				<div class="box-body">
 					<ul class="list-group">
-						<li class="list-group-item"><strong>Thomas Mennen</strong><br>thomas@darkroast.nu <span class="text-muted pull-right">27 aug '19</span></li>
-						<li class="list-group-item"><strong>Thomas Mennen</strong><br>thomas@darkroast.nu <span class="text-muted pull-right">27 aug '19</span></li>
-						<li class="list-group-item"><strong>Thomas Mennen</strong><br>thomas@darkroast.nu <span class="text-muted pull-right">27 aug '19</span></li>
+                        @foreach($pending as $p)
+						<li class="list-group-item"><strong>{{ $p->name }}</strong><br> <span class="text-muted pull-right">{{ $p->created_at->isoFormat('Do MM YY') }}</span></li>
+						@endforeach
 					</ul>
 
 				</div>
@@ -47,13 +43,13 @@
 
 		<div class="col-md-9">
 
-			@include('binder.partials.email-form')
+			@include('boxes.email-form')
 
-			@include('binder.partials.applications')
+			@include('boxes.applications')
 
-			@include('binder.partials.veto')
+			@include('boxes.veto')
 
-			@include('binder.partials.binder-list')
+			@include('boxes.binder-list')
 
 		</div>
 	</div>

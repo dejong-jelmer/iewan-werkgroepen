@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('layout.layout')
 @section('title') Forum: @if(!empty($post)) {{ $post->title }} @endif @endsection
 @section('content')
     <!-- Content Header (Page header) -->

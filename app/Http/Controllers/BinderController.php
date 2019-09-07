@@ -18,7 +18,8 @@ class BinderController extends Controller
     public function showForms()
     {
         $binderForms = Auth::user()->hasWorkgroupRole('aanname') ? BinderForm::get() : BinderForm::where('released', true)->get();
-        return view('binder.index', compact('binderForms'));
+        $pending = BinderForm::where('response', null)->get();
+        return view('binder', compact('binderForms', 'pending'));
     }
 
     public function showForm($form_id)
@@ -107,7 +108,7 @@ class BinderController extends Controller
         $form->expires = Carbon::now()->addMonth();
         $form->save();
         \Mail::to($request->email)->send(new \App\Mail\NewBinderForm($form));
-        return redirect()->route('workgroup-binder-form')->with('success', 'Mail verstuurd');
+        return redirect()->route('binder-forms')->with('success', 'Mail verstuurd');
     }
 
     public function showIntakeForm($key)

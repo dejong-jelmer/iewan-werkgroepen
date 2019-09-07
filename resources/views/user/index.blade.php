@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('layout.layout')
 @section('title') @isset($user) {{ $user->name }} @endisset @endsection
 @section('content')
 

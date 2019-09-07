@@ -24,10 +24,8 @@ class UserController extends Controller
 
     public function showProfile()
     {
-        $fileUrl = Storage::disk('local')->url(Auth::user()->photo);
-        // dd(url($fileUrl));
-        // $userImg = Storage::get(url($fileUrl));
-        return view('user.profile', ['user' => Auth::user(), 'fileUrl' => $fileUrl]);
+        $user = Auth::user();
+        return view('profile', ['user' => $user]);
     }
 
     public function updateProfile(Request $request)

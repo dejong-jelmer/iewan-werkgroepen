@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('layout.layout')
 @section('title') Klapperformulier menu @endsection
 @section('content')
     <div class="columns first-element">

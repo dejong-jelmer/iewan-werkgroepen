@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 
 class WorkgroupController extends Controller
 {
-    public function showWorkgroup(Request $request, $workgroup_id)
+    public function showWorkgroup(Request $request, $workgroup)
     {
-        // dd('Hallo');
-        $workgroup = Workgroup::find($workgroup_id);
+        $workgroup = Workgroup::where('name', $workgroup)->first();
         if(Auth::user()->inWorkgroup($workgroup->id)) {
             $workgroup->messages;
         }
-        return view('workgroup.index', compact('workgroup'));
+
+        return view('workgroup', compact('workgroup'));
     }
 
     public function joinWorkgroup($workgroup_id)
@@ -24,9 +24,8 @@ class WorkgroupController extends Controller
         if(Auth::user()->inWorkgroup($workgroup->id)) {
             return redirect()->back();
         }
-
         Auth::user()->workgroups()->attach($workgroup);
-        return redirect()->route('workgroup', ['workgroup_id' => $workgroup->id])->with('success', "Je bent nu lid van $workgroup->name");
+        return redirect()->route('workgroup', ['workgroup_id' => $workgroup->name])->with('success', "Je bent nu lid van $workgroup->name");
     }
 
     public function leaveWorkgroup($workgroup_id)

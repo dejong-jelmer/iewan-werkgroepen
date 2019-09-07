@@ -23,7 +23,7 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('templates.partials.sidebar', function($view){
+        view()->composer('*', function($view){
             $view->with('users', \App\User::get());
             $view->with('workgroups', \App\Workgroup::get());
         });

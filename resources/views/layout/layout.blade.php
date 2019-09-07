@@ -47,20 +47,20 @@
 
 		<!-- Main Header -->
 		@if(auth()->check())
-		@include('templates.partials.navbar')
+		@include('layout.partials.navbar')
 		@endif
 
 
 		<!-- Left side column. contains the logo and sidebar -->
 		@if(auth()->check())
-		@include('templates.partials.sidebar')
+		@include('layout.partials.sidebar')
 		@endif
 
 		<!-- Content Wrapper. Contains page content -->
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
-			@include('templates.partials.status')
+			@include('layout.partials.status')
 			@yield('content')
 
 		</div>
@@ -71,7 +71,7 @@
 		<!-- /.content-wrapper -->
 
 		<!-- Main Footer -->
-		@include('templates.partials.footer')
+		@include('layout.partials.footer')
 		@yield('footer')
 
 

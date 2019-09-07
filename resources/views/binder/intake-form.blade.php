@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('layout.layout')
 @section('title') Inschrijfformulier @endsection
 @section('content')
 @if(session()->has('success'))

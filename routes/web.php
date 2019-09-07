@@ -31,12 +31,12 @@ Route::middleware('guest')->group(function(){
 Route::middleware('auth')->group(function(){
     Route::get('/dashboard', 'DashboardController@showDashboard')
         ->name('dashboard');
-    Route::get('/werkgroep/{workgroup_id}', 'WorkgroupController@showWorkgroup')
+    Route::get('/werkgroep/{workgroup}', 'WorkgroupController@showWorkgroup')
         ->name('workgroup');
     Route::get('/leden/{user_id}', 'UserController@showUser')
         ->name('user');
-    Route::get('gebruiker/profiel', 'UserController@showProfile')
-        ->name('user-profile');
+    Route::get('profiel', 'UserController@showProfile')
+        ->name('profile');
     Route::post('gebruiker/profiel/aanpassen', 'UserController@updateProfile')
         ->name('user-profile-post');
     Route::get('/forum', 'ForumController@showForum')
@@ -94,6 +94,4 @@ Route::middleware('auth')->group(function(){
         ->name('join-workgroup');
     Route::post('/werkgroep/verlaten/{workgroup_id}', 'WorkgroupController@leaveWorkgroup')
         ->name('leave-workgroup');
-    Route::get('/werkgroep/{workgroup_id}/leden', 'WorkgroupController@showWorkgroupMembers')
-        ->name('workgroup-members');
 });

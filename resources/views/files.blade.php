@@ -3,7 +3,7 @@ TODO: Bestanden route
 ------------------------->
 
 
-@extends('templates.layout')
+@extends('layout.layout')
 @section('title') Bestanden @endsection
 @section('content')
 

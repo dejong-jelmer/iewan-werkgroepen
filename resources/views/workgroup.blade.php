@@ -2,7 +2,7 @@
 TODO: archive workgroup function
 ------------------------->
 
-@extends('templates.layout')
+@extends('layout.layout')
 @section('title') {{ $workgroup->name }} @endsection
 @section('content')
 
@@ -46,15 +46,15 @@ TODO: archive workgroup function
 			{{-- workgroup specific links --}}
 			@if($workgroup->role->role == 'Aanname')
 
-			@include('binder.partials.applications')
+			@include('boxes.applications')
 
-			@include('binder.partials.veto')
-
-			@endif
+			@include('boxes.veto')
 
 			@endif
 
-			@include('files.partials.files-overview')
+			@endif
+
+			@include('boxes.files-overview')
 
 
 		</div>

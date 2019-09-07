@@ -1,6 +1,10 @@
-@extends('templates.layout')
+@extends('layout.layout')
 @section('title') @isset($user) profiel - {{ $user->name }} @endisset @endsection
 @section('content')
+@if(auth()->user()->hasWorkgroupRole('aanname') || auth()->user()->id == $user->id)
+{{-- ingelogde user content
+berwerk button voor editing van profiel
+ --}}
 <form action="{{ route('user-profile-post') }}" method="POST" enctype="multipart/form-data">
 	@csrf
 
@@ -191,4 +195,8 @@
     </div>
  --}}
 </form>
+@else
+{{-- content voor de niet ingelogde user --}}
+
+@endif
 @endsection

@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('layout.layout')
 @section('title') Dashboard @endsection
 @section('content')
 
@@ -51,7 +51,7 @@
 			'forumPosts' => $forumPosts
 			])
 
-			@include('binder.partials.veto')
+			@include('boxes.veto')
 
 			<div class="box">
 

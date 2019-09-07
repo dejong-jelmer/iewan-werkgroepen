@@ -52,7 +52,7 @@
 			<!-- TODO: UserAvatar -->
 				<!-- User Account: style can be found in dropdown.less -->
 				<li class="user user-menu">
-					<a href="{{ route('user-profile') }}">
+					<a href="{{ route('profile') }}">
 						<img src="/AdminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
 
 						<span class="hidden-xs">{{ auth()->user()->name }}</span>

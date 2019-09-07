@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('layout.layout')
 @section('title') Klapper formulier van {{ $form->name }} @endsection
 @section('content')
     <div class="columns first-element">

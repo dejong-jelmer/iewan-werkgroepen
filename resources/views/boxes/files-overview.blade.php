@@ -29,16 +29,19 @@ TODO: Pagination
 				</div>
 
 				<!-- On files template -->
-				<div class="form-group form-group-sm hidden-xs col-xs-4">
-					<label class="sr-only">Werkgroep</label>
-					<select class="form-control">
-						<option>Filter op Werkgroep</option>
-						@isset($workgroups)						@foreach($workgroups as $workgroup)
-						<option value="{{ $workgroup->id}}">{{ $workgroup->name  }}</option>
-						@endforeach
-						@endisset
-					</select>
-				</div>
+                {{-- @if(Request::route()->getName() == 'files') --}}
+    				<div class="form-group form-group-sm hidden-xs col-xs-4">
+    					<label class="sr-only">Werkgroep</label>
+    					<select class="form-control">
+    						<option>Filter op Werkgroep</option>
+    						@isset($workgroups)
+                                @foreach($workgroups as $workgroup)
+    						       <option value="{{ $workgroup->id}}">{{ $workgroup->name  }}</option>
+    						    @endforeach
+    						@endisset
+    					</select>
+    				</div>
+                    {{-- @endif --}}
 
 
 				<div class="input-group input-group-sm hidden-xs col-xs-3">
@@ -91,4 +94,4 @@ TODO: Pagination
 </div>
 <!-- /.box -->
 
-@include('files.partials.upload-file')
+@include('boxes.upload-file')

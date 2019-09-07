@@ -2,8 +2,8 @@
 TODO: User image function
 ------------------------->
 
-<div class="box">
-	<div class="box-header with-border box-primary">
+<div class="box box-primary">
+	<div class="box-header with-border">
 		<h3 class="box-title">Werkgroep Leden</h3>
 	</div>
 	<!-- /.box-header -->

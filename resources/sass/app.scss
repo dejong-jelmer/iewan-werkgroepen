@@ -44,3 +44,23 @@ body,
 table .iw-icon-cell {
 	width: 40px;
 }
+
+
+
+.users-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    .users-list li {
+        width: 50%;
+        float: none;
+    }
+
+    .users-list-name {
+        font-weight: normal;
+        white-space: normal;
+        text-overflow: unset;
+        font-size: .9em;
+    }
+

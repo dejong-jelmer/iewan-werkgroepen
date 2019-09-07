@@ -26,7 +26,13 @@
 					<ul class="list-group">
 						@forelse(auth()->user()->workgroups as $workgroup)
 
-						<li class="list-group-item"><a href="{{ route('workgroup', ['workgroup_id' => $workgroup->id]) }}">{{ $workgroup->name }}</a></li>
+						<li class="list-group-item">
+                            <a href="{{ route('workgroup', ['workgroup_id' => $workgroup->id]) }}">{{ $workgroup->name }}</a>
+                            <!-- TODO: if nieuwe werkgroep leden die bevestigd moeten worden: -->
+                            <span class="pull-right-container" title="Nieuwe aanmeldingen voor deze groep">
+                                <small class="label pull-right bg-red">3</small>
+                            </span>
+                        </li>
 
 						@empty
 						<span>Je zit nog niet in een werkgroep</span>

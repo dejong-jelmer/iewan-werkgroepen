@@ -17,9 +17,14 @@
 				<th>Naam partner</th>
 				<th>Woningvoorkeur (1)</th>
 				<th>woningvoorkeur (2)</th>
+
+				@if(auth()->user()->hasWorkgroupRole('aanname'))
+
 				<th class="iw-icon-cell"></th>
 				<th class="iw-icon-cell"></th>
 				<th class="iw-icon-cell"></th>
+
+				@endif
 
 
 			</tr>
@@ -32,9 +37,14 @@
 				<td>Ani Öhman</td>
 				<td>Eenpersoons</td>
 				<td>Gezinswoning</td>
+
+				@if(auth()->user()->hasWorkgroupRole('aanname'))
+
 				<td class="iw-icon-cell"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
 				<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
 				<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
+
+				@endif
 			</tr>
 
 

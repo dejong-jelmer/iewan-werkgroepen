@@ -11,10 +11,6 @@
 // @import '~@fortawesome/fontawesome-free/css/all.css';
 
 
-body,
-.btn {
-	font-size: 16px;
-}
 
 .content {
 	min-height: auto;
@@ -48,19 +44,27 @@ table .iw-icon-cell {
 
 
 .users-list {
-    display: flex;
-    flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 }
 
-    .users-list li {
-        width: 50%;
-        float: none;
-    }
+.users-list li {
+	width: 50%;
+	float: none;
+}
 
-    .users-list-name {
-        font-weight: normal;
-        white-space: normal;
-        text-overflow: unset;
-        font-size: .9em;
-    }
+.users-list-name {
+	font-weight: normal;
+	white-space: normal;
+	text-overflow: unset;
+	font-size: .9em;
+}
 
+@media (min-width:1140px) {
+
+	body,
+	.btn {
+		font-size: 16px;
+	}
+
+}

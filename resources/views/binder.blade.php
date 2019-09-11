@@ -16,6 +16,8 @@
 
 	<div class="row">
 
+		@if(auth()->user()->hasWorkgroupRole('aanname'))
+
 		<div class="col-md-3 pull-right">
 			<button class="btn btn-primary btn-block margin-bottom toggle" data-target="email-form">Stuur een nieuw formulier</button>
 
@@ -26,8 +28,8 @@
 				</div>
 				<div class="box-body">
 					<ul class="list-group">
-                        @foreach($pending as $p)
-						<li class="list-group-item"><strong>{{ $p->name }}</strong><br> <span class="text-muted pull-right">{{ $p->created_at->isoFormat('Do MM YY') }}</span></li>
+						@foreach($pending as $p)
+						<li class="list-group-item"><strong>{{ $p->name }}</strong> <span class="text-muted pull-right">{{ $p->created_at->locale('nl')->isoFormat('D MMM YY') }}</span></li>
 						@endforeach
 					</ul>
 
@@ -40,19 +42,23 @@
 		</div>
 		<!-- /.col -->
 
-
 		<div class="col-md-9">
 
 			@include('boxes.email-form')
 
 			@include('boxes.applications')
 
-			@include('boxes.veto')
+			@else
 
-			@include('boxes.binder-list')
+			<div class="col-md-12">
 
-		</div>
-	</div>
+				@endif
+
+				@include('boxes.veto')
+
+				@include('boxes.binder-list')
+
+			</div>
 
 
 </section>

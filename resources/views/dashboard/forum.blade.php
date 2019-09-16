@@ -45,7 +45,7 @@
 									<td class="forum-date text-muted" style="width: 200px;">{{ $post->created_at->diffForHumans() }}</td>
 									<td class="forum-subject"><a href="{{ route('forum-posts', ['post_id' => $post->id]) }}">{{ $post->title }}</a></td>
 									<td class="forum-user">
-										<!-- TODO: UserProfileUrl --><a href="#">{{ $post->user->name }}</a></td>
+										<!-- TODO: UserProfileUrl --><a href="{{ route('user', ['user_id' =>  $post->user->id]) }}">{{ $post->user->name }}</a></td>
 									<td class="forum-comments-count text-muted" style="width: 150px;"><i class="fa fa-comments-o"></i>
 										<!-- TODO: CommentCount -->5 reacties</td>
 									<td class="forum-comments-date text-muted" style="width: 300px;"> @if($post->updated_at != $post->created_at)
@@ -112,22 +112,6 @@
 
 		<div class="col-md-3">
 			<button class="btn btn-primary btn-block margin-bottom toggle" data-target="forum-post">Nieuw bericht</button>
-
-			<div class="box box-solid">
-				<div class="box-header with-border">
-					<h3 class="box-title">Folders</h3>
-
-					<div class="box-tools">
-						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-						</button>
-					</div>
-				</div>
-				<div class="box-body no-padding">
-
-				</div>
-				<!-- /.box-body -->
-			</div>
-			<!-- /. box -->
 
 			<!-- /.box -->
 		</div>

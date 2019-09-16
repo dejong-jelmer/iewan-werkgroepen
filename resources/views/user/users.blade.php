@@ -36,16 +36,21 @@
 							<th>Email</th>
 							<th>Werkgroepen</th>
 							<th class="iw-icon-cell"></th>
+							@if(auth()->user()->hasWorkgroupRole('aanname') )
+							<th class="iw-icon-cell"></th>
+
+							@endif
+
 						</tr>
 
 
 						@forelse($users as $user)
-						<tr>
 
-							@include('user.partials.user', [
-							'user' => $user
-							])
-						</tr>
+
+						@include('user.partials.user', [
+						'user' => $user
+						])
+
 						<!-- /.row -->
 						@empty
 						<p>Er woont helemaal niemand bij Iewan</p>

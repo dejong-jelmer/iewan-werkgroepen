@@ -37,6 +37,8 @@ Route::middleware('auth')->group(function(){
         ->name('user');
     Route::get('profiel', 'UserController@showProfile')
         ->name('profile');
+    Route::get('bestanden', 'FileController@showFiles')
+        ->name('files');
     Route::post('gebruiker/profiel/aanpassen', 'UserController@updateProfile')
         ->name('user-profile-post');
     Route::get('/forum', 'ForumController@showForum')

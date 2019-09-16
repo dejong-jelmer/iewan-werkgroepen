@@ -2,17 +2,19 @@
 @section('title') Forum: @if(!empty($post)) {{ $post->title }} @endif @endsection
 @section('content')
 <!-- Content Header (Page header) -->
-<section class="content-header">
-	<h2>
-		Forum
-	</h2>
-
+<section class="content-header clearfix">
+	<h1 class="pull-left">
+		{{ $post->title }}
+	</h1>
+	<div class="pull-right">
+		<a href="{{ route('forum') }}">Terug naar het forum overzicht</a>
+	</div>
 </section>
 
 <!-- Main content -->
-<section class="content">
+<section class="content clearfix">
 	<div class="row">
-		<div class="col-md-9">
+		<div class="col-lg-9">
 			<div class="box">
 
 

@@ -1,7 +1,15 @@
 @if(!empty($post))
 
 <div class="box-header">
-	<h1 class="box-title">{{ $post->title }}</h1>
+	<div class="user-block">
+		<!-- TODO UserAvatar -->
+		<img class="img-circle" src="https://i.pravatar.cc/200?img={{ $post->user->id }}}}" alt="User Image">
+		<span class="username">
+			<!-- TODO: UserProfileURL -->
+			<a href="{{ route('user', ['user_id' =>  $post->user->id]) }}">{{ $post->user->name }}</a>
+		</span>
+		<span class="description">{{ $post->created_at->diffForHumans() }}</span>
+	</div>
 	<div class="box-tools pull-right">
 		<div class="btn-group">
 
@@ -30,15 +38,7 @@
 <div class="box-body">
 	<div class="post">
 
-		<div class="user-block">
-			<!-- TODO UserAvatar -->
-			<img class="img-circle" src="https://i.pravatar.cc/200?img={{ $post->user->id }}}}" alt="User Image">
-			<span class="username">
-				<!-- TODO: UserProfileURL -->
-				<a href="{{ route('user', ['user_id' =>  $post->user->id]) }}">{{ $post->user->name }}</a>
-			</span>
-			<span class="description">{{ $post->created_at->diffForHumans() }}</span>
-		</div>
+
 
 
 

@@ -51,6 +51,33 @@
 									<td class="forum-comments-date text-muted" style="width: 300px;"> @if($post->updated_at != $post->created_at)
 										Laatste reactie: {{ $post->updated_at->diffForHumans() }} <!-- TODO: Dit doet het niet! -->
 										@endif</td>
+
+									@if(auth()->user()->hasWorkgroupRole('intern') || $post->user->id == auth()->user()->id )
+
+									<td class="iw-icon-cell">
+										<button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button>
+									</td>
+									<td class="iw-icon-cell">
+										<button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
+
+									@else
+									<!-- Empty <td> tags to keep the columns aligned -->
+									<td></td>
+									<td></td>
+									@endif
+
+									@if(auth()->user()->hasWorkgroupRole('intern'))
+
+
+									<td class="iw-icon-cell">
+										<button class="btn btn-default" title="Sticky"><i class="fa  fa-thumb-tack"></i><span class="sr-only">Maak sticky</span></button>
+
+									<td><button class="btn btn-default" title="Sluiten"><i class="fa fa-lock"></i><span class="sr-only">Sluiten</span></button></td>
+
+									@endif
+
+
+
 								</tr>
 
 								@endif

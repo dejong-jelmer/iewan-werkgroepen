@@ -42,7 +42,7 @@
     </style>
 </head>
 
-<body class="hold-transition skin-blue fixed sidebar-mini">
+<body class="hold-transition skin-blue fixed sidebar-mini {{Request::segment(1)}}">
 	<div class="wrapper">
 
 		<!-- Main Header -->

@@ -12,7 +12,7 @@
 
 <section class="content">
 	<div class="row">
-		<div class="col-md-9">
+		<div class="col-md-9">	
 
 			@include('dashboard.partials.forum.create-post')
 
@@ -112,7 +112,7 @@
 		<!-- /.col -->
 
 		<div class="col-md-3">
-			<button class="btn btn-primary btn-block margin-bottom toggle" data-target="forum-post">Nieuw bericht</button>
+			<button class="btn btn-primary btn-block margin-bottom toggle" data-target="forum-post">Nieuw forumbericht</button>
 
 			<!-- /.box -->
 		</div>

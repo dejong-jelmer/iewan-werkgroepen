@@ -23,7 +23,7 @@ TODO: Bestanden route
 
 		<div class="col-md-12">
 
-			@include('files.partials.files-overview')
+			@include('boxes.files-overview')
 
 		</div>
 	</div>

@@ -73,7 +73,10 @@
 			<li class="{{ Request::route()->getName() == 'profile' ? 'active' : '' }}">
 				<a href="{{ route('profile') }}"><i class="fa fa-user"></i><span>Mijn profiel</span></a>
 			</li>
-
+            <!-- Files -->
+            <li class="{{ Request::route()->getName() == 'files' ? 'active' : '' }}">
+                <a href="{{ route('files') }}"><i class="fa fa-user"></i><span>Bestanden</span></a>
+            </li>
 		</ul>
 		<!-- /.sidebar-menu -->
 	</section>

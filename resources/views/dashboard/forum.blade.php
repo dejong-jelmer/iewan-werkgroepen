@@ -21,6 +21,7 @@
 					<h3 class="box-title">Berichten</h3>
 
 					<!-- TODO: ForumPagination -->
+
 					<div class="box-tools pull-right">
 						1-50/200
 						<div class="btn-group">

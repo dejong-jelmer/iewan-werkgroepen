@@ -13,6 +13,13 @@ TODO: User image function
 	<div class="box-body no-padding">
 		<table class="table">
 
+
+			@foreach($workgroup->applicants as $user)
+
+			@endforeach
+
+
+
 			<tr>
 				<td style="width: 50px"><img src="https://i.pravatar.cc/48?u=1" alt="Profielfoto"></td>
 				<td><a href="#">Jelmer</a></td>

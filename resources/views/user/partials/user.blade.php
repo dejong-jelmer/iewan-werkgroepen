@@ -5,7 +5,7 @@
         	<td><a href="mailto:{{ $user->email }}" class="text-muted">{{ $user->email }}</a></td>
         	<td>
         		@forelse($user->workgroups as $workgroup)
-        		<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->id]) }}" class="label label-sm label-default">{{ $workgroup->name }}</a>
+        		<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}" class="label label-sm label-default">{{ $workgroup->name }}</a>
         		@empty
         		<span>Je zit nog niet in een werkgroep</span>
         		@endforelse

@@ -15,24 +15,21 @@ TODO: User image function
 
 
 			@foreach($workgroup->applicants as $user)
+			<tr>
+				<td style="width: 50px"><img src="https://i.pravatar.cc/48?u={{$user->id}}" alt="Profielfoto"></td>
+				<td><a class="users-list-name" href="{{ route('user', ['user_id' =>  $user->id]) }}">{{ $user->name }}</a></td>
+
+
+				<td class="iw-icon-cell"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
+				<td class="iw-icon-cell"><button class="btn btn-danger" title="Weigeren"><i class="fa fa-ban"></i><span class="sr-only">Weigeren</span></button></td>
+
+
+			</tr>
+
 
 			@endforeach
 
 
-
-			<tr>
-				<td style="width: 50px"><img src="https://i.pravatar.cc/48?u=1" alt="Profielfoto"></td>
-				<td><a href="#">Jelmer</a></td>
-				<td class="iw-icon-cell"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
-				<td class="iw-icon-cell"><button class="btn btn-danger" title="Weigeren"><i class="fa fa-ban"></i><span class="sr-only">Weigeren</span></button></td>
-			</tr>
-
-			<tr>
-				<td><img src="https://i.pravatar.cc/48?u=2" alt="Profielfoto"></td>
-				<td><a href="#">Wen</a></td>
-				<td class="iw-icon-cell"><button class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></button></td>
-				<td class="iw-icon-cell"><button class="btn btn-danger" title="Weigeren"><i class="fa fa-ban"></i><span class="sr-only">Weigeren</span></button></td>
-			</tr>
 		</table>
 	</div>
 	<!-- /.box-body -->

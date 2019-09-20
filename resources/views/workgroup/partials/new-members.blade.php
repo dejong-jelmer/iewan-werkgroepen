@@ -1,8 +1,10 @@
 <!--
-TODO: New members loop function
 TODO: Accept/ Decline function
 TODO: User image function
 ------------------------->
+
+@if(!empty($workgroup->applicants))
+
 
 <div class="box box-primary">
 	<div class="box-header with-border">
@@ -35,3 +37,6 @@ TODO: User image function
 	<!-- /.box-body -->
 </div>
 <!-- /.box -->
+
+
+@endif

@@ -29,19 +29,19 @@ TODO: Pagination
 				</div>
 
 				<!-- On files template -->
-                {{-- @if(Request::route()->getName() == 'files') --}}
-    				<div class="form-group form-group-sm hidden-xs col-xs-4">
-    					<label class="sr-only">Werkgroep</label>
-    					<select class="form-control">
-    						<option>Filter op Werkgroep</option>
-    						@isset($workgroups)
-                                @foreach($workgroups as $workgroup)
-    						       <option value="{{ $workgroup->id}}">{{ $workgroup->name  }}</option>
-    						    @endforeach
-    						@endisset
-    					</select>
-    				</div>
-                    {{-- @endif --}}
+				@if(Request::route()->getName() == 'files')
+				<div class="form-group form-group-sm hidden-xs col-xs-4">
+					<label class="sr-only">Werkgroep</label>
+					<select class="form-control">
+						<option>Filter op Werkgroep</option>
+						@isset($workgroups)
+						@foreach($workgroups as $workgroup)
+						<option value="{{ $workgroup->id}}">{{ $workgroup->name  }}</option>
+						@endforeach
+						@endisset
+					</select>
+				</div>
+				@endif
 
 
 				<div class="input-group input-group-sm hidden-xs col-xs-3">
@@ -62,6 +62,12 @@ TODO: Pagination
 				<td><i class="fa fa-file-pdf-o"></i></td>
 				<td><a href=#>Presentatie voorstel winst DKW.pdf</a></td>
 				<td><span class="label label-default">Voorstel</span></td>
+				@if(Request::route()->getName() == 'files')
+
+				<td><span class="label label-primary">Kleine Wiel</span></td>
+				@endif
+
+
 				<td>240 kB</td>
 				<td>20-05-2019 14:47</td>
 			</tr>
@@ -70,6 +76,11 @@ TODO: Pagination
 				<td><i class="fa fa-file-word-o"></i></td>
 				<td><a href=#>Voorstel inbraakpreventie schuurtjes.docx </a></td>
 				<td><span class="label label-default">Voorstel</span></td>
+				@if(Request::route()->getName() == 'files')
+
+				<td><span class="label label-primary">Intern</span></td>
+				@endif
+
 				<td>16 kB</td>
 				<td>19-05-2019 12:10</td>
 			</tr>

@@ -39,10 +39,9 @@
 				</div>
 				<!-- /.box-body -->
 				<div class="box-footer">
-					@if(method_exists($forumPosts, 'links'))
-					{{ $forumPosts->links('vendor.pagination.bulma', ['bulmaClasses' => 'is-small is-left', 'next' => 'Volgende', 'previous' => 'Vorige']) }}
-					@endif
 
+
+					{{ $forumPosts->links() }}
 
 				</div>
 			</div>

@@ -25,7 +25,7 @@ class WorkgroupController extends Controller
             return redirect()->back();
         }
         Auth::user()->workgroups()->attach($workgroup);
-        return redirect()->route('workgroup', ['workgroup_id' => $workgroup->name])->with('success', "Je bent nu lid van $workgroup->name");
+        return redirect()->route('workgroup', ['workgroup_id' => $workgroup->name])->with('success', "Je aanmelding voor de werkgroep  $workgroup->name is verstuurd.");
     }
 
     public function leaveWorkgroup($workgroup_id)

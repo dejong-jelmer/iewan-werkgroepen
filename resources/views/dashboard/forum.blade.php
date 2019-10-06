@@ -3,16 +3,19 @@
 @section('content')
 
 <section class="content-header">
-	<h1>
+	<h1 class="pull-left clearfix">
 		Forum
 	</h1>
+
+	<button class="btn btn-primary margin-bottom toggle pull-right" data-target="forum-post">Nieuw forumbericht</button>
+
 
 </section>
 
 
 <section class="content">
 	<div class="row">
-		<div class="col-md-9">
+		<div class="col-md-12">
 
 			@include('dashboard.partials.forum.create-post')
 
@@ -21,12 +24,10 @@
 					<h3 class="box-title">Berichten</h3>
 
 					<!-- TODO: ForumPagination -->
+
 					<div class="box-tools pull-right">
-						1-50/200
-						<div class="btn-group">
-							<button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-							<button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-						</div>
+
+
 						<!-- /.btn-group -->
 
 					</div>
@@ -96,11 +97,8 @@
 				<div class="box-footer">
 					<div class="forum-controls">
 						<div class="pull-right">
-							1-50/200
-							<div class="btn-group">
-								<button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-								<button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-							</div>
+							{{ $posts->links('vendor.pagination.default') }}
+
 							<!-- /.btn-group -->
 						</div>
 						<!-- /.pull-right -->
@@ -111,12 +109,7 @@
 		</div>
 		<!-- /.col -->
 
-		<div class="col-md-3">
-			<button class="btn btn-primary btn-block margin-bottom toggle" data-target="forum-post">Nieuw bericht</button>
 
-			<!-- /.box -->
-		</div>
-		<!-- /.col -->
 	</div>
 	<!-- /.row -->
 </section>

@@ -97,7 +97,7 @@
 				<div class="box-footer">
 					<div class="forum-controls">
 						<div class="pull-right">
-							{{ $posts->links('vendor.pagination.default') }}
+							{{ $posts->links('partials.pagination') }}
 
 							<!-- /.btn-group -->
 						</div>

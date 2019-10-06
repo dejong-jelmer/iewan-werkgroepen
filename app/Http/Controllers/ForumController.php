@@ -12,7 +12,7 @@ class ForumController extends Controller
 {
     public function showForum()
     {
-        $posts = Forumpost::orderBy('created_at', 'desc')->where('forumposts.post_id','0')->Paginate(2);
+        $posts = Forumpost::orderBy('created_at', 'desc')->where('forumposts.post_id','0')->Paginate(15);
         return view('dashboard.forum', compact('posts'));
 
 

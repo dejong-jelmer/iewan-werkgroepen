@@ -40,8 +40,7 @@
 				<!-- /.box-body -->
 				<div class="box-footer">
 
-
-					{{ $forumPosts->links() }}
+					<a href="{{ route('forum') }}" class="btn btn-default">Ga naar het forum</a>
 
 				</div>
 			</div>

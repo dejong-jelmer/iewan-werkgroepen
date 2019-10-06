@@ -32,6 +32,9 @@
 	font-weight: bold;
 }
 
+.forum-messages td {
+	height: 55px;
+}
 
 
 .navbar-nav > li .logout {
@@ -52,16 +55,15 @@ table .iw-icon-cell {
 
 
 
-.inschrijven .content-wrapper, 
-.inschrijven .main-footer
-{
-    margin-left: 0
+.inschrijven .content-wrapper,
+.inschrijven .main-footer {
+	margin-left: 0
 }
 
 .inschrijven #app {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
 }
 
 

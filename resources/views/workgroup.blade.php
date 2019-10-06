@@ -13,10 +13,10 @@ TODO: archive workgroup function
 
 
 <!-- TODO: Staat dit hier goed? -->
-@if(!auth()->user()->inWorkgroup($workgroup->id))
-<form name="join-workgroup-form" id="join-workgroup-form" action="{{ route('join-workgroup', ['workgroup_id' => $workgroup->id]) }}" method="POST">@csrf</form>
-@else
+@if(auth()->user()->inWorkgroup($workgroup->id) || auth()->user()->hasAppliedForWorkgroup($workgroup->id))
 <form name="leave-workgroup-form" id="leave-workgroup-form" action="{{ route('leave-workgroup', ['workgroup_id' => $workgroup->id]) }}" method="POST">@csrf</form>
+@else
+<form name="join-workgroup-form" id="join-workgroup-form" action="{{ route('join-workgroup', ['workgroup_id' => $workgroup->id]) }}" method="POST">@csrf</form>
 @endif
 
 
@@ -49,11 +49,11 @@ TODO: archive workgroup function
 
 		<div class="col-md-3">
 
-			@include('workgroup.partials.members')
+			@include('boxes.workgroup-members')
 
 			@if(auth()->user()->inWorkgroup($workgroup->id))
 
-			@include('workgroup.partials.new-members')
+			@include('boxes.workgroup-new-members')
 
 			@endif
 

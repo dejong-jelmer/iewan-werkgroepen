@@ -8,11 +8,11 @@ class Workgroup extends Model
 {
     public function users()
     {
-        return $this->belongsToMany('App\User')->withPivot('application');
+        return $this->belongsToMany('App\User')->withPivot('active');
     }
     public function activeUsers()
     {
-        return $this->users()->where('application', false);
+        return $this->users()->where('active', true);
     }
     public function role()
     {
@@ -43,7 +43,12 @@ class Workgroup extends Model
 
     public function applicants()
     {
-        return $this->users()->wherePivot('application', true);
+        return $this->users()->wherePivot('active', false);
+    }
+
+    public function isApplicant($user_id)
+    {
+        return (bool) $this->applicants()->where('users.id', $user_id)->count();
     }
 
     public function numberOfApplicants()

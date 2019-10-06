@@ -28,10 +28,11 @@
 
 						<li class="list-group-item">
 							<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}">{{ $workgroup->name }}</a>
-							<!-- TODO: if nieuwe werkgroep leden die bevestigd moeten worden: -->
-							<span class="pull-right-container" title="Nieuwe aanmeldingen voor deze groep">
-								<small class="label pull-right bg-red">3</small>
-							</span>
+                            @if($workgroup->numberOfApplicants() > 0)
+    							<span class="pull-right-container" title="Nieuwe aanmeldingen voor deze groep">
+    								<small class="label pull-right bg-red">{{ $workgroup->numberOfApplicants() }}</small>
+    							</span>
+                            @endif
 						</li>
 
 						@empty

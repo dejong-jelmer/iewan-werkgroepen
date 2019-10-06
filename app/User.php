@@ -39,21 +39,21 @@ class User extends Authenticatable
 
     public function workgroups()
     {
-        return $this->belongsToMany('App\Workgroup')->withPivot('application');
+        return $this->belongsToMany('App\Workgroup')->withPivot('active');
     }
 
     public function activeWorkgroups()
     {
-        return $this->workgroups()->wherePivot('application', false);
+        return $this->workgroups()->wherePivot('active', true);
     }
 
     public function inWorkgroup($workgroup_id)
     {
         return (bool) $this->activeWorkgroups()->wherePivot('workgroup_id', $workgroup_id)->count();
     }
-    public function hasApplied($workgroup_id)
+    public function hasAppliedForWorkgroup($workgroup_id)
     {
-        return (bool) $this->workgroups()->wherePivot('workgroup_id', $workgroup_id)->wherePivot('application', true)->count();
+        return (bool) $this->workgroups()->wherePivot('workgroup_id', $workgroup_id)->wherePivot('active', false)->count();
     }
     public function hasWorkgroupRole($role)
     {
@@ -62,6 +62,15 @@ class User extends Authenticatable
         });
     }
 
+    public function newWorkgroupApplications()
+    {
+        $applicants = 0;
+        $workgroups = $this->activeWorkgroups()->get();
+        foreach ($workgroups as $workgroup) {
+            $applicants += $workgroup->numberOfApplicants();
+        }
+        return $applicants;
+    }
 
     public function forumPosts()
     {
@@ -80,5 +89,19 @@ class User extends Authenticatable
     public function newBinderForms()
     {
         return $this->binderForms()->count();
+    }
+    // @todo: find a way to know the forumpost created by user and find a way to link replies to it
+    public function newForumPostReplies()
+    {
+        return 2;
+    }
+    // @todo: reacties op forumberichten toevoegen
+    public function notifications()
+    {
+        $notifications = 0;
+        $notifications += $this->newForumPostReplies();
+        $notifications += $this->newBinderForms();
+        $notifications += $this->newWorkgroupApplications();
+        return $notifications;
     }
 }

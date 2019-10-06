@@ -68,32 +68,17 @@ Route::middleware('auth')->group(function(){
     Route::get('werkgroep/klapper/formulier/{form_id}/vrijgeven', 'BinderController@releaseForm')
         ->name('release-form');
 
-    Route::get('/bericht-aan/{user_id}', 'MessageController@showCreateMessage')
-        ->name('send-user-message');
-    Route::post('/bericht-aan/{user_id}', 'MessageController@createMessage')
-        ->name('send-message');
-    Route::post('/bericht-aan/{user_id}/antwoord-op/{message_id}', 'MessageController@createMessage')
-        ->name('send-message-response');
-    Route::get('/gebruiker/berichten', 'MessageController@showUserMessages')
-        ->name('show-user-messages');
-    Route::get('gebruiker/berichten/verstuurd', 'MessageController@showSendUserMessages')
-        ->name('show-user-send-messages');
-    Route::get('/gebruiker/berichten/{message_id}', 'MessageController@showUserMessage')
-        ->name('show-user-message');
-    Route::post('/gebruiker/berichten/{message_id}/delete', 'MessageController@deleteUserMessage')
-        ->name('delete-user-message');
+
     Route::get('/bewoners', 'UserController@showUsers')
         ->name('users');
 
-    Route::get('/werkgroep/{workgroup_id}/berichten', 'MessageController@showWorkgroupMessages')
-        ->name('show-workgroup-messages');
-    Route::get('/werkgroep/{workgroup_id}/berichten/{message_id}', 'MessageController@showWorkgroupMessage')
-        ->name('show-workgroup-message');
-    Route::post('/bericht-aan-werkgroep/{workgroup_id}', 'MessageController@createMessage')
-        ->name('send-workgroup-message');
-
-    Route::post('/werkgroep/aansluiten/{workgroup_id}', 'WorkgroupController@joinWorkgroup')
+    Route::post('/werkgroep/aanvraag/{workgroup_id}', 'WorkgroupController@joinWorkgroup')
         ->name('join-workgroup');
     Route::post('/werkgroep/verlaten/{workgroup_id}', 'WorkgroupController@leaveWorkgroup')
         ->name('leave-workgroup');
+    Route::get('/werkgroep/aanvraag/accepteren', 'WorkgroupController@acceptUserApplication')
+        ->name('workgroup-accept-application');
+    Route::get('/werkgroep/aanvraag/wijgeren', 'WorkgroupController@declineUserApplication')
+        ->name('workgroup-decline-application');
+
 });

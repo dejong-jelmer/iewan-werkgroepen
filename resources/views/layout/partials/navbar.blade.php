@@ -21,28 +21,37 @@
 				<li class="dropdown notifications-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="fa fa-bell-o"></i>
-						<span class="label label-warning">5</span>
+                        {{-- @todo: heeft nog geen reacties op forumberichten komt nog --}}
+						<span class="label label-warning">{{ auth()->user()->notifications() }}</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li class="header">Je hebt 5 meldingen</li>
+                        {{-- @todo: heeft nog geen reacties op forumberichten komt nog --}}
+						<li class="header">Je hebt {{ auth()->user()->notifications() }} meldingen</li>
 						<li>
 							<!-- inner menu: contains the actual data -->
 							<ul class="menu">
-								<li>
-									<a href="#">
-										<i class="fa fa-comments text-aqua"></i> 2 reacties op je forumbericht
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<i class="fa fa-address-book text-yellow"></i> 2 nieuwe klapperinschrijvingen
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<i class="fa fa-coffee text-red"></i> 1 werkgroep aanmelding
-									</a>
-								</li>
+                                {{-- @todo: newForumPostReplies() needs to be build --}}
+                                @if(auth()->user()->newForumPostReplies())
+    								<li>
+    									<a href="#">
+    										<i class="fa fa-comments text-aqua"></i> {{ auth()->user()->newForumPostReplies() }} reacties op je forumbericht
+    									</a>
+    								</li>
+                                @endif
+                                @if(auth()->user()->newBinderForms() > 0)
+    								<li>
+    									<a href="#">
+    										<i class="fa fa-address-book text-yellow"></i> {{ auth()->user()->newBinderForms() }} nieuwe klapperinschrijvingen
+    									</a>
+    								</li>
+                                @endif
+                                @if(auth()->user()->newWorkgroupApplications() > 0)
+    								<li>
+    									<a href="#">
+    										<i class="fa fa-coffee text-red"></i> {{ auth()->user()->newWorkgroupApplications() }} werkgroep aanmelding
+    									</a>
+    								</li>
+                                @endif
 
 							</ul>
 						</li>

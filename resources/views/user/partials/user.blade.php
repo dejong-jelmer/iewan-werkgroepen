@@ -1,7 +1,7 @@
         <tr>
 
         	<td><img src="https://i.pravatar.cc/48?u={{$user->id}}" alt="User Avatar"></td>
-        	<td><a href="{{ route('user', ['user_id' =>  $user->id]) }}">{{ $user->name }}</a></td>
+        	<td><a href="{{ route('user', ['user_name' =>  $user->name]) }}">{{ $user->name }}</a></td>
         	<td><a href="mailto:{{ $user->email }}" class="text-muted">{{ $user->email }}</a></td>
         	<td>
         		@forelse($user->workgroups as $workgroup)

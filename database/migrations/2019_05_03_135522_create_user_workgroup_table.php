@@ -17,7 +17,7 @@ class CreateUserWorkgroupTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->integer('workgroup_id');
-            $table->boolean('application')->default(true);
+            $table->boolean('active')->default(false);
         });
     }
 

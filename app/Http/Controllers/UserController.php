@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function showUser(Request $request, $user_id)
+    public function showUser(Request $request, $user_name)
     {
-        $user = User::find($user_id);
+        $user = User::where('name', $user_name)->first();
         return view('user.index', compact('user'));
     }
     public function showUsers()

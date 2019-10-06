@@ -11,8 +11,6 @@ class DashboardController extends Controller
 {
     public function showDashboard()
     {
-        // We don't want the responses (messages that have a message_id the belong to)
-        // and only the unread messages
         $forumPosts = Auth::user()->forumPosts()->paginate(2);
         $binderForms = Auth::user()->binderForms()->paginate(2);
         return view('dashboard', [

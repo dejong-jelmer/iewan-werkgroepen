@@ -17,7 +17,7 @@
 	<div class="row">
 		<div class="col-md-12">
 
-			@include('dashboard.partials.forum.create-post')
+			@include('boxes.forum-posts')
 
 			<div class="box box-primary">
 				<div class="box-header with-border">

@@ -97,16 +97,19 @@ $(document).ready(function () {
 
 
 
-	// text editor
-	if (document.querySelector('.editor')) {
-		ClassicEditor.create(document.querySelector('.editor'))
-			.then(editor => {
-				// console.log( editor );
-			})
-			.catch(error => {
-				console.error(error);
-			});
-	}
+	// text editor (https://ckeditor.com/docs/ckeditor5)
+    if (document.querySelector('.editor')) {
+        ClassicEditor.create(document.querySelector('.editor'), {
+        removePlugins: [ 'Heading', 'blockQuote'],
+        toolbar: [ 'bold', 'italic', 'bulletedList', 'numberedList', 'link' ]
+    })
+            .then(editor => {
+                // console.log( editor );
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
 
 
 

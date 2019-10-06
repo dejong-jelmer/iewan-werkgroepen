@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function(){
         ->name('dashboard');
     Route::get('/werkgroep/{workgroup}', 'WorkgroupController@showWorkgroup')
         ->name('workgroup');
-    Route::get('/leden/{user_id}', 'UserController@showUser')
+    Route::get('/bewoners/{user_name}', 'UserController@showUser')
         ->name('user');
     Route::get('profiel', 'UserController@showProfile')
         ->name('profile');
@@ -82,7 +82,7 @@ Route::middleware('auth')->group(function(){
         ->name('show-user-message');
     Route::post('/gebruiker/berichten/{message_id}/delete', 'MessageController@deleteUserMessage')
         ->name('delete-user-message');
-    Route::get('/gebruikers', 'UserController@showUsers')
+    Route::get('/bewoners', 'UserController@showUsers')
         ->name('users');
 
     Route::get('/werkgroep/{workgroup_id}/berichten', 'MessageController@showWorkgroupMessages')

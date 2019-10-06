@@ -21,7 +21,7 @@ class WorkgroupController extends Controller
     public function joinWorkgroup($workgroup_id)
     {
         $workgroup = Workgroup::find($workgroup_id);
-        if(Auth::user()->inWorkgroup($workgroup->id)) {
+        if(Auth::user()->hasApplied($workgroup->id)) {
             return redirect()->back();
         }
         Auth::user()->workgroups()->attach($workgroup);
@@ -33,7 +33,7 @@ class WorkgroupController extends Controller
         $workgroup = Workgroup::find($workgroup_id);
         $workgroup->users()->detach(Auth::user());
         // Auth::user()->workgroups()->detach($workgroup);
-        return redirect()->route('workgroup', ['workgroup_id' => $workgroup->id])->with('success', "Je hebt $workgroup->name verlaten");
+        return redirect()->route('workgroup', ['workgroup_id' => $workgroup->name])->with('success', "Je hebt $workgroup->name verlaten");
     }
 
     public function showWorkgroupMembers($workgroup_id)

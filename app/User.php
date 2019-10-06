@@ -47,18 +47,18 @@ class User extends Authenticatable
         return $this->workgroups()->wherePivot('application', false);
     }
 
-    public function inWorkgroup($workgroupId)
+    public function inWorkgroup($workgroup_id)
     {
-        return (bool) $this->activeWorkgroups()->wherePivot('workgroup_id', $workgroupId)->count();
+        return (bool) $this->activeWorkgroups()->wherePivot('workgroup_id', $workgroup_id)->count();
     }
-    public function hasApplied($workgroupId)
+    public function hasApplied($workgroup_id)
     {
-        return (bool) $this->workgroups()->wherePivot('workgroup_id', $workgroupId)->wherePivot('application', true)->count();
+        return (bool) $this->workgroups()->wherePivot('workgroup_id', $workgroup_id)->wherePivot('application', true)->count();
     }
     public function hasWorkgroupRole($role)
     {
         return (bool) $this->activeWorkgroups->first(function($workgroup) use ($role){
-            return $workgroup->role->role == ucfirst(strtolower($role));
+            return $workgroup->role->role == strtolower($role);
         });
     }
 

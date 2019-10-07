@@ -58,7 +58,8 @@ class WorkgroupController extends Controller
         // update: set active for user to true
         $user->workgroups()->newPivotStatementForId($workgroup->id)->update(['active' => true]);
         // now user is an active workgroup member, so let's go back
-        return redirect()->back();
+      //  return redirect()->back();
+		return redirect()->route('workgroup', ['workgroup_id' => $workgroup->name])->with('success', "Je hebt $user->name aan de werkgroep toegevoegd.");
 
     }
 
@@ -77,6 +78,7 @@ class WorkgroupController extends Controller
         // update: remove user relation to workgroup
         $user->workgroups()->detach($workgroup->id);
         // now user application is removed, so let's go back
-        return redirect()->back();
+   //     return redirect()->back();
+		return redirect()->route('workgroup', ['workgroup_id' => $workgroup->name])->with('error', "Je hebt de aanmelding van $user->name geannuleerd.");
     }
 }

@@ -3,7 +3,7 @@ TODO: Accept/ Decline function
 TODO: User image function
 ------------------------->
 
-@if(!empty($workgroup->applicants))
+@if(isset($workgroup->applicants) && count($workgroup->applicants) > 0 )
 
 
 <div class="box box-primary">
@@ -23,7 +23,7 @@ TODO: User image function
 
 
 				<td class="iw-icon-cell"><a href="{{ Route('workgroup-accept-application', ['workgroup_id' => $workgroup->id, 'user_id' => $user->id]) }}" class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></a></td>
-				<td class="iw-icon-cell"><a href="{{ Route('workgroup-decline-application', ['workgroup_id' => $workgroup->id, 'user_id' => $user->id]) }}"class="btn btn-danger" title="Weigeren"><i class="fa fa-ban"></i><span class="sr-only">Weigeren</span></a></td>
+				<td class="iw-icon-cell"><a href="{{ Route('workgroup-decline-application', ['workgroup_id' => $workgroup->id, 'user_id' => $user->id]) }}" class="btn btn-danger" title="Weigeren"><i class="fa fa-ban"></i><span class="sr-only">Weigeren</span></a></td>
 
 
 			</tr>

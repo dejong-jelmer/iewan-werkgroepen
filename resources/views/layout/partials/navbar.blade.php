@@ -16,49 +16,70 @@
 
 		<div class="navbar-custom-menu">
 			<ul class="nav navbar-nav">
-<!-- TODO: Notifications werken dus nog niet -->
+				<!-- TODO: Notifications werken dus nog niet -->
 				<!-- Notifications: style can be found in dropdown.less -->
 				<li class="dropdown notifications-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="fa fa-bell-o"></i>
-                        {{-- @todo: heeft nog geen reacties op forumberichten komt nog --}}
+						{{-- @todo: heeft nog geen reacties op forumberichten komt nog --}}
 						<span class="label label-warning">{{ auth()->user()->notifications() }}</span>
 					</a>
 					<ul class="dropdown-menu">
-                        {{-- @todo: heeft nog geen reacties op forumberichten komt nog --}}
+						{{-- @todo: heeft nog geen reacties op forumberichten komt nog --}}
 						<li class="header">Je hebt {{ auth()->user()->notifications() }} meldingen</li>
 						<li>
 							<!-- inner menu: contains the actual data -->
 							<ul class="menu">
-                                {{-- @todo: newForumPostReplies() needs to be build --}}
-                                @if(auth()->user()->newForumPostReplies())
-    								<li>
-    									<a href="#">
-    										<i class="fa fa-comments text-aqua"></i> {{ auth()->user()->newForumPostReplies() }} reacties op je forumbericht
-    									</a>
-    								</li>
-                                @endif
-                                @if(auth()->user()->newBinderForms() > 0)
-    								<li>
-    									<a href="#">
-    										<i class="fa fa-address-book text-yellow"></i> {{ auth()->user()->newBinderForms() }} nieuwe klapperinschrijvingen
-    									</a>
-    								</li>
-                                @endif
-                                @if(auth()->user()->newWorkgroupApplications() > 0)
-    								<li>
-    									<a href="#">
-    										<i class="fa fa-coffee text-red"></i> {{ auth()->user()->newWorkgroupApplications() }} werkgroep aanmelding
-    									</a>
-    								</li>
-                                @endif
+								{{-- @todo: newForumPostReplies() needs to be build --}}
+								@if(auth()->user()->newForumPostReplies())
+								<li>
+									<a href="#">
+										<i class="fa fa-comments text-aqua"></i> {{ auth()->user()->newForumPostReplies() }} reacties op je forumbericht
+									</a>
+								</li>
+								@endif
+								@if(auth()->user()->newBinderForms() > 0)
+								<li>
+									<a href="#">
+										<i class="fa fa-address-book text-yellow"></i> {{ auth()->user()->newBinderForms() }} nieuwe klapperinschrijvingen
+									</a>
+								</li>
+								@endif
+								@if(auth()->user()->newWorkgroupApplications() > 0)
+								<li>
+									<a href="#">
+										<i class="fa fa-coffee text-red"></i> {{ auth()->user()->newWorkgroupApplications() }} werkgroep aanmelding
+									</a>
+								</li>
+								@endif
+
+								@foreach(auth()->user()->workgroups as $workgroup)
+								@if($workgroup->numberOfApplicants() == 1)
+								<li>
+									<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}">
+										<i class="fa fa-clipboard text-green"></i>
+										{{ $workgroup->numberOfApplicants() }} {{ $workgroup->name }} aanmelding
+									</a>
+								</li>
+
+								@elseif($workgroup->numberOfApplicants() >= 2)
+								<li>
+									<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}">
+										<i class="fa fa-clipboard text-green"></i>
+										{{ $workgroup->numberOfApplicants() }} {{ $workgroup->name }} aanmeldingen
+									</a>
+								</li>
+								@endif
+
+								@endforeach
+
 
 							</ul>
 						</li>
 					</ul>
 				</li>
 
-			<!-- TODO: UserAvatar -->
+				<!-- TODO: UserAvatar -->
 				<!-- User Account: style can be found in dropdown.less -->
 				<li class="user user-menu">
 					<a href="{{ route('profile') }}">
@@ -69,7 +90,7 @@
 
 				</li>
 
-<!-- TODO: Button stylen -->
+				<!-- TODO: Button stylen -->
 				<li class="user user-menu">
 					<form action="{{ route('logout') }}" method="POST">
 						@csrf

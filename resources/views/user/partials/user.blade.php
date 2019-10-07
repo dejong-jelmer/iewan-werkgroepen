@@ -7,7 +7,7 @@
         		@forelse($user->workgroups as $workgroup)
         		<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}" class="label label-sm label-default">{{ $workgroup->name }}</a>
         		@empty
-        		<span>Je zit nog niet in een werkgroep</span>
+
         		@endforelse
 
         	</td>

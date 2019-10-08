@@ -34,6 +34,12 @@ class ForumController extends Controller
     {
         $post = Forumpost::find($post_id);
         Auth::user()->forumPosts()->detach($post);
+        // set new responses for this user post back to false
+        foreach (Auth::user()->posts as $userPost) {
+            foreach($userPost->responses as $response) {
+                $response->where('post_id', $post->id)->update(['new' => false]);
+            }
+        }
         return view('dashboard.forum-post', compact('post'));
     }
 
@@ -43,6 +49,7 @@ class ForumController extends Controller
         $response = Forumpost::create($request->only('body'));
         $post->responses()->save($response);
         $response->user()->associate(Auth::user());
+        $response->new = true;
         $response->save();
 
         return redirect()->route('forum-posts', ['post_id' => $post->id]);

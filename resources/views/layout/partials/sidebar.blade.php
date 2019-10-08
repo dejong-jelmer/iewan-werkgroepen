@@ -63,8 +63,11 @@
 					<i class="fa fa-comments"></i> <span>Forum</span>
 					<span class="pull-right-container">
 						@if(auth()->user()->newForumPosts())
-						<small class="label pull-right bg-green">{{ auth()->user()->newForumPosts() }}</small>
+						  <small class="label pull-right bg-green">{{ auth()->user()->newForumPosts() }}</small>
 						@endif
+                        @if(auth()->user()->newPostResponses())
+                            <small class="label pull-right bg-orange">{{ auth()->user()->newPostResponses() }}</small>
+                        @endif
 					</span>
 				</a>
 			</li>

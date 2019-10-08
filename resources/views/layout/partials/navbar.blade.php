@@ -30,11 +30,11 @@
 						<li>
 							<!-- inner menu: contains the actual data -->
 							<ul class="menu">
-								{{-- @todo: newForumPostReplies() needs to be build --}}
-								@if(auth()->user()->newForumPostReplies())
+								{{-- @todo: newPostResponses() needs to be build --}}
+								@if(auth()->user()->newPostResponses())
 								<li>
-									<a href="#">
-										<i class="fa fa-comments text-aqua"></i> {{ auth()->user()->newForumPostReplies() }} reacties op je forumbericht
+									<a href="{{ route('forum') }}">
+										<i class="fa fa-comments text-aqua"></i> {{ auth()->user()->newPostResponses() }} reacties op je forumbericht
 									</a>
 								</li>
 								@endif

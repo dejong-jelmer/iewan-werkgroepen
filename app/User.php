@@ -71,7 +71,12 @@ class User extends Authenticatable
         }
         return $applicants;
     }
-
+    // posts made by user
+    public function posts()
+    {
+        return $this->hasMany('App\ForumPost', 'user_id');
+    }
+    // general forum posts made by any user, and nor read by this user
     public function forumPosts()
     {
         return $this->belongsToMany('App\ForumPost', 'forum_user');
@@ -90,16 +95,20 @@ class User extends Authenticatable
     {
         return $this->binderForms()->count();
     }
-    // @todo: find a way to know the forumpost created by user and find a way to link replies to it
-    public function newForumPostReplies()
+    // count of the responses to the forumpost made by this user
+    public function newPostResponses()
     {
-        return 2;
+        $responses = 0;
+        foreach($this->posts as $post) {
+            $responses += $post->responses()->where('new', true)->count();
+        }
+        return $responses;
     }
-    // @todo: reacties op forumberichten toevoegen
+
     public function notifications()
     {
         $notifications = 0;
-        $notifications += $this->newForumPostReplies();
+        $notifications += $this->newPostResponses();
         $notifications += $this->newBinderForms();
         $notifications += $this->newWorkgroupApplications();
         return $notifications;

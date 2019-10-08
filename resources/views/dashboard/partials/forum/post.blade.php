@@ -6,7 +6,7 @@
 		<img class="img-circle" src="https://i.pravatar.cc/200?img={{ $post->user->id }}}}" alt="User Image">
 		<span class="username">
 			<!-- TODO: UserProfileURL -->
-			<a href="{{ route('user', ['user_id' =>  $post->user->id]) }}">{{ $post->user->name }}</a>
+			<a href="{{ route('user', ['user_name' =>  $post->user->name]) }}">{{ $post->user->name }}</a>
 		</span>
 		<span class="description">{{ $post->created_at->diffForHumans() }}</span>
 	</div>

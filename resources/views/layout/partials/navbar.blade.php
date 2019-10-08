@@ -10,7 +10,7 @@
 	<nav class="navbar navbar-static-top" role="navigation">
 		<!-- Sidebar toggle button-->
 		<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-			<span class="sr-only">Toggle navigation</span>
+			<span class="sr-only">Menu in- en uitklappen</span>
 		</a>
 		<!-- Navbar Right Menu -->
 
@@ -20,7 +20,11 @@
 				<!-- Notifications: style can be found in dropdown.less -->
 				<li class="dropdown notifications-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						@if(!empty(auth()->user()->notifications()))
+						<i class="fa fa-bell"></i>
+						@else
 						<i class="fa fa-bell-o"></i>
+						@endif
 						{{-- @todo: heeft nog geen reacties op forumberichten komt nog --}}
 						<span class="label label-warning">{{ auth()->user()->notifications() }}</span>
 					</a>
@@ -95,7 +99,7 @@
 					<form action="{{ route('logout') }}" method="POST">
 						@csrf
 						<button type="submit" class="btn btn-link logout " title="Log uit">
-							<i class="fa fa-sign-out text-mute"></i>
+							<i class="fa fa-sign-out"></i>
 							<span class="sr-only">Log uit</span>
 						</button>
 					</form>

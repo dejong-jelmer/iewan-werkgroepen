@@ -8,17 +8,17 @@ TODO: User image function
 	</div>
 	<!-- /.box-header -->
 
-	<div class="box-body no-padding">
+	<div class="box-body">
 		<ul class="users-list clearfix">
 
 			@forelse($workgroup->activeUsers as $user)
 			<li>
-				<img src="https://i.pravatar.cc/48?u={{$user->id}}" alt="Profielfoto">
-				<a class="users-list-name" href="{{ route('user', ['user_id' =>  $user->id]) }}">{{ ucfirst($user->name) }}</a>
+				<a class="users-list-name" href="{{ route('user', ['user_id' =>  $user->id]) }}"><img src="https://i.pravatar.cc/48?u={{$user->id}}" alt="Profielfoto"><br>
+					{{ ucfirst($user->name) }}</a>
 			</li>
 
 			@empty
-			<p>Deze werkgroep heeft geen leden</p>
+			<p><i>Deze werkgroep heeft geen leden</i></p>
 			@endforelse
 
 		</ul>
@@ -28,11 +28,11 @@ TODO: User image function
 
 	<div class="box-footer text-center">
 		@if(auth()->user()->inWorkgroup($workgroup->id))
-    		<button class="btn btn-default" href="#" onclick="$('#leave-workgroup-form').submit();">Werkgroep verlaten</button>
+		<button class="btn btn-default" href="#" onclick="$('#leave-workgroup-form').submit();">Werkgroep verlaten</button>
 		@elseif(auth()->user()->hasAppliedForWorkgroup($workgroup->id))
-            <button class="btn btn-default" href="#" onclick="$('#leave-workgroup-form').submit();">Aanvraag intrekken</button>
-        @else
-    		<button class="btn btn-primary" href="#" onclick="$('#join-workgroup-form').submit();">Ga bij deze werkgroep</button>
+		<button class="btn btn-default" href="#" onclick="$('#leave-workgroup-form').submit();">Aanvraag intrekken</button>
+		@else
+		<button class="btn btn-primary" href="#" onclick="$('#join-workgroup-form').submit();">Ga bij deze werkgroep</button>
 		@endif
 	</div>
 	<!-- /.box-footer -->

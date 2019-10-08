@@ -8,7 +8,7 @@ TODO: archive workgroup function
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-	<h1>{{ $workgroup->name }}</h1>
+	<h1>{{ ucwords($workgroup->name) }}</h1>
 </section>
 
 

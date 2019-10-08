@@ -4,9 +4,6 @@
 
 				</div>
 
-
-
-
 				<div class="box-body no-padding">
 
 					<div class="table-responsive forum-messages">
@@ -19,9 +16,13 @@
 									<td class="forum-date text-muted" style="width: 200px;">{{ $post->created_at->diffForHumans() }}</td>
 									<td class="forum-subject"><a href="{{ route('forum-posts', ['post_id' => $post->id]) }}">{{ $post->title }}</a></td>
 									<td class="forum-user">
-										<!-- TODO: UserProfileUrl --><a href="#">{{ $post->user->id }}</a></td>
-									<td class="forum-comments-count text-muted" style="width: 150px;"><i class="fa fa-comments-o"></i>
-										<!-- TODO: CommentCount -->5 reacties</td>
+										<a href="{{ route('user', ['user_name' => $post->user->name]) }}">{{ $post->user->name }}</a></td>
+									<td class="forum-comments-count text-muted" style="width: 150px;">
+                                        @if($post->responses()->count() > 0)
+                                            <i class="fa fa-comments-o"></i>
+										  {{ $post->responses()->count() }} reacties
+                                         @endif
+                                    </td>
 									<td class="forum-comments-date text-muted" style="width: 300px;"> @if($post->updated_at != $post->created_at)
 										Laatste reactie: {{ $post->updated_at->diffForHumans() }} <!-- TODO: Dit doet het niet! -->
 										@endif</td>

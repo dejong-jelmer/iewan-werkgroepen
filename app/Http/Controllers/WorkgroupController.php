@@ -26,7 +26,7 @@ class WorkgroupController extends Controller
             return redirect()->back();
         }
         Auth::user()->workgroups()->attach($workgroup);
-        return redirect()->route('workgroup', ['workgroup_id' => $workgroup->name])->with('success', "Je aanmelding voor de werkgroep  $workgroup->name is verstuurd.");
+        return redirect()->route('workgroup', ['workgroup_id' => $workgroup->name])->with('success', "Je aanmelding voor de werkgroep " . ucwords($workgroup->name) . " is verstuurd.");
     }
 
     public function leaveWorkgroup($workgroup_id)
@@ -34,7 +34,7 @@ class WorkgroupController extends Controller
         $workgroup = Workgroup::find($workgroup_id);
         $workgroup->users()->detach(Auth::user());
         // Auth::user()->workgroups()->detach($workgroup);
-        return redirect()->route('workgroup', ['workgroup_id' => $workgroup->name])->with('success', "Je hebt $workgroup->name verlaten");
+        return redirect()->route('workgroup', ['workgroup_id' => $workgroup->name])->with('success', "Je hebt " . ucwords($workgroup->name) . " verlaten");
     }
 
     public function showWorkgroupMembers($workgroup_id)

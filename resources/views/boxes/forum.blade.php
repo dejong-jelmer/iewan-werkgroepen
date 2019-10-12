@@ -24,7 +24,7 @@
                                          @endif
                                     </td>
 									<td class="forum-comments-date text-muted" style="width: 300px;"> @if($post->updated_at != $post->created_at)
-										Laatste reactie: {{ $post->updated_at->diffForHumans() }} <!-- TODO: Dit doet het niet! -->
+										Laatste reactie: {{ $post->updated_at->diffForHumans() }}
 										@endif</td>
 								</tr>
 

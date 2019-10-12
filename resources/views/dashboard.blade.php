@@ -54,7 +54,7 @@
 
 
 		<div class="col-md-9">
-			@include('dashboard.partials.forumposts', [
+			@include('boxes.forum', [
 			'forumPosts' => $forumPosts
 			])
 

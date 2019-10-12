@@ -40,7 +40,7 @@ class ForumController extends Controller
                 $response->where('post_id', $post->id)->update(['new' => false]);
             }
         }
-        return view('dashboard.forum-post', compact('post'));
+        return view('forum.forum-post', compact('post'));
     }
 
     public function createForumResponse(Request $request, $post_id)

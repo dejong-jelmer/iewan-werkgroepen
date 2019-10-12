@@ -43,10 +43,14 @@ Route::middleware('auth')->group(function(){
         ->name('user-profile-post');
     Route::get('/forum', 'ForumController@showForum')
         ->name('forum');
-    Route::post('/forum/posts', 'ForumController@createForumPost')
+    Route::post('/forum/posts/create', 'ForumController@createForumPost')
         ->name('forum-post-create');
     Route::get('/forum/posts/{post_id}', 'ForumController@showForumPost')
         ->name('forum-posts');
+    Route::post('/forum/posts/{post_id}/edit', 'ForumController@editForumPost')
+        ->name('forum-post-edit');
+    Route::get('/forum/posts/{post_id}/delete', 'ForumController@deleteForumPost')
+        ->name('forum-post-delete');
     Route::post('/forum/response/{post_id}', 'ForumController@createForumResponse')
         ->name('user-forum-respone');
 

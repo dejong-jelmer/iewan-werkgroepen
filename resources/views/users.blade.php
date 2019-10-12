@@ -46,7 +46,7 @@
 						@forelse($users as $user)
 
 
-						@include('user.partials.user', [
+						@include('boxes.user', [
 						'user' => $user
 						])
 

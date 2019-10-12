@@ -1,5 +1,5 @@
 import FormComponent from './components/FormComponent.vue';
-console.log(fields);
+// console.log(fields);
 new Vue({
     el: '#app',
     components: {

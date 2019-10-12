@@ -27,7 +27,7 @@
 						@endif
 					</a>
 					<ul class="dropdown-menu">
-						<li class="header">Je hebt {{ auth()->user()->notifications() }} meldingen</li>
+						<li class="header">Je hebt {{ auth()->user()->notifications() == 0 ? 'geen' : auth()->user()->notifications() }} meldingen</li>
 						<li>
 							<!-- inner menu: contains the actual data -->
 							<ul class="menu">
@@ -83,9 +83,9 @@
 				<!-- User Account: style can be found in dropdown.less -->
 				<li class="user user-menu">
 					<a href="{{ route('profile') }}">
-						<img src="/AdminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+						<img src="{{ !empty(auth()->user()->photo) ? Storage::url(auth()->user()->photo) : asset('img/empty-avatar.jpg') }}" class="user-image" alt="User Image">
 
-						<span class="hidden-xs">{{ auth()->user()->name }}</span>
+						<span class="hidden-xs">{{ ucfirst(auth()->user()->name) }}</span>
 					</a>
 
 				</li>

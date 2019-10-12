@@ -29,18 +29,40 @@ class ForumController extends Controller
 
         return redirect()->route('forum')->with('success', 'Bericht aangemaakt.');
     }
+    public function editForumPost(Request $request, $post_id)
+    {
+        $request->validate([
+            'body' => 'required'
+        ]);
+        $post = Forumpost::find($post_id);
+        if($post->user->id == Auth::user()->id || Auth::user()->hasWorkgroupRole('intern')) {
+            $post->update(['body' => $request->body]);
+        }
 
-    public function showForumPost($post_id)
+        return redirect()->back()->with('success', 'Bericht aangepast.');
+    }
+
+    public function deleteForumPost($post_id)
+    {
+        $post = Forumpost::find($post_id);
+        if($post->user->id == Auth::user()->id || Auth::user()->hasWorkgroupRole('intern')) {
+            $post->delete();
+        }
+        return redirect()->back()->with('success', 'Bericht verwijderd.');
+    }
+
+    public function showForumPost(Request $request, $post_id)
     {
         $post = Forumpost::find($post_id);
         Auth::user()->forumPosts()->detach($post);
+        $isEdit = (($request->get('edit') == 'true') && ($post->user->id == Auth::user()->id || Auth::user()->hasWorkgroupRole('intern')));
         // set new responses for this user post back to false
         foreach (Auth::user()->posts as $userPost) {
             foreach($userPost->responses as $response) {
                 $response->where('post_id', $post->id)->update(['new' => false]);
             }
         }
-        return view('forum.forum-post', compact('post'));
+        return view('forum.forum-post', compact('post','isEdit'));
     }
 
     public function createForumResponse(Request $request, $post_id)

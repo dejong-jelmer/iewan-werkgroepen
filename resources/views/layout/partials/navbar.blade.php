@@ -16,25 +16,21 @@
 
 		<div class="navbar-custom-menu">
 			<ul class="nav navbar-nav">
-				<!-- TODO: Notifications werken dus nog niet -->
 				<!-- Notifications: style can be found in dropdown.less -->
 				<li class="dropdown notifications-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						@if(!empty(auth()->user()->notifications()))
 						<i class="fa fa-bell"></i>
+						<span class="label label-warning">{{ auth()->user()->notifications() }}</span>
 						@else
 						<i class="fa fa-bell-o"></i>
 						@endif
-						{{-- @todo: heeft nog geen reacties op forumberichten komt nog --}}
-						<span class="label label-warning">{{ auth()->user()->notifications() }}</span>
 					</a>
 					<ul class="dropdown-menu">
-						{{-- @todo: heeft nog geen reacties op forumberichten komt nog --}}
 						<li class="header">Je hebt {{ auth()->user()->notifications() }} meldingen</li>
 						<li>
 							<!-- inner menu: contains the actual data -->
 							<ul class="menu">
-								{{-- @todo: newPostResponses() needs to be build --}}
 								@if(auth()->user()->newPostResponses())
 								<li>
 									<a href="{{ route('forum') }}">

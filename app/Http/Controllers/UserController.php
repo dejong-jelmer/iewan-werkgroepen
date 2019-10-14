@@ -51,8 +51,8 @@ class UserController extends Controller
             // $img = \Illuminate\Support\Facades\Storage::get($path);
             // dd($request->avatar->hashName());
 
-            $avatar = \Image::make($request->avatar);
-            $avatar->resize(200, 200);
+            // $avatar = \Image::make($request->avatar);
+            // $avatar->resize(200, 200);
             // dd(new \Illuminate\Http\File($avatar));
             // \Illuminate\Support\Facades\Storage::putFile('public/avatars', new \Illuminate\Http\File($request->avatar), $request->avatar->hashName());
             // // dd($img);

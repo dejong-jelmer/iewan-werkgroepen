@@ -84,9 +84,10 @@
 						</li>
 					</ul>
 					@else
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="fa fa-bell"></i>
-					</a>
+					<span class="iw-no-notifications" title="Geen persoonlijke notificaties">
+
+						<i class="fa fa-bell-o"></i>
+					</span>
 					@endif
 				</li>
 

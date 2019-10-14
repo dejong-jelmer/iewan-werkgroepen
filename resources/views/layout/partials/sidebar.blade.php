@@ -47,7 +47,7 @@
 
 			<!-- klapper -->
 			<li class="{{ Request::route()->getName() == 'binder-forms' ? 'active' : '' }}">
-				<a href="{{ route('binder-forms') }}">
+				<a href="{{ route('binder') }}">
 					<i class="fa fa-address-book"></i> <span>Klapper</span>
 					<span class="pull-right-container">
 						@if(auth()->user()->newBinderForms())
@@ -73,8 +73,8 @@
 			</li>
 
 			<!-- Profiel -->
-			<li class="{{ Request::route()->getName() == 'profile' ? 'active' : '' }}">
-				<a href="{{ route('profile') }}"><i class="fa fa-user"></i><span>Mijn profiel</span></a>
+			<li class="{{ Request::route()->getName() == 'user' ? 'active' : '' }}">
+				<a href="{{ route('user', ['user_name' => auth()->user()->name]) }}"><i class="fa fa-user"></i><span>Mijn profiel</span></a>
 			</li>
 			<!-- Files -->
 			<li class="{{ Request::route()->getName() == 'files' ? 'active' : '' }}">

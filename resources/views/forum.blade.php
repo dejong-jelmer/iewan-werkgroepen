@@ -66,7 +66,7 @@
 										<a href="{{ route('forum-posts', ['post_id' => $post->id, 'edit' => 'true' ]) }}" class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></a>
 									</td>
 									<td class="iw-icon-cell">
-										<a href="{{route('forum-post-delete', ['post_id' => $post->id]) }}" class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></a>
+										<a href="{{route('delete-post', ['post_id' => $post->id]) }}" class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></a>
                                     </td>
 
 									@else

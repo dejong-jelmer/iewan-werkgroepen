@@ -14,7 +14,7 @@ class UserController extends Controller
     public function showUser(Request $request, $user_name)
     {
         $user = User::where('name', $user_name)->first();
-        return view('user.index', compact('user'));
+        return view('user', compact('user'));
     }
     public function showUsers()
     {
@@ -28,35 +28,45 @@ class UserController extends Controller
         return view('profile', ['user' => $user]);
     }
 
-    public function updateProfile(Request $request)
+    public function editProfile(Request $request)
     {
         $user = Auth::user();
         if($request->has('delete_profile_picture')) {
-            $user->photo = null;
+            $user->avatar = null;
         }
         $request->validate([
-            'name' => 'required|min:3|max:255',
-            'email' => 'required',
+            // 'name' => 'required|min:3|max:255',
+            'email' => 'required|email',
             Rule::unique('users')->ignore($user->id),
             'telephone' => 'string|size:10',
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        if($request->hasFile('profile_picture')){
-            if(!$request->profile_picture->isValid()) {
+        // dd($request->file('avatar'));
+        if($request->hasFile('avatar')){
+            if(!$request->avatar->isValid()) {
                 return redirect()->bacK()->with('error', 'Uploaden van foto is mislukt.');
             }
-            $img = $this->resize_image($request->profile_picture, 48, 48);
-            dd($img);
-            $path = $request->profile_picture->store('public/profile_pictures');
-            $avatar = $img->store('public/profile_pictures/avatars');
+            // $img = $this->resize_image($request->avatar, 48, 48);
+            $path = $request->avatar->store('public/avatars');
+            // $img = \Illuminate\Support\Facades\Storage::get($path);
+            // dd($request->avatar->hashName());
+
+            $avatar = \Image::make($request->avatar);
+            $avatar->resize(200, 200);
+            // dd(new \Illuminate\Http\File($avatar));
+            // \Illuminate\Support\Facades\Storage::putFile('public/avatars', new \Illuminate\Http\File($request->avatar), $request->avatar->hashName());
+            // // dd($img);
+            // dd();
+            $avatar = $avatar->save('img/'.$request->avatar->hashName());
+            // dd($path);
+            // $avatar = $img->store('public/avatars');
 
         }
         $user->update([
-            "name" => $request->name,
+            // "name" => $request->name,
             "email" => $request->email,
             "telephone" => $request->telephone,
-            'photo' => $path ?? $user->photo,
-            'avatar' => $avatar ?? $user->avatar
+            'avatar' => $avatar->basename ?? $user->avatar
         ]);
 
         return redirect()->bacK()->with('success', 'Profiel aangepast.');

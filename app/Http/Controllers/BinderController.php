@@ -12,19 +12,20 @@ use App\Workgroup;
 use App\BinderFormField;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Gate;
 
 class BinderController extends Controller
 {
     public function showForms()
     {
-        $binderForms = Auth::user()->hasWorkgroupRole('aanname') ? BinderForm::get() : BinderForm::where('released', true)->get();
+        $binderForms = Gate::allows('aanname', Auth::user()) ? BinderForm::get() : BinderForm::where('released', true)->get();
         $pending = BinderForm::where('response', null)->get();
         return view('binder', compact('binderForms', 'pending'));
     }
 
-    public function showForm($form_id)
+    public function showForm($binder_id)
     {
-        $form = BinderForm::find($form_id);
+        $form = BinderForm::find($binder_id);
         JavaScript::put([
             'responses' => decrypt($form->response),
             'fields' => $form->fields
@@ -33,20 +34,10 @@ class BinderController extends Controller
         return view('binder.show-form', compact('form'));
     }
 
-    public function showFormOptions()
-    {
-        $user = Auth::user();
-        if(!$user->hasWorkgroupRole('aanname')){
-            return redirect()->route('dashboard');
-        }
-
-        return view('binder.form-options');
-    }
-
     public function showEditForm()
     {
         $user = Auth::user();
-        if(!$user->hasWorkgroupRole('aanname')){
+        if(Gate::forUser($user)->denies('aanname')){
             return redirect()->route('dashboard');
         }
         $binderFormField = BinderFormField::select('fields')->get()->first();
@@ -80,7 +71,7 @@ class BinderController extends Controller
     public function showSendForm()
     {
         $user = Auth::user();
-        if(!$user->hasWorkgroupRole('aanname')){
+        if(Gate::forUser($user)->denies('aanname')){
             return redirect()->route('dashboard');
         }
         return view('binder.show-send-form');
@@ -93,7 +84,7 @@ class BinderController extends Controller
             'email' => 'required|email'
         ]);
         $user = Auth::user();
-        if(!$user->hasWorkgroupRole('aanname')){
+        if(Gate::forUser($user)->denies('aanname')){
             return redirect()->route('dashboard');
         }
         $fields = BinderFormField::first();
@@ -108,7 +99,7 @@ class BinderController extends Controller
         $form->expires = Carbon::now()->addMonth();
         $form->save();
         \Mail::to($request->email)->send(new \App\Mail\NewBinderForm($form));
-        return redirect()->route('binder-forms')->with('success', 'Mail verstuurd');
+        return redirect()->route('binder')->with('success', 'Mail verstuurd');
     }
 
     public function showIntakeForm($key)
@@ -161,7 +152,7 @@ class BinderController extends Controller
     public function releaseForm($form_id)
     {
         $user = Auth::user();
-        if(!$user->hasWorkgroupRole('aanname')){
+        if(Gate::forUser($user)->denies('aanname')){
             return redirect()->route('dashboard');
         }
         $form = BinderForm::find($form_id);
@@ -173,7 +164,7 @@ class BinderController extends Controller
         });
         $workgroup = Workgroup::getByRole('aanname');
         $workgroup->binderForms()->detach($form->id);
-        return redirect()->route('binder-forms')->with('success', 'Klapperformulier is vrijgeven');
+        return redirect()->route('binder')->with('success', 'Klapperformulier is vrijgeven');
     }
 
 }

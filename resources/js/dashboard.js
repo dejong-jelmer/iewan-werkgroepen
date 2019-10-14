@@ -55,13 +55,13 @@ $(document).ready(function () {
 		//		}
 		//	});
 
-		//	$('.prevent-default').click(function (event) {
-		//		event.preventDefault;
-		//	});
-
 		//	$('.workgroup-button').click(function () {
 		//		window.location.href = $(this).attr('href');
 		//	});
+		$('.prevent-default').click(function (event) {
+			event.preventDefault;
+		});
+
 
 		$('#toggle-edit-profile').click(function () {
 			$('.profile-field').toggleClass('is-hidden').prev().toggleClass('is-hidden');

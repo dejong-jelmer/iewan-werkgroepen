@@ -73,8 +73,7 @@ class User extends Authenticatable
     {
         $roles = !is_array($roles) ? [ $roles ] : $roles;
         return (bool) $this->activeWorkgroups->first(function($workgroup) use ($roles){
-            // webgroep members are always allowed to pass this check, so return true for them
-            return in_array($workgroup->role->role, $roles) || $this->isWebgroepMember();
+            return in_array($workgroup->role->role, $roles);
         });
     }
     /**

@@ -5,7 +5,7 @@
 {{-- ingelogde user content
 berwerk button voor editing van profiel
  --}}
-<form action="{{ route('user-profile-post') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('edit-user') }}" method="POST" enctype="multipart/form-data">
 	@csrf
 
 	<section class="content-header">

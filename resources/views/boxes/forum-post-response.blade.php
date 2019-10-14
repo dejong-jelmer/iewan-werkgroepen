@@ -10,7 +10,7 @@
 		<!-- /.box-tools -->
 	</div>
 	<!-- /.box-header -->
-        <form action="{{ route('user-forum-respone', [
+        <form action="{{ route('create-post-response', [
             'post_id' => $post->id
             ]) }}" method="POST">		@csrf
 		<div class="box-body">

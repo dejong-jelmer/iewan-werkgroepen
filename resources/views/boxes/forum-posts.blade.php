@@ -9,7 +9,7 @@
 		<!-- /.box-tools -->
 	</div>
 	<!-- /.box-header -->
-	<form action="{{ route('forum-post-create') }}" method="POST">
+	<form action="{{ route('create-post') }}" method="POST">
 		@csrf
 		<div class="box-body">
 

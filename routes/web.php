@@ -29,52 +29,49 @@ Route::middleware('guest')->group(function(){
 });
 
 Route::middleware('auth')->group(function(){
-    Route::get('/dashboard', 'DashboardController@showDashboard')
+    Route::get('/', 'DashboardController@showDashboard')
         ->name('dashboard');
     Route::get('/werkgroep/{workgroup}', 'WorkgroupController@showWorkgroup')
         ->name('workgroup');
-    Route::get('/bewoners/{user_name}', 'UserController@showUser')
-        ->name('user');
     Route::get('profiel', 'UserController@showProfile')
         ->name('profile');
-    Route::get('bestanden', 'FileController@showFiles')
-        ->name('files');
-    Route::post('gebruiker/profiel/aanpassen', 'UserController@updateProfile')
-        ->name('user-profile-post');
-    Route::get('/forum', 'ForumController@showForum')
-        ->name('forum');
-    Route::post('/forum/posts/create', 'ForumController@createForumPost')
-        ->name('forum-post-create');
-    Route::get('/forum/posts/{post_id}', 'ForumController@showForumPost')
-        ->name('forum-posts');
-    Route::post('/forum/posts/{post_id}/edit', 'ForumController@editForumPost')
-        ->name('forum-post-edit');
-    Route::get('/forum/posts/{post_id}/delete', 'ForumController@deleteForumPost')
-        ->name('forum-post-delete');
-    Route::post('/forum/response/{post_id}', 'ForumController@createForumResponse')
-        ->name('user-forum-respone');
-
-    Route::get('klapper', 'BinderController@showForms')
-        ->name('binder-forms');
-    Route::get('klapper/formulier/{form_id}', 'BinderController@showForm')
-        ->name('binder-form');
-
-    Route::get('werkgroep/klapper/formulieren', 'BinderController@showFormOptions')
-        ->name('workgroup-binder-form');
-    Route::get('werkgroep/klapper/formulier-bewerken', 'BinderController@showEditForm')
-        ->name('show-edit-binder-form');
-     Route::post('werkgroep/klapper/formulier-bewerken', 'BinderController@editForm')
-        ->name('post-edit-binder-form');
-     Route::get('werkgroep/klapper/formulier-versturen', 'BinderController@showSendForm')
-        ->name('show-send-binder-form');
-    Route::post('werkgroep/klapper/formulier-versturen', 'BinderController@sendForm')
-        ->name('post-send-binder-form');
-    Route::get('werkgroep/klapper/formulier/{form_id}/vrijgeven', 'BinderController@releaseForm')
-        ->name('release-form');
-
-
     Route::get('/bewoners', 'UserController@showUsers')
         ->name('users');
+    Route::get('/bewoners/{user_name}', 'UserController@showUser')
+        ->name('user');
+    Route::post('bewoners/{user_name}/aanpassen', 'UserController@editProfile')
+        ->name('edit-user');
+    Route::get('bestanden', 'FileController@showFiles')
+        ->name('files');
+    Route::get('/forum', 'ForumController@showForum')
+        ->name('forum');
+    Route::get('/forum/posts/{post_id}', 'ForumController@showPost')
+        ->name('forum-posts');
+    Route::post('/forum/posts/create', 'ForumController@createPost')
+        ->name('create-post');
+    Route::post('/forum/posts/{post_id}/edit', 'ForumController@editPost')
+        ->name('edit-post');
+    Route::get('/forum/posts/{post_id}/delete', 'ForumController@deletePost')
+        ->name('delete-post');
+    Route::post('/forum/posts/{post_id}/response', 'ForumController@createPostResponse')
+        ->name('create-post-response');
+
+    Route::get('klapper', 'BinderController@showForms')
+        ->name('binder');
+    Route::get('klapper/{binder_id}', 'BinderController@showForm')
+        ->name('binder-form');
+
+    Route::get('klapper/formulier/bewerken', 'BinderController@showEditForm')
+        ->name('show-edit-binder-form');
+     Route::post('klapper/formulier-bewerken', 'BinderController@editForm')
+        ->name('post-edit-binder-form');
+     Route::get('klapper/formulier-versturen', 'BinderController@showSendForm')
+        ->name('show-send-binder-form');
+    Route::post('klapper/formulier-versturen', 'BinderController@sendForm')
+        ->name('post-send-binder-form');
+    Route::get('klapper/formulier/{form_id}/vrijgeven', 'BinderController@releaseForm')
+        ->name('release-form');
+
 
     Route::post('/werkgroep/aanvraag/{workgroup_id}', 'WorkgroupController@joinWorkgroup')
         ->name('join-workgroup');

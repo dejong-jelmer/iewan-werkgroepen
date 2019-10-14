@@ -26,7 +26,7 @@ TODO: archive workgroup function
 	<div class="row">
 		<div class="col-md-9">
 
-			@include('workgroup.partials.tabs')
+			@include('boxes.tabs')
 
 			{{-- User is a member of this workgroup --}}
 			@if(auth()->user()->inWorkgroup($workgroup->id))

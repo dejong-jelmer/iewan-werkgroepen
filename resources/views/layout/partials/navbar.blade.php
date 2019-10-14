@@ -94,7 +94,7 @@
 				<!-- TODO: UserAvatar -->
 				<!-- User Account: style can be found in dropdown.less -->
 				<li class="user user-menu">
-					<a href="{{ route('profile') }}">
+					<a href="{{ route('user', ['user_name' => auth()->user()->name]) }}">
 						<img src="{{ !empty(auth()->user()->photo) ? Storage::url(auth()->user()->photo) : asset('img/empty-avatar.jpg') }}" class="user-image" alt="User Image">
 
 						<span class="hidden-xs">{{ ucfirst(auth()->user()->name) }}</span>

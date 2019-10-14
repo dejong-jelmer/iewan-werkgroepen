@@ -21,7 +21,7 @@ class WorkgroupController extends Controller
 
 	public function showNewWorkgroup()
     {
-        return view('new-workgroup');
+        return view('workgroup.new-workgroup');
     }
 
     public function joinWorkgroup($workgroup_id)

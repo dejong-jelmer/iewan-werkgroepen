@@ -5,196 +5,237 @@
 {{-- ingelogde user content
 berwerk button voor editing van profiel
  --}}
+<<<<<<< HEAD
 <form action="{{ route('edit-user') }}" method="POST" enctype="multipart/form-data">
+=======
+
+
+<form action="{{ route('user-profile-post') }}" method="POST" enctype="multipart/form-data">
+>>>>>>> 3993e97e9effbb3f0e5d4dd5de9ec59e838ccfa7
 	@csrf
 
 	<section class="content-header">
-		<h1>Mijn profiel</h1>
+		<h1>Bewerk profiel</h1>
 	</section>
+
+
+
+
 
 
 	<section class="content">
 
-		<div class="box box-primary">
+		<div class="row">
+			<div class="col-md-3 pull-right">
 
-			<div class="box-header with-border">
-				<h3 class="box-title">Contactgegevens</h3>
+				<div class="box">
+
+					<div class="box-body form-group">
+
+						<img id="profile-image" src="{{ !empty($user->avatar) ? Storage::url($user->avatar) : asset('img/empty-profile.jpg') }}" alt="Profielfoto" class="w-100" width="100%">
+					</div>
+
+					<div class="box-footer form-group">
+						@if($user->avatar)
+
+
+						<input type="button" class="input-file btn btn-primary" value="Upload een nieuwe foto" onclick="$(this).next().trigger('click')">
+						<input class="file-input" type="file" name="profile_picture" style="display: none">
+
+						<button type="submit" name="delete_profile_picture" class="btn btn-default pull-right"><i class="fa fa-trash"></i>Verwijder foto</button>
+						@else
+						<input type="button" class="input-file btn btn-primary" value="Upload een foto" onclick="$(this).next().trigger('click')">
+						<input class="file-input" type="file" name="profile_picture" style="display: none">
+
+						@endif
+					</div>
+
+
+					@if($errors->has('profile_picture'))
+					<div class="text-danger">
+						<small>{{ $errors->first('profile_picture') }}</small>
+					</div>
+					@endif
+
+				</div>
+
 			</div>
-			<!-- /.box-header -->
+			<!-- /.col -->
+			<div class="col-md-3">
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">Contact</h3>
 
-			<div class="row">
-				<!-- left column -->
-				<div class="col-md-8">
-					<!-- general form elements -->
-					<!-- form start -->
+						<div class="box-tools pull-right">
+
+						</div>
+					</div>
+					<!-- /.box-header -->
+
+					<div class="box-body">
+						<ul class="list-group list-group-unbordered">
+
+							<li class="list-group-item form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+								<label for="name" class="control-label">Naam</label> <input type="text" class="form-control" name="name" value="{{ $user->name }}" placeholder="Vul je naam in" autocomplete="off">
+								@if($errors->has('name'))
+								<div class="text-danger">
+									<small>{{ $errors->first('name') }}</small>
+								</div>
+								@endif
+							</li>
+
+							<li class="list-group-item form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+								<label for="email" class="control-label">Email</label> <input type="email" class="form-control" name="email" value="{{ $user->email }}" placeholder="Vul je email in" autocomplete="off">
+								@if($errors->has('email'))
+								<div class="text-danger">
+									<small>{{ $errors->first('email') }}</small>
+								</div>
+								@endif
+							</li>
+
+							<li class="list-group-item form-group {{ $errors->has('telephone') ? 'has-error' : '' }}">
+								<label for="telephone" class="control-label">Telefoon</label> <input type="numbers" class="form-control" name="telephone" value="{{ $user->telephone }}" placeholder="Vul je email in" autocomplete="off">
+								@if($errors->has('telephone'))
+								<div class="text-danger">
+									<small>{{ $errors->first('telephone') }}</small>
+								</div>
+								@endif
+							</li>
+
+
+
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">Wachtwoord</h3>
+
+					</div>
+					<!-- /.box-header -->
+
+					<div id="newPassword" class="box-body">
+
+						<button onclick="generatePassword()" class="btn btn-default" type="button">Nieuw wachtwoord</button>
+
+
+					</div>
+				</div>
+
+
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">Werkgroepen</h3>
+
+						<div class="box-tools pull-right">
+
+
+						</div>
+					</div>
+					<!-- /.box-header -->
+
 					<div class="box-body">
 
-						<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-							<label for="name" class="control-label">Naam</label>
-							<input type="text" class="form-control" name="name" value="{{ $user->name }}" placeholder="Vul je naam in" autocomplete="off" {{-- style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" --}}>
-                            @if($errors->has('name'))
-                                <div class="text-danger">
-                                    <small>{{ $errors->first('name') }}</small>
-                                </div>
-                            @endif
-						</div>
 
-						<div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-							<label for="email" class="control-label">E-mailadres</label>
-							<input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" placeholder="Vul je E-mailadres in" autocomplete="off" {{-- style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;" --}}>
-						</div>
-                        @if($errors->has('email'))
-                            <div class="text-danger">
-                                <small>{{ $errors->first('email') }}</small>
-                            </div>
-                        @endif
-						<div class="form-group {{ $errors->has('telephone') ? 'has-error' : '' }}">
-							<label>Telefoonnummer</label>
-							<input type="text" class="form-control" name="telephone" value="{{ $user->telephone }}" placeholder="Vul je telefoonnummer in" autocomplete="off" style="">
-						</div>
-                         @if($errors->has('telephone'))
-                            <div class="text-danger">
-                                <small>{{ $errors->first('telephone') }}</small>
-                            </div>
-                        @endif
+						@foreach($user->workgroups as $workgroup)
 
-						<form role="form">
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary">Opslaan</button>
-							</div>
-						</form>
 
+						<button class="btn label-default btn-xs margin-bottom">
+							<span class="sr-only">Verlaat </span>{{ $workgroup->name }} <i class="fa fa-trash"></i>
+						</button>
+						@endforeach
 					</div>
 					<!-- /.box-body -->
+					<div class="box-footer text-center">
 
-				</div>
-				<!--/.col (left) -->
-
-
-				<div class="col-md-4">
-					<div class="form-group">
-						<img id="profile-image" src="{{ !empty($user->avatar) ? Storage::url($user->avatar) : asset('img/empty-profile.jpg') }}" alt="User Avatar" class="w-100" width="100%">
 					</div>
-
-					<div class="form-group">
-						<input type="button" class="input-file btn btn-primary" value="Upload een foto" onclick="$(this).next().trigger('click')">
-                        <input class="file-input" type="file" name="profile_picture" style="display: none">
-
-						<button type="submit" name="delete_profile_picture" class="btn btn-warning pull-right">Verwijder foto</button>
-					</div>
-                    @if($errors->has('profile_picture'))
-                        <div class="text-danger">
-                            <small>{{ $errors->first('profile_picture') }}</small>
-                        </div>
-                    @endif
-
+					<!-- /.box-footer -->
 				</div>
-				<!--/.col (right) -->
+			</div>
+
+
+			<div class="col-md-6">
+
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">Over mij</h3>
+
+
+					</div>
+					<!-- /.box-header -->
+
+					<div class="box-body">
+						<textarea name="body" class="textarea editor" placeholder="Schrijfwat over jezelf..." row="6"></textarea>
+					</div>
+					<!-- /.box-body -->
+					<div class="box-footer text-center">
+
+					</div>
+					<!-- /.box-footer -->
+				</div>
+
+
+
 
 			</div>
-			<!-- /.row -->
+
+
+
 
 		</div>
-		<!-- /.box -->
 
+		<div class="row">
+			<div class="col-xs-12  form-group">
+				<button type="submit" class="btn btn-primary pull-right">Sla wijzigingen op</button>
+			</div>
+		</div>
 	</section>
 
-
-
-
-
-	{{-- <div class="columns first-element">
-        <div class="column is-6">
-            <div class="card">
-                <div class="card-image">
-                    <figure class="image is-3by2">
-                        <img id="profile-image" src="{{ asset("$fileUrl") }}" alt="{{ $fileUrl }}">
-                    </figure>
-                </div>
-            </div>
-        </div>
-        <div class="column is-6">
-            <div class="field">
-                <label class="label">Naam</label>
-                <div class="control @if($errors->count()) is-hidden @endif">
-                    <p>{{ $user->name }}</p>
-                </div>
-                <div class="control has-icons-left  profile-field @if(!$errors->count()) is-hidden @endif">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
-                    </span>
-                    <input name="name" class="input @if($errors->has('name')) is-danger @endif" type="text" placeholder="{{ $user->name }}">
-                    @if($errors->has('name'))
-                        <p class="has-text-danger">{{ $errors->first('name') }}</p>
-                    @endif
-                </div>
-            </div>
-            <div class="field">
-                <label class="label">Emailadres</label>
-                <div class="control @if($errors->count()) is-hidden @endif">
-                    <p>{{ $user->email }}</p>
-                </div>
-                <div class="control has-icons-left profile-field @if(!$errors->count()) is-hidden @endif">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
-                    </span>
-                    <input class="input" type="email" placeholder="{{ $user->email }}">
-                    @if($errors->has('email'))
-                        <p class="has-text-danger">{{ $errors->first('email') }}</p>
-                    @endif
-                </div>
-            </div>
-            <div class="field">
-                <label class="label">Telefoon</label>
-                <div class="control @if($errors->count()) is-hidden @endif">
-                    <p>{{ $user->telephone }}</p>
-                </div>
-                <div class="control has-icons-left profile-field @if(!$errors->count()) is-hidden @endif">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-phone"></i>
-                    </span>
-                    <input class="input" type="text" placeholder="{{ $user->telephone }}">
-                    @if($errors->has('telephone'))
-                        <p class="has-text-danger">{{ $errors->first('telephone') }}</p>
-                    @endif
-                </div>
-            </div>
-            <div class="field">
-                <div class="file has-name @if(!$errors->count()) is-hidden @endif profile-field">
-                    <label class="file-label">
-                        <input class="file-input" type="file" name="profile_picture">
-                        <span class="file-cta">
-                            <span class="file-icon">
-                                <i class="fas fa-upload"></i>
-                            </span>
-                            <span class="file-label">
-                                Upload foto
-                            </span>
-                        </span>
-                        <span class="file-name">
-                        </span>
-                    </label>
-                    @if($errors->has('profile-picture'))
-                        <p class="has-text-danger">{{ $errors->first('profile-picture') }}</p>
-                    @endif
-                </div>
-            </div>
-            <div class="columns">
-                <div class="column is-6">
-                    <div class="control">
-                        <a id="toggle-edit-profile" class="button is-primary prevent-default @if($errors->count()) is-hidden @endif">Aanpassen</a>
-                    </div>
-                </div>
-                <div class="column is-6">
-                    <div class="control is-pulled-right">
-                        <button class="button is-success @if(!$errors->count()) is-hidden @endif profile-field">Opslaan</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
- --}}
 </form>
+
+
+<script>
+	function generatePassword() {
+
+		var length = 28,
+			charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+=/\|{}~?;:~€",
+			retVal = "";
+		for (var i = 0, n = charset.length; i < length; ++i) {
+			retVal += charset.charAt(Math.floor(Math.random() * n));
+		}
+
+		var Password = retVal;
+
+		document.getElementById("newPassword").innerHTML = '<div class="form-group"><input id="password" class="form-control" value="' + Password + '" type="password" name="password" autocomplete="off"></div><button class="btn btn-default" onclick="SeePassword()" type="button"><i id="eye" class="fa fa-eye"></i></button> <button onclick="cancelPassword()" class="btn btn-default" type="button">Annuleren</button>';
+	}
+
+	function SeePassword() {
+		var password = document.getElementById("password");
+		if (password.type === "password") {
+			password.type = "text";
+		} else {
+			password.type = "password";
+		}
+		var icon = document.getElementById("eye");
+		if (icon.className === "fa fa-eye") {
+			icon.className = "fa fa-eye-slash";
+		} else {
+			icon.className = "fa fa-eye";
+		}
+	}
+
+	function cancelPassword() {
+		document.getElementById("newPassword").innerHTML = '<button onclick="generatePassword()" class="btn btn-default" type="button">Nieuw wachtwoord</Button>';
+	}
+
+</script>
+
+
+
+
+
 @else
 {{-- content voor de niet ingelogde user --}}
 

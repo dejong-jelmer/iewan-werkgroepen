@@ -23,13 +23,13 @@
 				<div class="box-header with-border">
 					<h3 class="box-title">Berichten</h3>
 
-					<!-- TODO: ForumPagination -->
-
 					<div class="box-tools pull-right">
-
-
-						<!-- /.btn-group -->
-
+						<div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+							<input type="text" name="table_search" class="form-control pull-right" placeholder="Doorzoek het forum">
+							<div class="input-group-btn">
+								<button type="submit" class="btn btn-default"><i class="fa fa-search"></i><span class="sr-only">Doorzoek het forum</span></button>
+							</div>
+						</div>
 					</div>
 					<!-- /.box-tools -->
 				</div>
@@ -48,17 +48,19 @@
 									<td class="forum-subject"><a href="{{ route('forum-posts', ['post_id' => $post->id]) }}">{{ $post->title }}</a></td>
 									<td class="forum-user">
 										<a href="{{ route('user', ['user_name' =>  $post->user->name]) }}">{{ ucfirst($post->user->name) }}</a></td>
+
 									<td class="forum-comments-count text-muted" style="width: 150px;">
-                                        @if($post->responses()->count() > 0)
-                                            <i class="fa fa-comments-o"></i>
-										    {{ $post->responses()->count() }} reacties
-                                        @endif
-                                    </td>
+										@if($post->responses()->count() > 0)
+										<i class="fa fa-comments-o"></i>
+										{{ $post->responses()->count() }} reacties
+										@endif
+									</td>
 									<td class="forum-comments-date text-muted" style="width: 300px;">
-                                        @if($post->updated_at != $post->created_at)
-										  laatste: {{ $post->updated_at->diffForHumans() }}
-										  @endif
-                                    </td>
+										@if($post->updated_at != $post->created_at)
+										laatste: {{ $post->updated_at->diffForHumans() }}
+										@endif
+									</td>
+
 
 									@if(auth()->user()->hasWorkgroupRole('intern') || $post->user->id == auth()->user()->id )
 
@@ -66,8 +68,13 @@
 										<a href="{{ route('forum-posts', ['post_id' => $post->id, 'edit' => 'true' ]) }}" class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></a>
 									</td>
 									<td class="iw-icon-cell">
+<<<<<<< HEAD
 										<a href="{{route('delete-post', ['post_id' => $post->id]) }}" class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></a>
                                     </td>
+=======
+										<a href="{{route('forum-post-delete', ['post_id' => $post->id]) }}" class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></a>
+									</td>
+>>>>>>> 3993e97e9effbb3f0e5d4dd5de9ec59e838ccfa7
 
 									@else
 									<!-- Empty <td> tags to keep the columns aligned -->

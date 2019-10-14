@@ -90,10 +90,12 @@ TODO: Pagination
 	<!-- /.box-body -->
 
 	<div class="box-footer clearfix">
+		@if((Request::route()->getName() == 'files') || (auth()->user()->inWorkgroup($workgroup->id)))
 		<div class="file-upload pull-left">
 			<button class="btn btn-primary toggle scroll" data-target="file-upload">Nieuw bestand toevoegen</button>
 
 		</div>
+		@endif
 		<ul class="pagination pagination-sm no-margin pull-right">
 			<li><a href="#">&laquo;</a></li>
 			<li><a href="#">1</a></li>

@@ -19,6 +19,11 @@ class WorkgroupController extends Controller
         return view('workgroup', compact('workgroup'));
     }
 
+	public function showNewWorkgroup()
+    {
+        return view('new-workgroup');
+    }
+
     public function joinWorkgroup($workgroup_id)
     {
         $workgroup = Workgroup::find($workgroup_id);

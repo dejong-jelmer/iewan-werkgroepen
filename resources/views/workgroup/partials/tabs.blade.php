@@ -3,7 +3,7 @@ TODO: Whole tabs function
 ------------------------->
 
 
-	<div class="nav-tabs-custom">
+<div class="nav-tabs-custom">
 
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="#algemeen" data-toggle="tab">Algemeen</a></li>
@@ -19,7 +19,7 @@ TODO: Whole tabs function
 		<div class="active tab-pane" id="algemeen">
 			<!-- box-header -->
 			<div class="box-header">
-				<h3 class="box-title">Informatie</h3>
+				<h3 class="box-title">Algemeen</h3>
 				@if(auth()->user()->inWorkgroup($workgroup->id))
 				<div class="box-tools pull-right">
 					<button type="button" class="btn btn-box-tool" data-widget="editor">

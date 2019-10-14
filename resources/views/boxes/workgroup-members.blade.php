@@ -26,11 +26,11 @@ TODO: User image function
 	</div>
 	<!-- /.box-body -->
 
-	<div class="box-footer text-center">
+	<div class="box-footer">
 		@if(auth()->user()->inWorkgroup($workgroup->id))
-		<button class="btn btn-default" href="#" onclick="$('#leave-workgroup-form').submit();">Werkgroep verlaten</button>
+		<button class="btn btn-default pull-right" href="#" onclick="$('#leave-workgroup-form').submit();">Werkgroep verlaten</button>
 		@elseif(auth()->user()->hasAppliedForWorkgroup($workgroup->id))
-		<button class="btn btn-default" href="#" onclick="$('#leave-workgroup-form').submit();">Aanvraag intrekken</button>
+		<button class="btn btn-default pull-right" href="#" onclick="$('#leave-workgroup-form').submit();">Aanvraag intrekken</button>
 		@else
 		<button class="btn btn-primary" href="#" onclick="$('#join-workgroup-form').submit();">Ga bij deze werkgroep</button>
 		@endif

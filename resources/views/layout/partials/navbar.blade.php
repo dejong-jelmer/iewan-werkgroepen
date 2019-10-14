@@ -24,11 +24,8 @@
 						<i class="fa fa-bell"></i>
 
 						{{-- @todo: heeft nog geen reacties op forumberichten komt nog --}}
-
 						<span class="label label-warning">{{ auth()->user()->notifications() }}</span>
-						@else
-						<i class="fa fa-bell-o"></i>
-						@endif
+
 					</a>
 					<ul class="dropdown-menu">
 						<li class="header">Je hebt {{ auth()->user()->notifications() == 0 ? 'geen' : auth()->user()->notifications() }} meldingen</li>

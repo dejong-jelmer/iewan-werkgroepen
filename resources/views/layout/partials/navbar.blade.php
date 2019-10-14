@@ -19,12 +19,11 @@
 				<!-- TODO: Notifications werken dus nog niet -->
 				<!-- Notifications: style can be found in dropdown.less -->
 				<li class="dropdown notifications-menu">
+					@if(!empty(auth()->user()->notifications()))
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						@if(!empty(auth()->user()->notifications()))
+
 						<i class="fa fa-bell"></i>
-						@else
-						<i class="fa fa-bell-o"></i>
-						@endif
+
 						{{-- @todo: heeft nog geen reacties op forumberichten komt nog --}}
 						<span class="label label-warning">{{ auth()->user()->notifications() }}</span>
 					</a>
@@ -42,6 +41,11 @@
 									</a>
 								</li>
 								@endif
+
+
+
+
+
 								@if(auth()->user()->newBinderForms() > 0)
 								<li>
 									<a href="#">
@@ -81,6 +85,12 @@
 							</ul>
 						</li>
 					</ul>
+					@else
+					<span class="iw-no-notifications" title="Geen persoonlijke notificaties">
+
+						<i class="fa fa-bell-o"></i>
+					</span>
+					@endif
 				</li>
 
 				<!-- TODO: UserAvatar -->

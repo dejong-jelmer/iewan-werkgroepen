@@ -26,10 +26,12 @@
 					<!-- TODO: ForumPagination -->
 
 					<div class="box-tools pull-right">
-
-
-						<!-- /.btn-group -->
-
+						<div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+							<input type="text" name="table_search" class="form-control pull-right" placeholder="Doorzoek het forum">
+							<div class="input-group-btn">
+								<button type="submit" class="btn btn-default"><i class="fa fa-search"></i><span class="sr-only">Doorzoek het forum</span></button>
+							</div>
+						</div>
 					</div>
 					<!-- /.box-tools -->
 				</div>
@@ -49,11 +51,11 @@
 									<td class="forum-user">
 										<!-- TODO: UserProfileUrl --><a href="{{ route('user', ['user_name' =>  $post->user->name]) }}">{{ $post->user->name }}</a></td>
 									<td class="forum-comments-count text-muted" style="width: 150px;">
-                                        @if($post->responses()->count() > 0)
-                                            <i class="fa fa-comments-o"></i>
-										    {{ $post->responses()->count() }} reacties
-                                        @endif
-                                    </td>
+										@if($post->responses()->count() > 0)
+										<i class="fa fa-comments-o"></i>
+										{{ $post->responses()->count() }} reacties
+										@endif
+									</td>
 									<td class="forum-comments-date text-muted" style="width: 300px;"> @if($post->updated_at != $post->created_at)
 										Laatste reactie: {{ $post->updated_at->diffForHumans() }}
 										@endif</td>

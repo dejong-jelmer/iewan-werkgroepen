@@ -72,6 +72,9 @@ Route::middleware('auth')->group(function(){
     Route::get('werkgroep/klapper/formulier/{form_id}/vrijgeven', 'BinderController@releaseForm')
         ->name('release-form');
 
+	    Route::get('nieuwe-werkgroep', 'WorkgroupController@showNewWorkgroup')
+        ->name('new-workgroup');
+
 
     Route::get('/bewoners', 'UserController@showUsers')
         ->name('users');

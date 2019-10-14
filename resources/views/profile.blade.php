@@ -73,7 +73,7 @@ berwerk button voor editing van profiel
 
 				<div class="col-md-4">
 					<div class="form-group">
-						<img id="profile-image" src="{{ !empty($user->photo) ? Storage::url($user->photo) : asset('img/empty-avatar.jpg') }}" alt="User Avatar" class="w-100" width="100%">
+						<img id="profile-image" src="{{ !empty($user->avatar) ? Storage::url($user->avatar) : asset('img/empty-profile.jpg') }}" alt="User Avatar" class="w-100" width="100%">
 					</div>
 
 					<div class="form-group">

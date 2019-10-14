@@ -49,24 +49,29 @@
 									<td class="forum-date text-muted" style="width: 200px;">{{ $post->created_at->diffForHumans() }}</td>
 									<td class="forum-subject"><a href="{{ route('forum-posts', ['post_id' => $post->id]) }}">{{ $post->title }}</a></td>
 									<td class="forum-user">
-										<!-- TODO: UserProfileUrl --><a href="{{ route('user', ['user_name' =>  $post->user->name]) }}">{{ $post->user->name }}</a></td>
+										<a href="{{ route('user', ['user_name' =>  $post->user->name]) }}">{{ ucfirst($post->user->name) }}</a></td>
+
 									<td class="forum-comments-count text-muted" style="width: 150px;">
 										@if($post->responses()->count() > 0)
 										<i class="fa fa-comments-o"></i>
 										{{ $post->responses()->count() }} reacties
 										@endif
 									</td>
-									<td class="forum-comments-date text-muted" style="width: 300px;"> @if($post->updated_at != $post->created_at)
-										Laatste reactie: {{ $post->updated_at->diffForHumans() }}
-										@endif</td>
+									<td class="forum-comments-date text-muted" style="width: 300px;">
+										@if($post->updated_at != $post->created_at)
+										laatste: {{ $post->updated_at->diffForHumans() }}
+										@endif
+									</td>
+
 
 									@if(auth()->user()->hasWorkgroupRole('intern') || $post->user->id == auth()->user()->id )
 
 									<td class="iw-icon-cell">
-										<button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button>
+										<a href="{{ route('forum-posts', ['post_id' => $post->id, 'edit' => 'true' ]) }}" class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></a>
 									</td>
 									<td class="iw-icon-cell">
-										<button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
+										<a href="{{route('forum-post-delete', ['post_id' => $post->id]) }}" class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></a>
+									</td>
 
 									@else
 									<!-- Empty <td> tags to keep the columns aligned -->

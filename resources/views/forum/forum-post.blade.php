@@ -24,17 +24,18 @@
 			<div class="box">
 
 
-				@include('dashboard.partials.forum.post', [
+				@include('boxes.forum-post', [
 				'post' => $post,
 				'showBody' => true,
-				'allowResponse' => true
+				'allowResponse' => true,
+                'edit' => !empty($isEdit) ? $isEdit : false
 				])
 			</div>
 			<div class="box">
 				<!-- TODO: CommentCheck -->
 				<div class="box-header with-border">
 					<!-- TODO CommentCount -->
-					<h3 class="box-title">5 reacties</h3>
+					<h3 class="box-title">{{ $post->responses()->count() }} reacties</h3>
 
 					<div class="box-tools pull-right">
 
@@ -42,7 +43,7 @@
 				</div>
 
 				@forelse($post->responses as $response)
-				@include('dashboard.partials.forum.post', [
+				@include('boxes.forum-post', [
 				'post' => $response,
 				'showBody' => true,
 				'allowResponse' => false
@@ -51,9 +52,7 @@
 				@endforelse
 			</div>
 
-			@include('dashboard.partials.forum.response', ['post' => $post])
-
-
+			@include('boxes.forum-post-response', ['post' => $post])
 
 		</div>
 		<!-- /.col -->

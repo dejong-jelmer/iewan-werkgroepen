@@ -16,7 +16,6 @@
 
 		<div class="navbar-custom-menu">
 			<ul class="nav navbar-nav">
-				<!-- TODO: Notifications werken dus nog niet -->
 				<!-- Notifications: style can be found in dropdown.less -->
 				<li class="dropdown notifications-menu">
 					@if(!empty(auth()->user()->notifications()))
@@ -25,15 +24,17 @@
 						<i class="fa fa-bell"></i>
 
 						{{-- @todo: heeft nog geen reacties op forumberichten komt nog --}}
+
 						<span class="label label-warning">{{ auth()->user()->notifications() }}</span>
+						@else
+						<i class="fa fa-bell-o"></i>
+						@endif
 					</a>
 					<ul class="dropdown-menu">
-						{{-- @todo: heeft nog geen reacties op forumberichten komt nog --}}
-						<li class="header">Je hebt {{ auth()->user()->notifications() }} meldingen</li>
+						<li class="header">Je hebt {{ auth()->user()->notifications() == 0 ? 'geen' : auth()->user()->notifications() }} meldingen</li>
 						<li>
 							<!-- inner menu: contains the actual data -->
 							<ul class="menu">
-								{{-- @todo: newPostResponses() needs to be build --}}
 								@if(auth()->user()->newPostResponses())
 								<li>
 									<a href="{{ route('forum') }}">
@@ -97,9 +98,9 @@
 				<!-- User Account: style can be found in dropdown.less -->
 				<li class="user user-menu">
 					<a href="{{ route('profile') }}">
-						<img src="/AdminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+						<img src="{{ !empty(auth()->user()->photo) ? Storage::url(auth()->user()->photo) : asset('img/empty-avatar.jpg') }}" class="user-image" alt="User Image">
 
-						<span class="hidden-xs">{{ auth()->user()->name }}</span>
+						<span class="hidden-xs">{{ ucfirst(auth()->user()->name) }}</span>
 					</a>
 
 				</li>
@@ -117,14 +118,6 @@
 				</li>
 
 
-
-
-				<!-- Control Sidebar Toggle Button -->
-				<!-- TODO: Gaan we vast niet gebruiken.
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
--->
 			</ul>
 		</div>
 	</nav>

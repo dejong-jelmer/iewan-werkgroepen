@@ -1,7 +1,7 @@
         <tr>
 
-        	<td><img src="https://i.pravatar.cc/48?u={{$user->id}}" alt="User Avatar"></td>
-        	<td><a href="{{ route('user', ['user_name' =>  $user->name]) }}">{{ $user->name }}</a></td>
+        	<td><img src="{{ !empty($user->photo) ? Storage::url($user->photo) : asset('img/empty-avatar.jpg') }}" alt="User Avatar"></td>
+        	<td><a href="{{ route('user', ['user_name' =>  $user->name]) }}">{{ ucfirst($user->name) }}</a></td>
         	<td><a href="mailto:{{ $user->email }}" class="text-muted">{{ $user->email }}</a></td>
         	<td>
         		@forelse($user->workgroups as $workgroup)

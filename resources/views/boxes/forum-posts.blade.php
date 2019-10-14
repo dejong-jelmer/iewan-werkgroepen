@@ -1,7 +1,6 @@
 <div id="forum-post" class="box box-primary" style="display: none;">
 	<div class="box-header with-border primary">
 		<h3 class="box-title">Nieuw Bericht</h3>
-
 		<!-- TODO: ForumPagination -->
 		<div class="box-tools pull-right">
 

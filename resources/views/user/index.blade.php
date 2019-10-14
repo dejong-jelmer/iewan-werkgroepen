@@ -18,7 +18,12 @@
 			<div class="box">
 
 				<div class="box-body">
-					<img src="{{ !empty($user->photo) ? Storage::url($user->photo) : asset('img/empty-avatar.jpg') }}" alt="Profielfoto" class="w-100" width="100%">
+					<img id="avatar" src="{{ !empty($user->photo) ? Storage::url($user->photo) : asset('img/empty-profile.jpg') }}" alt="Profielfoto" class="w-100" width="100%"
+                        @if(auth()->user()->id == $user->id )
+                            onclick="$(this).next().trigger('click')
+                        @endif
+                    ">
+                    <input class="upload-avatar" type="file" name="profile_picture" style="display: none">
 				</div>
 				<!-- /.box-body -->
 

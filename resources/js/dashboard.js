@@ -67,11 +67,10 @@ $(document).ready(function () {
 			$('.profile-field').toggleClass('is-hidden').prev().toggleClass('is-hidden');
 		});
         // profile picuter is loaded on the profile page so user can see the uploaded file
-		$('.file-input').change(function (event) {
+		$('.upload-avatar').change(function (event) {
 			var filename = $(this).val().split('\\').pop();
-			$('.file-name').html(filename);
 			var newFilePath = URL.createObjectURL(event.target.files[0])
-			$('#profile-image').attr('src', newFilePath);
+			$('#avatar').attr('src', newFilePath);
 		});
 	//	$('#add_binderform_field').click(function () {
 	//		$('.remove_binderform_field').show();
@@ -99,16 +98,21 @@ $(document).ready(function () {
 
 	// text editor (https://ckeditor.com/docs/ckeditor5)
     if (document.querySelector('.editor')) {
-        ClassicEditor.create(document.querySelector('.editor'), {
-        removePlugins: [ 'Heading', 'blockQuote'],
-        toolbar: [ 'bold', 'italic', 'bulletedList', 'numberedList', 'link' ]
-    })
+        $('.editor').each(function(){
+            ClassicEditor.create(this, {
+                removePlugins: [ 'Heading', 'blockQuote'],
+                toolbar: [ 'bold', 'italic', 'bulletedList', 'numberedList', 'link' ]
+            })
             .then(editor => {
                 // console.log( editor );
             })
             .catch(error => {
                 console.error(error);
             });
+
+
+        });
+
     }
 
 

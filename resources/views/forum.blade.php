@@ -23,8 +23,6 @@
 				<div class="box-header with-border">
 					<h3 class="box-title">Berichten</h3>
 
-					<!-- TODO: ForumPagination -->
-
 					<div class="box-tools pull-right">
 						<div class="input-group input-group-sm hidden-xs" style="width: 150px;">
 							<input type="text" name="table_search" class="form-control pull-right" placeholder="Doorzoek het forum">

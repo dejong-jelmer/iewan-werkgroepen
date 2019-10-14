@@ -35,8 +35,7 @@
 							<th>Email</th>
 							<th>Werkgroepen</th>
 							<th class="iw-icon-cell"></th>
-							@if(auth()->user()->hasWorkgroupRole('aanname') )
-							<th class="iw-icon-cell"></th>
+							@if(auth()->user()->hasWorkgroupRole('aanname') )							<th class="iw-icon-cell"></th>
 
 							@endif
 

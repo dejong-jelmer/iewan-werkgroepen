@@ -3,8 +3,14 @@
 @section('content')
 
 <!-- Content Header (Page header) -->
-<section class="content-header">
-	<h1>{{ ucfirst($user->name) }}</h1>
+<section class="content-header clearfix">
+	<h1 class="pull-left ">
+		{{ ucfirst($user->name) }}
+	</h1>
+	@if(auth()->user()->hasWorkgroupRole('aanname') || $user->id == auth()->user()->id )
+	<button class="btn btn-primary margin-bottom pull-right">
+		<i class="fa fa-pencil"></i> Bewerk het profiel</button>@endif
+
 
 </section>
 <!-- / Conten Header -->
@@ -13,17 +19,12 @@
 <section class="content">
 
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-3 pull-right">
 
 			<div class="box">
 
 				<div class="box-body">
-					<img id="avatar" src="{{ !empty($user->photo) ? Storage::url($user->photo) : asset('img/empty-profile.jpg') }}" alt="Profielfoto" class="w-100" width="100%"
-                        @if(auth()->user()->id == $user->id )
-                            onclick="$(this).next().trigger('click')
-                        @endif
-                    ">
-                    <input class="upload-avatar" type="file" name="profile_picture" style="display: none">
+					<img id="profile-image" src="{{ !empty($user->avatar) ? Storage::url($user->photo) : asset('img/empty-profile.jpg') }}" alt="Profielfoto" class="w-100" width="100%">
 				</div>
 				<!-- /.box-body -->
 
@@ -45,10 +46,10 @@
 				<div class="box-body">
 					<ul class="list-group list-group-unbordered">
 						<li class="list-group-item">
-							<b>Email</b> <a href="mailto:{{ ucfirst($user->email) }}" class="pull-right">{{ ucfirst($user->email) }}</a>
+							<b>Email</b> <a href="mailto:{{ $user->email }}" class="pull-right">{{ $user->email }}</a>
 						</li>
 						<li class="list-group-item">
-							<b>Telefoon</b> <a href="tel:{{ ucfirst($user->telephone) }}" class="pull-right">{{ ucfirst($user->telephone) }}</a>
+							<b>Telefoon</b> <a href="tel:{{ $user->telephone }}" class="pull-right">{{ $user->telephone }}</a>
 						</li>
 
 
@@ -90,11 +91,7 @@
 		</div>
 
 
-
-	</div>
-
-	<div class="row">
-		<div class="col-md-7">
+		<div class="col-md-6">
 
 			<div class="box">
 				<div class="box-header with-border">
@@ -126,7 +123,5 @@
 
 	</div>
 </section>
-
-
 
 @endsection

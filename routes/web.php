@@ -31,7 +31,7 @@ Route::middleware('guest')->group(function(){
 Route::middleware('auth')->group(function(){
     Route::get('/', 'DashboardController@showDashboard')
         ->name('dashboard');
-    Route::get('/werkgroep/{workgroup}', 'WorkgroupController@showWorkgroup')
+    Route::get('/werkgroepen/{workgroup}', 'WorkgroupController@showWorkgroup')
         ->name('workgroup');
     Route::get('profiel', 'UserController@showProfile')
         ->name('profile');
@@ -72,8 +72,7 @@ Route::middleware('auth')->group(function(){
     Route::get('klapper/formulier/{form_id}/vrijgeven', 'BinderController@releaseForm')
         ->name('release-form');
 
-	    Route::get('nieuwe-werkgroep', 'WorkgroupController@showNewWorkgroup')
-        ->name('new-workgroup');
+
 
 
     Route::post('/werkgroep/aanvraag/{workgroup_id}', 'WorkgroupController@joinWorkgroup')
@@ -84,5 +83,7 @@ Route::middleware('auth')->group(function(){
         ->name('workgroup-accept-application');
     Route::get('/werkgroep/aanvraag/wijgeren', 'WorkgroupController@declineUserApplication')
         ->name('workgroup-decline-application');
+    Route::get('/werkgroep/nieuw', 'WorkgroupController@showNewWorkgroup')
+        ->name('new-workgroup');
 
 });

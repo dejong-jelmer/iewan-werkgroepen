@@ -12,7 +12,7 @@
 
 <section class="content">
 	<div class="row">
-		<div class="col-md-9">	
+		<div class="col-md-9">
 
 			@if($errors->count())
 			<div class="notification is-danger">
@@ -39,7 +39,8 @@
 						</div>
 						<div v-else-if="field.type == 'checkbox'" class="form-group">
 								<label>@{{ field.name.replace('_', ' ') }}<small v-if="field.required == 1">&nbsp;*</small></label>
-								<input :name="field.name" type="hidden" value="0" class="form-control">						<input onclick="$(this).prev().val(this.checked ? 1 : 0)" type="checkbox" class="form-control">
+								<input :name="field.name" type="hidden" value="0" class="form-control">
+                                <input onclick="$(this).prev().val(this.checked ? 1 : 0)" type="checkbox" class="form-control">
 						</div>
 						<div class="form-group">
 							<label>Foto</label>

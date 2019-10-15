@@ -38,7 +38,6 @@ class WorkgroupController extends Controller
     {
         $workgroup = Workgroup::find($workgroup_id);
         $workgroup->users()->detach(Auth::user());
-        // Auth::user()->workgroups()->detach($workgroup);
         return redirect()->route('workgroup', ['workgroup_id' => $workgroup->name])->with('success', "Je hebt " . ucwords($workgroup->name) . " verlaten");
     }
 

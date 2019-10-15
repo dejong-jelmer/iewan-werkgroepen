@@ -40,7 +40,7 @@
 						<table class="table table-hover table-striped">
 							<tbody>
 								@forelse($posts as $post)
-								@if(!empty($post))
+							@if(!empty($post))
 								<tr>
 									<!-- TODO: .new message class -->
 									<td class="forum-alert text-yellow" style="width: 30px;"><i class="fa fa-comment-o"></i></td>
@@ -62,42 +62,34 @@
 									</td>
 
 
-									@if(auth()->user()->hasWorkgroupRole('intern') || $post->user->id == auth()->user()->id )
+									@if(Gate::allows('edit-post', $post))
+    									<td class="iw-icon-cell">
+    										<a href="{{ route('forum-posts', ['post_id' => $post->id, 'edit' => 'true' ]) }}" class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></a>
+    									</td>
+									@endif
+                                    @if(Gate::allows('delete-post', $post))
 
-									<td class="iw-icon-cell">
-										<a href="{{ route('forum-posts', ['post_id' => $post->id, 'edit' => 'true' ]) }}" class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></a>
-									</td>
-									<td class="iw-icon-cell">
-<<<<<<< HEAD
-										<a href="{{route('delete-post', ['post_id' => $post->id]) }}" class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></a>
-                                    </td>
-=======
-										<a href="{{route('forum-post-delete', ['post_id' => $post->id]) }}" class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></a>
-									</td>
->>>>>>> 3993e97e9effbb3f0e5d4dd5de9ec59e838ccfa7
-
-									@else
+    									<td class="iw-icon-cell">
+    										<a href="{{route('delete-post', ['post_id' => $post->id]) }}" class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></a>
+                                        </td>
+                                    @endif
+								@else
 									<!-- Empty <td> tags to keep the columns aligned -->
 									<td></td>
 									<td></td>
-									@endif
-
-									@if(auth()->user()->hasWorkgroupRole('intern'))
-
 
 									<td class="iw-icon-cell">
 										<button class="btn btn-default" title="Sticky"><i class="fa  fa-thumb-tack"></i><span class="sr-only">Maak sticky</span></button></td>
-
-									<td class="iw-icon-cell">
-										<button class="btn btn-default" title="Sluiten"><i class="fa fa-lock"></i><span class="sr-only">Sluiten</span></button></td>
-
-									@endif
+                                    @if(Gate::allows('close-post', $post))
+    									<td class="iw-icon-cell">
+    										<button class="btn btn-default" title="Sluiten"><i class="fa fa-lock"></i><span class="sr-only">Sluiten</span></button></td>
+                                    @endif
 
 
 
 								</tr>
 
-								@endif
+							@endif
 								@empty
 								<p>Geen berichten op het forum</p>
 								@endforelse

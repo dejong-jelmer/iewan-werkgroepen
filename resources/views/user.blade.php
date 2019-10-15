@@ -40,28 +40,28 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<h3 class="box-title">Contact</h3>
-                    @if(Gate::allows('edit-profile', $user))
+                    @if(Gate::allows('edit-user', $user))
                     <div class="form-group">
                         <button onclick="event.preventDefault(); $('.non-edit-profile, .edit-profile').toggleClass('hidden')" class="btn btn-default pull-right prevent-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button>
                         <button onclick="$('#form').submit()" class="btn btn-success pull-right edit-profile hidden" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Aanpassen</span></button>
                     </div>
                     @endif
-    {{ dump($errors) }}
+    {{-- {{ dump($errors) }} --}}
 
 					<div class="box-tools pull-right">
 					</div>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
-                     @if(Gate::allows('edit-profile', $user))
-                         <div class="form-group edit-profile hidden">
-                            <label for="emial" class="pull-left">Email</label> <input name="email" type="email" class="form-control pull-right" value="{{ $user->email }}">
+                     @if(Gate::allows('edit-user', $user))
+                         <div class="form-group edit-user hidden">
+                            <label for="email" class="pull-left">Email</label> <input name="email" type="email" class="form-control pull-right" value="{{ $user->email }}">
                         </div>
-                         <div class="form-group edit-profile hidden">
+                         <div class="form-group edit-user hidden">
                             <label for="emial" class="pull-left">Telefoon</label> <input name="telephone" type="text" class="form-control pull-right" value="{{ $user->telephone }}">
                         </div>
                     @endif
-					<ul class="list-group list-group-unbordered non-edit-profile">
+					<ul class="list-group list-group-unbordered non-edit-user">
 						<li class="list-group-item">
 							<b>Email</b> <a href="mailto:{{ ucfirst($user->email) }}" class="pull-right">{{ $user->email }}</a>
 						</li>
@@ -128,7 +128,7 @@
 
 				<div class="box-body">
                     <p>{{ $user->bio }}</p>
-                    @if(Gate::allows('edit-profile', $user))
+                    @if(Gate::allows('edit-user', $user))
                         <div class="edit-profile hidden">
                             <textarea id="bio" name="bio" class="editor" cols="30" rows="10">{{ $user->bio }}</textarea>
                         </div>
@@ -149,7 +149,7 @@
 
 
 	</div>
-@if(Gate::allows('edit-profile', $user))
+@if(Gate::allows('edit-user', $user))
     </form>
 @endif
 </section>

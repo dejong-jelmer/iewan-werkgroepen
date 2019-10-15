@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @section('title') @isset($user) profiel - {{ $user->name }} @endisset @endsection
 @section('content')
-@if(auth()->user()->hasWorkgroupRole('aanname') || auth()->user()->id == $user->id)
+@if(Gate::allows('edit-user', $user))
 {{-- ingelogde user content
 berwerk button voor editing van profiel
  --}}

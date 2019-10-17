@@ -35,11 +35,20 @@
 						</tr>
 
 						<tr>
-							<td>2 aug '19</td>
-							<td><a href="#">Thomas Mennen</a></td>
+
+							@foreach ($binderForms as $form)
+							@if($form->released)
+						<tr>
+
+
+
+
+							<td>{{ $form->filled_in }}</td>
+							<td><a href="{{ route('binder-form', ['form_id' => $form->id]) }}">{{ $form->name }}</a></td>
 							<td>Ani Öhman</td>
 							<td>Eenpersoons</td>
 							<td>Gezinswoning</td>
+
 
 							@if(auth()->user()->hasWorkgroupRole('aanname'))
 
@@ -49,7 +58,8 @@
 
 							@endif
 						</tr>
-
+						@endif
+						@endforeach
 					</table>
 				</div>
 				<div class="box-footer clearfix">

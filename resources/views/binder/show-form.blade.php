@@ -14,7 +14,11 @@
 		<div class="col-md-3 pull-right">
 
 			@if(auth()->user()->hasWorkgroupRole('aanname') && !$form->released)
-			<a href="{{ route('release-form', ['form_id' => $form->id]) }}" class="btn btn-success btn-lg btn-block margin-bottom" title="Accepteren"><i class="fa fa-check"></i> Formulier vrijgeven</a>
+
+
+			<a href="{{ route('release-form', ['form_id' => $form->id]) }}" class="btn btn-success btn-lg margin-bottom" title="Accepteren"><i class="fa fa-check"></i> Formulier vrijgeven</a>
+
+			<a href="" class="btn btn-default btn-lg margin-bottom" title="Verwijderen"><i class="fa fa-trash"></i></a>
 
 			@endif
 

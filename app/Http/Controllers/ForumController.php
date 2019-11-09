@@ -49,7 +49,7 @@ class ForumController extends Controller
         if(Gate::allows('delete-post', $post)) {
             $post->delete();
         }
-        return redirect()->back()->with('success', 'Bericht verwijderd.');
+        return redirect()->route('forum')->with('success', 'Bericht verwijderd.');
     }
 
     public function showPost(Request $request, $post_id)

@@ -23,7 +23,12 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('*', function($view){
+        // $files = \File::glob(base_path('resources/views').'/*');
+        $files = [];
+        foreach (\File::allFiles(base_path('resources/views')) as $file) {
+            $files[] = \Str::before($file->getFilenameWithoutExtension(), '.');
+        }
+        view()->composer(\Arr::except($files, array_search('login', $files)), function($view){
             $view->with('users', \App\User::get());
             $view->with('workgroups', \App\Workgroup::get());
         });

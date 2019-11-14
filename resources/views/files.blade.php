@@ -22,8 +22,8 @@ TODO: Bestanden route
 	<div class="row">
 
 		<div class="col-md-12">
-
-			@include('boxes.files-overview')
+            @boxes('FilesOverview')
+			{{-- @include('boxes.files-overview') --}}
 
 		</div>
 	</div>

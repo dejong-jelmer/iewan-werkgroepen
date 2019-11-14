@@ -17,7 +17,8 @@
 	<div class="row">
 		<div class="col-md-12">
 
-			@include('boxes.forum-posts')
+            @boxes('ForumPosts')
+			{{-- @include('boxes.forum-posts') --}}
 
 			<div class="box box-primary">
 				<div class="box-header with-border">

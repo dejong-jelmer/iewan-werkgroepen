@@ -11,10 +11,10 @@ class DashboardController extends Controller
 {
     public function showDashboard()
     {
-        $forumPosts = Auth::user()->forumPosts()->paginate(2);
+        // $forumPosts = Auth::user()->forumPosts()->paginate(2);
         $binderForms = Auth::user()->binderForms()->paginate(2);
         return view('dashboard', [
-            'forumPosts' => $forumPosts,
+            // 'forumPosts' => $forumPosts,
             'binderForms' => $binderForms
         ]);
     }

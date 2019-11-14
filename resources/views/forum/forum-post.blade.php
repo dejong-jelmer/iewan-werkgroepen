@@ -23,13 +23,18 @@
 		<div class="col-lg-10">
 			<div class="box">
 
-
-				@include('boxes.forum-post', [
+				@boxes('ForumPost', [
+                'post' => $post,
+                'showBody' => true,
+                'allowResponse' => true,
+                'edit' => !empty($isEdit) ? $isEdit : false
+                ])
+                {{-- @include('boxes.forum-post', [
 				'post' => $post,
 				'showBody' => true,
 				'allowResponse' => true,
                 'edit' => !empty($isEdit) ? $isEdit : false
-				])
+				]) --}}
 			</div>
 			<div class="box">
 				<!-- TODO: CommentCheck -->
@@ -43,16 +48,22 @@
 				</div>
 
 				@forelse($post->responses as $response)
-				@include('boxes.forum-post', [
+				    @boxes('ForumPost', [
+                        'post' => $response,
+                        'showBody' => true,
+                        'allowResponse' => false
+                    ])
+                {{-- @include('boxes.forum-post', [
 				'post' => $response,
 				'showBody' => true,
 				'allowResponse' => false
-				])
+				]) --}}
 				@empty
 				@endforelse
 			</div>
 
-			@include('boxes.forum-post-response', ['post' => $post])
+            @boxes('ForumPostResponse', ['post' => $post])
+			{{-- @include('boxes.forum-post-response', ['post' => $post]) --}}
 
 		</div>
 		<!-- /.col -->

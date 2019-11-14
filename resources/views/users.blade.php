@@ -45,9 +45,12 @@
 						@forelse($users as $user)
 
 
-						@include('boxes.user', [
-						'user' => $user
-						])
+						@boxes('User', [
+                        'user' => $user
+                        ])
+                        {{-- @include('boxes.user', [
+                        'user' => $user
+                        ]) --}}
 
 						<!-- /.row -->
 						@empty

@@ -44,9 +44,10 @@
 
 		<div class="col-md-9">
 
-			@include('boxes.email-form')
-
-			@include('boxes.applications')
+            @boxes('EmailForm')
+			{{-- @include('boxes.email-form') --}}
+            @boxes('Applications')
+			{{-- @include('boxes.applications') --}}
 
 			@else
 
@@ -54,9 +55,11 @@
 
 				@endif
 
-				@include('boxes.veto')
+                @boxes('Veto')
+				{{-- @include('boxes.veto') --}}
 
-				@include('boxes.binder-list')
+                @boxes('BinderList')
+				{{-- @include('boxes.binder-list') --}}
 
 			</div>
 

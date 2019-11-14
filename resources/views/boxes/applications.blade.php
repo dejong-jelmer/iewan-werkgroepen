@@ -23,21 +23,19 @@
 				<th class="iw-icon-cell"></th>
 
 			</tr>
-			@foreach ($binderForms as $form)
-			@if(!$form->released)
+			@foreach ($applications as $application)
 			<tr>
 
-				<td>{{ $form->filled_in }}</td>
-				<td><a href="{{ route('binder-form', ['form_id' => $form->id]) }}">{{ $form->name }}</a></td>
+				<td>{{ $application->filled_in }}</td>
+				<td><a href="{{ route('binder-form', ['form_id' => $application->id]) }}">{{ $application->name }}</a></td>
 				<td>Ani Öhman</td>
 				<td>Eenpersoons</td>
 				<td>Gezinswoning</td>
-				<td class="iw-icon-cell"><a href="{{ route('release-form', ['form_id' => $form->id]) }}" class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></a></td>
+				<td class="iw-icon-cell"><a href="{{ route('release-form', ['form_id' => $application->id]) }}" class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></a></td>
 				<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
 				<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
 
 			</tr>
-			@endif
 			@endforeach
 
 

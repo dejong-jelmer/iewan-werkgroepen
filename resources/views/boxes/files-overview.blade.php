@@ -106,5 +106,5 @@ TODO: Pagination
 	</div>
 </div>
 <!-- /.box -->
-
-@include('boxes.upload-file')
+@boxes('UploadFile')
+{{-- @include('boxes.upload-file') --}}

@@ -26,22 +26,25 @@ TODO: archive workgroup function
 	<div class="row">
 		<div class="col-md-9">
 
-			@include('boxes.tabs')
+            @boxes('Tabs')
+			{{-- @include('boxes.tabs') --}}
 
 			{{-- User is a member of this workgroup --}}
 			@if(auth()->user()->inWorkgroup($workgroup->id))
 			{{-- workgroup specific links --}}
-			@if($workgroup->role->role == 'Aanname')
+			@if($workgroup->hasRole('aanname'))
 
-			@include('boxes.applications')
+            {{-- @include('boxes.applications') --}}
+			@boxes('Applications')
 
-			@include('boxes.veto')
+            {{-- @include('boxes.veto') --}}
+			@boxes('Veto')
 
 			@endif
 
 			@endif
 
-			@include('boxes.files-overview')
+			@boxes('FilesOverview', ['workgroup' => $workgroup])
 
 
 		</div>
@@ -49,11 +52,13 @@ TODO: archive workgroup function
 
 		<div class="col-md-3">
 
-			@include('boxes.workgroup-members')
+			{{-- @include('boxes.workgroup-members') --}}
+            @boxes('WorkgroupMembers', ['workgroup' => $workgroup])
 
 			@if(auth()->user()->inWorkgroup($workgroup->id))
 
-			@include('boxes.workgroup-new-members')
+			{{-- @include('boxes.workgroup-new-members') --}}
+            @boxes('workgroupNewMembers', ['workgroup' => $workgroup])
 
 			@endif
 

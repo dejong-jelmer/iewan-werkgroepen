@@ -41,7 +41,7 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasWorkgroupRole('aanname');
         });
         // user profile gates
-        Gate::define('edit-user', function($user, $userProfile){
+        Gate::define('edit-profile', function($user, $userProfile){
             return ($user->id == $userProfile->id) || $user->hasWorkgroupRole('intern');
         });
 

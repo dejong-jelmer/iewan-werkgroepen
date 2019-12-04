@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @section('title') @isset($user) profiel - {{ $user->name }} @endisset @endsection
 @section('content')
-@if(Gate::allows('edit-user', $user))
+@if(Gate::allows('edit-profile', $user))
 {{-- ingelogde user content
 berwerk button voor editing van profiel
  --}}
@@ -26,7 +26,7 @@ berwerk button voor editing van profiel
 
 					<div class="box-body form-group">
 
-						<img id="profile-image" src="{{ !empty($user->avatar) ? Storage::url($user->avatar) : asset('img/empty-profile.jpg') }}" alt="Profielfoto" class="w-100" width="100%">
+						<img id="avatar" src="{{ loadPhoto($user) }}" alt="Avatar" class="w-100" width="100%">
 					</div>
 
 					<div class="box-footer form-group">
@@ -34,20 +34,20 @@ berwerk button voor editing van profiel
 
 
 						<input type="button" class="input-file btn btn-primary" value="Upload een nieuwe foto" onclick="$(this).next().trigger('click')">
-						<input class="file-input" type="file" name="profile_picture" style="display: none">
+						<input class="upload-avatar" type="file" name="avatar" style="display: none">
 
 						<button type="submit" name="delete_profile_picture" class="btn btn-default pull-right"><i class="fa fa-trash"></i>Verwijder foto</button>
 						@else
 						<input type="button" class="input-file btn btn-primary" value="Upload een foto" onclick="$(this).next().trigger('click')">
-						<input class="file-input" type="file" name="profile_picture" style="display: none">
+						<input class="file-input upload-avatar" type="file" name="avatar" style="display: none">
 
 						@endif
 					</div>
 
 
-					@if($errors->has('profile_picture'))
+					@if($errors->has('avatar'))
 					<div class="text-danger">
-						<small>{{ $errors->first('profile_picture') }}</small>
+						<small>{{ $errors->first('avatar') }}</small>
 					</div>
 					@endif
 
@@ -70,7 +70,7 @@ berwerk button voor editing van profiel
 						<ul class="list-group list-group-unbordered">
 
 							<li class="list-group-item form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-								<label for="name" class="control-label">Naam</label> <input type="text" class="form-control" name="name" value="{{ $user->name }}" placeholder="Vul je naam in" autocomplete="off">
+								<label for="name" class="control-label">Naam</label> <input type="text" class="form-control" name="name" value="{{ ucfirst($user->name) }}" placeholder="Vul je naam in" autocomplete="off">
 								@if($errors->has('name'))
 								<div class="text-danger">
 									<small>{{ $errors->first('name') }}</small>

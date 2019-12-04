@@ -13,7 +13,7 @@ TODO: User image function
 
 			@forelse($workgroup->activeUsers as $user)
 			<li>
-				<a class="users-list-name" href="{{ route('user', ['user_id' =>  $user->id]) }}"><img src="https://i.pravatar.cc/48?u={{$user->id}}" alt="Profielfoto"><br>
+				<a class="users-list-name" href="{{ route('user', ['user_name' =>  $user->name]) }}"><img src="{{ loadAvatar($user) }}" alt="Profielfoto"><br>
 					{{ ucfirst($user->name) }}</a>
 			</li>
 

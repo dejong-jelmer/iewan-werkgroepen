@@ -22,7 +22,7 @@ TODO: Bestanden route
 	<div class="row">
 
 		<div class="col-md-12">
-            @boxes('FilesOverview')
+            @boxes('FilesOverview', ['workgroups' => $workgroups])
 			{{-- @include('boxes.files-overview') --}}
 
 		</div>
@@ -30,7 +30,16 @@ TODO: Bestanden route
 
 
 </section>
-
+{{-- @push('script-partials')
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                files: files
+            }
+        });
+    </script>
+@endpush --}}
 <!-- /.content -->
 <!-- /.content-wrapper -->
 

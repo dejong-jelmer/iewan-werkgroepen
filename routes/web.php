@@ -43,6 +43,10 @@ Route::middleware('auth')->group(function(){
         ->name('edit-user');
     Route::get('bestanden', 'FileController@showFiles')
         ->name('files');
+    Route::post('bestanden/uploaden', 'FileController@uploadFile')
+        ->name('file-upload');
+    Route::get('bestanden/download/{file_id}', 'FileController@downloadFile')
+        ->name('file-download');
     Route::get('/forum', 'ForumController@showForum')
         ->name('forum');
     Route::get('/forum/posts/{post_id}', 'ForumController@showPost')

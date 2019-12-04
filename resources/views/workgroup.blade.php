@@ -26,7 +26,7 @@ TODO: archive workgroup function
 	<div class="row">
 		<div class="col-md-9">
 
-            @boxes('Tabs')
+            @boxes('Tabs', ['workgroup' => $workgroup])
 			{{-- @include('boxes.tabs') --}}
 
 			{{-- User is a member of this workgroup --}}

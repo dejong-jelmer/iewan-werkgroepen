@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'telephone', 'photo'
+        'name', 'email', 'password', 'telephone', 'avatar', 'photo'
     ];
 
     /**
@@ -36,6 +36,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function scopeByName($query, $user_name)
+    {
+        return $query->where('name', $user_name);
+    }
 
     public function workgroups()
     {

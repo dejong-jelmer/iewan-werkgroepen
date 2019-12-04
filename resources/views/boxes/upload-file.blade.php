@@ -9,34 +9,33 @@
 		</div>
 		<!-- /.box-header -->
 
-		<form role="form">
-			<div class="box-body">
+		<form action="{{ route('file-upload') }}" mehtod="POST" role="form" action="#" method="POST" enctype="multipart/form-data">
+			@csrf
+            <div class="box-body">
 
 				<div class="form-group col-md-12">
 					<label for="exampleInputFile">Selecteer je bestand</label>
-					<input type="file" id="exampleInputFile" class="btn btn-default btn-flat">
+					<input name="file" type="file" id="exampleInputFile" class="btn btn-default btn-flat">
 
 				</div>
 
 				<div class="form-group form-group-sm col-md-5 pull-left">
 					<label class="sr-only">soort document</label>
-					<select class="form-control">
-						<option>Selecteer documentsoort</option>
-						<option>Notulen</option>
-						<option>Verslagen</option>
-						<option>Voorstellen</option>
-						<option>Handleidingen</option>
-						<option>Overigen</option>
+					<select name="type" class="form-control">
+						<option disabled="disabled" selected="selected">Selecteer documentsoort</option>
+						@foreach($fileTypes as $type)
+                            <option value="{{ $type }}">{{ $type }}</option>
+                        @endforeach
 					</select>
 				</div>
 
 				<!-- On files template -->
 				<div class="form-group form-group-sm col-md-5 pull-left">
 					<label class="sr-only">Werkgroep</label>
-					<select class="form-control">
-						<option>Selecteer Werkgroep</option>
-						@foreach(auth()->user()->workgroups as $workgroup)
-						<option value="{{ $workgroup->id}}">{{ $workgroup->name  }}</option>
+					<select name="workgroup" class="form-control">
+						<option disabled="disabled" selected="selected">Selecteer Werkgroep</option>
+						@foreach(auth()->user()->activeWorkgroups as $workgroup)
+    						<option value="{{ $workgroup->id}}">{{ $workgroup->name  }}</option>
 						@endforeach
 
 					</select>
@@ -47,7 +46,7 @@
 
 			<div class="box-footer clearfix">
 				<div class="pull-left">
-					<button class="btn btn-primary">Bestan uploaden</button>
+					<button class="btn btn-primary">Bestand uploaden</button>
 
 				</div>
 

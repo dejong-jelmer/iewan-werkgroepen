@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @section('title') @isset($user) {{ $user->name }} @endisset @endsection
 @section('content')
-
+{{ dd('deze gebruiken we niet') }}
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>{{ ucfirst($user->name) }}</h1>
@@ -11,7 +11,7 @@
 
 <!-- Main content -->
 <section class="content">
-@if(Gate::allows('edit-user', $user))
+@if(Gate::allows('edit-profile', $user))
     <form id="form" action="{{ route('edit-user', ['user_name' => $user->name]) }}" method="POST" enctype="multipart/form-data">
     @csrf
 @endif
@@ -21,12 +21,12 @@
 			<div class="box">
 
 				<div class="box-body">
-					<img id="avatar" src="{{ !empty($user->avatar) ? Storage::url($user->avatar) : asset('img/empty-profile.jpg') }}" alt="avatar" class="w-100" width="100%"
+					<img id="avatar" src="{{ loadAvatar($user) }}" alt="avatar" class="w-100" width="100%"
                         @if(auth()->user()->id == $user->id)
                             onclick="$(this).next().trigger('click')
                         @endif
                     ">
-                    @if(auth()->user()->id == $user->id)
+                    @if(Gate::allows('edit-profile', $user))
                         <input class="upload-avatar" type="file" name="avatar" style="display: none">
                     @endif
 				</div>
@@ -40,7 +40,7 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<h3 class="box-title">Contact</h3>
-                    @if(Gate::allows('edit-user', $user))
+                    @if(Gate::allows('edit-profile', $user))
                     <div class="form-group">
                         <button onclick="event.preventDefault(); $('.non-edit-profile, .edit-profile').toggleClass('hidden')" class="btn btn-default pull-right prevent-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button>
                         <button onclick="$('#form').submit()" class="btn btn-success pull-right edit-profile hidden" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Aanpassen</span></button>
@@ -53,7 +53,7 @@
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
-                     @if(Gate::allows('edit-user', $user))
+                     @if(Gate::allows('edit-profile', $user))
                          <div class="form-group edit-user hidden">
                             <label for="email" class="pull-left">Email</label> <input name="email" type="email" class="form-control pull-right" value="{{ $user->email }}">
                         </div>
@@ -128,7 +128,7 @@
 
 				<div class="box-body">
                     <p>{{ $user->bio }}</p>
-                    @if(Gate::allows('edit-user', $user))
+                    @if(Gate::allows('edit-profile', $user))
                         <div class="edit-profile hidden">
                             <textarea id="bio" name="bio" class="editor" cols="30" rows="10">{{ $user->bio }}</textarea>
                         </div>
@@ -149,7 +149,7 @@
 
 
 	</div>
-@if(Gate::allows('edit-user', $user))
+@if(Gate::allows('edit-profile', $user))
     </form>
 @endif
 </section>

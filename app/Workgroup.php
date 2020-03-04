@@ -8,24 +8,12 @@ class Workgroup extends Model
 {
     public function users()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User')->withPivot('active');
     }
-
-    public function messages()
+    public function activeUsers()
     {
-        return $this->hasMany('App\Message');
+        return $this->users()->where('active', true);
     }
-
-    public function unReadMessages()
-    {
-        return $this->messages()->wherePivot('read', false)->get();
-    }
-
-    public function newMessages()
-    {
-        return $this->unReadMessages()->count();
-    }
-
     public function role()
     {
         return $this->hasOne('App\WorkgroupRole');
@@ -51,6 +39,21 @@ class Workgroup extends Model
     public function unReleasedForms()
     {
         return $this->binderForms()->get();
+    }
+
+    public function applicants()
+    {
+        return $this->users()->wherePivot('active', false);
+    }
+
+    public function isApplicant($user_id)
+    {
+        return (bool) $this->applicants()->where('users.id', $user_id)->count();
+    }
+
+    public function numberOfApplicants()
+    {
+        return $this->applicants()->count();
     }
 
 }

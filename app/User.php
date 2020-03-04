@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'telephone', 'photo'
+        'name', 'email', 'password', 'telephone', 'avatar', 'photo'
     ];
 
     /**
@@ -37,84 +37,121 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function scopeByName($query, $user_name)
+    {
+        return $query->where('name', $user_name);
+    }
+
     public function workgroups()
     {
-        return $this->belongsToMany('App\Workgroup');
+        return $this->belongsToMany('App\Workgroup')->withPivot('active');
     }
 
-    public function inWorkgroup(\App\Workgroup $workgroup)
+    public function activeWorkgroups()
     {
-        return (bool) $this->workgroups()->where('workgroups.id', $workgroup->id)->count();
+        return $this->workgroups()->wherePivot('active', true);
     }
-
-    public function hasWorkgroupRole($role)
+    /**
+     * return boolean true if user is in workgroup with given workgroup id
+     * @param  int $workgroup_id workgroup id
+     * @return boolean
+     */
+    public function inWorkgroup($workgroup_id)
     {
-        return (bool) $this->workgroups->first(function($workgroup) use ($role){
-            return $workgroup->role->role == ucfirst(strtolower($role));
+        return (bool) $this->activeWorkgroups()->wherePivot('workgroup_id', $workgroup_id)->count();
+    }
+     /**
+     * return boolean true if user has applied for workgroup with given workgroup id
+     * @param  int $workgroup_id workgroup id
+     * @return boolean
+     */
+    public function hasAppliedForWorkgroup($workgroup_id)
+    {
+        return (bool) $this->workgroups()->wherePivot('workgroup_id', $workgroup_id)->wherePivot('active', false)->count();
+    }
+    /**
+     * return boolean true if user has a workgroup within the given role array
+     * @param  mixed  $roles string or array with workgroup role
+     * @return boolean
+     */
+    public function hasWorkgroupRole($roles)
+    {
+        $roles = !is_array($roles) ? [ $roles ] : $roles;
+        return (bool) $this->activeWorkgroups->first(function($workgroup) use ($roles){
+            return in_array($workgroup->role->role, $roles);
         });
     }
-
-    public function messages()
+    /**
+     * return the count of the new applicant of all the workgroups
+     * this user is an active member of
+     * @return int number of new workgroup applicants (user_workgroup.active = 0)
+     */
+    public function newWorkgroupApplications()
     {
-        return $this->belongsToMany('App\Message', 'message_receiver')->withPivot('read');
+        $applicants = 0;
+        $workgroups = $this->activeWorkgroups()->get();
+        foreach ($workgroups as $workgroup) {
+            $applicants += $workgroup->numberOfApplicants();
+        }
+        return $applicants;
     }
-    public function sendMessages()
+    // posts made by user
+    public function posts()
     {
-        return $this->belongsToMany('App\Message', 'message_sender');
+        return $this->hasMany('App\ForumPost', 'user_id');
     }
-
+    // general forum posts made by any user, and not allready been seen by this user
     public function forumPosts()
     {
-        return $this->belongsToMany('App\forumPost', 'forum_user');
+        return $this->belongsToMany('App\ForumPost', 'forum_user');
     }
-
+    // count of number of formpost
     public function newForumPosts()
     {
         return $this->forumPosts()->count();
     }
-
-    public function readMessages()
-    {
-        return $this->messages()->wherePivot('read', true)->get();
-    }
-    public function unReadMessages()
-    {
-        return $this->messages()->wherePivot('read', false)->get();
-    }
-
-    public function newMessages()
-    {
-        return $this->unReadMessages()->count();
-    }
-
-    public function isUnreadMessage($message_id)
-    {
-        return (bool) $this->unReadMessages()->where('id', $message_id)->count();
-    }
+    // new binderforms, and not allready been seen by this user
     public function binderForms()
     {
         return $this->belongsToMany('App\BinderForm', 'binder_user');
     }
+    // count of number of binderforms
     public function newBinderForms()
     {
         return $this->binderForms()->count();
     }
-
-    public function workgroupMessages(\App\Workgroup $workgroup)
+    /**
+     * count of the responses to the forumpost made by this user
+     * @return int
+     */
+    public function newPostResponses()
     {
-        $workgroup = $this->workgroups()->where('workgroup_id', $workgroup->id)->first();
-        if(!empty($workgroup)) {
-            return $workgroup->messages;
+        $responses = 0;
+        foreach($this->posts as $post) {
+            $responses += $post->responses()->where('new', true)->count();
         }
-        return null;
+        return $responses;
     }
-
-    public function unRepliedWorkgroupMessages(\App\Workgroup $workgroup)
+    /**
+     * number of notifications for this user
+     * @return int
+     */
+    public function notifications()
     {
-        $workgroup = $this->workgroups()->where('workgroups.id', $workgroup->id)->first();
-        if(count($workgroup->messages)) {
-            return $workgroup->messages()->where('replied', false)->count();
-        }
-        return null;
+        $notifications = 0;
+        $notifications += $this->newPostResponses();
+        $notifications += $this->newBinderForms();
+        $notifications += $this->newWorkgroupApplications();
+        return $notifications;
+    }
+    /**
+     * Check if user is member of webgroep
+     * @return boolean
+     */
+    public function isWebgroepMember()
+    {
+        return (bool) $this->activeWorkgroups->first(function($workgroup) {
+            return $workgroup->role->role == 'webgroep';
+        });
     }
 }

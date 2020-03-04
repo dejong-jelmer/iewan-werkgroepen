@@ -8,6 +8,7 @@ require('./bootstrap');
 // require('bulma');
 
 window.Vue = require('vue');
+Vue.config.productionTip = false;
 window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
 
 /**

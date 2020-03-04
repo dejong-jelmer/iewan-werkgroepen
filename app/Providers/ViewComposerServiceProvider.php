@@ -23,7 +23,13 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('templates.partials.sidebar', function($view){
+        $files = [];
+        foreach (\File::allFiles(base_path('resources/views')) as $file) {
+            // remove the .blade and get a clear array of filenames.
+            $files[] = \Str::before($file->getFilenameWithoutExtension(), '.');
+        }
+        // pass users and workgroups to all views except login
+        view()->composer(\Arr::except($files, array_search('login', $files)), function($view){
             $view->with('users', \App\User::get());
             $view->with('workgroups', \App\Workgroup::get());
         });

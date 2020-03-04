@@ -1,0 +1,56 @@
+	<div id="file-upload" class="box" style="display: none;">
+		<div class="box-header">
+			<h3 class="box-title">Bestand uploaden</h3>
+
+			<div class="pull-right box-tools">
+				<button type="button" class="btn btn-box-tool toggle" data-target="file-upload" data-toggle="tooltip" title="Remove">
+					<i class="fa fa-times"></i></button>
+			</div>
+		</div>
+		<!-- /.box-header -->
+
+		<form action="{{ route('file-upload') }}" mehtod="POST" role="form" action="#" method="POST" enctype="multipart/form-data">
+			@csrf
+            <div class="box-body">
+
+				<div class="form-group col-md-12">
+					<label for="exampleInputFile">Selecteer je bestand</label>
+					<input name="file" type="file" id="exampleInputFile" class="btn btn-default btn-flat">
+
+				</div>
+
+				<div class="form-group form-group-sm col-md-5 pull-left">
+					<label class="sr-only">soort document</label>
+					<select name="type" class="form-control">
+						<option disabled="disabled" selected="selected">Selecteer documentsoort</option>
+						@foreach($fileTypes as $type)
+                            <option value="{{ $type }}">{{ $type }}</option>
+                        @endforeach
+					</select>
+				</div>
+
+				<!-- On files template -->
+				<div class="form-group form-group-sm col-md-5 pull-left">
+					<label class="sr-only">Werkgroep</label>
+					<select name="workgroup" class="form-control">
+						<option disabled="disabled" selected="selected">Selecteer Werkgroep</option>
+						@foreach(auth()->user()->activeWorkgroups as $workgroup)
+    						<option value="{{ $workgroup->id}}">{{ $workgroup->name  }}</option>
+						@endforeach
+
+					</select>
+				</div>
+
+
+			</div>
+
+			<div class="box-footer clearfix">
+				<div class="pull-left">
+					<button class="btn btn-primary">Bestand uploaden</button>
+
+				</div>
+
+			</div>
+		</form>
+	</div>
+	<!-- /.box -->

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Forumpost extends Model
 {
-    protected $fillable = ['title', 'body'];
+    protected $fillable = ['title', 'body', 'new'];
 
     public function user()
     {

@@ -29,71 +29,65 @@ Route::middleware('guest')->group(function(){
 });
 
 Route::middleware('auth')->group(function(){
-    Route::get('/dashboard', 'DashboardController@showDashboard')
+    Route::get('/', 'DashboardController@showDashboard')
         ->name('dashboard');
-    Route::get('/werkgroep/{workgroup_id}', 'WorkgroupController@showWorkgroup')
+    Route::get('/werkgroepen/{workgroup}', 'WorkgroupController@showWorkgroup')
         ->name('workgroup');
-    Route::get('/leden/{user_id}', 'UserController@showUser')
+    Route::get('profiel', 'UserController@showProfile')
+        ->name('profile');
+    Route::get('/bewoners', 'UserController@showUsers')
+        ->name('users');
+    Route::get('/bewoners/{user_name}', 'UserController@showUser')
         ->name('user');
-    Route::get('gebruiker/profiel', 'UserController@showProfile')
-        ->name('user-profile');
-    Route::post('gebruiker/profiel/aanpassen', 'UserController@updateProfile')
-        ->name('user-profile-post');
+    Route::post('bewoners/{user_name}/aanpassen', 'UserController@editProfile')
+        ->name('edit-user');
+    Route::get('bestanden', 'FileController@showFiles')
+        ->name('files');
+    Route::post('bestanden/uploaden', 'FileController@uploadFile')
+        ->name('file-upload');
+    Route::get('bestanden/download/{file_id}', 'FileController@downloadFile')
+        ->name('file-download');
     Route::get('/forum', 'ForumController@showForum')
         ->name('forum');
-    Route::post('/forum/posts', 'ForumController@createForumPost')
-        ->name('forum-post-create');
-    Route::get('/forum/posts/{post_id}', 'ForumController@showForumPost')
+    Route::get('/forum/posts/{post_id}', 'ForumController@showPost')
         ->name('forum-posts');
-    Route::post('/forum/response/{post_id}', 'ForumController@createForumResponse')
-        ->name('user-forum-respone');
+    Route::post('/forum/posts/create', 'ForumController@createPost')
+        ->name('create-post');
+    Route::post('/forum/posts/{post_id}/edit', 'ForumController@editPost')
+        ->name('edit-post');
+    Route::get('/forum/posts/{post_id}/delete', 'ForumController@deletePost')
+        ->name('delete-post');
+    Route::post('/forum/posts/{post_id}/response', 'ForumController@createPostResponse')
+        ->name('create-post-response');
 
     Route::get('klapper', 'BinderController@showForms')
-        ->name('binder-forms');
-    Route::get('klapper/formulier/{form_id}', 'BinderController@showForm')
+        ->name('binder');
+    Route::get('klapper/{binder_id}', 'BinderController@showForm')
         ->name('binder-form');
 
-    Route::get('werkgroep/klapper/formulieren', 'BinderController@showFormOptions')
-        ->name('workgroup-binder-form');
-    Route::get('werkgroep/klapper/formulier-bewerken', 'BinderController@showEditForm')
+    Route::get('klapper/formulier/bewerken', 'BinderController@showEditForm')
         ->name('show-edit-binder-form');
-     Route::post('werkgroep/klapper/formulier-bewerken', 'BinderController@editForm')
+     Route::post('klapper/formulier-bewerken', 'BinderController@editForm')
         ->name('post-edit-binder-form');
-     Route::get('werkgroep/klapper/formulier-versturen', 'BinderController@showSendForm')
+     Route::get('klapper/formulier-versturen', 'BinderController@showSendForm')
         ->name('show-send-binder-form');
-    Route::post('werkgroep/klapper/formulier-versturen', 'BinderController@sendForm')
+    Route::post('klapper/formulier-versturen', 'BinderController@sendForm')
         ->name('post-send-binder-form');
-    Route::get('werkgroep/klapper/formulier/{form_id}/vrijgeven', 'BinderController@releaseForm')
+    Route::get('klapper/formulier/{form_id}/vrijgeven', 'BinderController@releaseForm')
         ->name('release-form');
 
-    Route::get('/bericht-aan/{user_id}', 'MessageController@showCreateMessage')
-        ->name('send-user-message');
-    Route::post('/bericht-aan/{user_id}', 'MessageController@createMessage')
-        ->name('send-message');
-    Route::post('/bericht-aan/{user_id}/antwoord-op/{message_id}', 'MessageController@createMessage')
-        ->name('send-message-response');
-    Route::get('/gebruiker/berichten', 'MessageController@showUserMessages')
-        ->name('show-user-messages');
-    Route::get('gebruiker/berichten/verstuurd', 'MessageController@showSendUserMessages')
-        ->name('show-user-send-messages');
-    Route::get('/gebruiker/berichten/{message_id}', 'MessageController@showUserMessage')
-        ->name('show-user-message');
-    Route::post('/gebruiker/berichten/{message_id}/delete', 'MessageController@deleteUserMessage')
-        ->name('delete-user-message');
-    Route::get('/gebruikers', 'UserController@showUsers')
-        ->name('users');
 
-    Route::get('/werkgroep/{workgroup_id}/berichten', 'MessageController@showWorkgroupMessages')
-        ->name('show-workgroup-messages');
-    Route::get('/werkgroep/{workgroup_id}/berichten/{message_id}', 'MessageController@showWorkgroupMessage')
-        ->name('show-workgroup-message');
-    Route::post('/bericht-aan-werkgroep/{workgroup_id}', 'MessageController@createMessage')
-        ->name('send-workgroup-message');
 
-    Route::post('/werkgroep/aansluiten/{workgroup_id}', 'WorkgroupController@joinWorkgroup')
+
+    Route::post('/werkgroep/aanvraag/{workgroup_id}', 'WorkgroupController@joinWorkgroup')
         ->name('join-workgroup');
     Route::post('/werkgroep/verlaten/{workgroup_id}', 'WorkgroupController@leaveWorkgroup')
         ->name('leave-workgroup');
-    Route::get('/werkgroep/{workgroup_id}/leden', 'WorkgroupController@showWorkgroupMembers')
-        ->name('workgroup-members');
+    Route::get('/werkgroep/aanvraag/accepteren', 'WorkgroupController@acceptUserApplication')
+        ->name('workgroup-accept-application');
+    Route::get('/werkgroep/aanvraag/wijgeren', 'WorkgroupController@declineUserApplication')
+        ->name('workgroup-decline-application');
+    Route::get('/werkgroep/nieuw', 'WorkgroupController@showNewWorkgroup')
+        ->name('new-workgroup');
+
 });

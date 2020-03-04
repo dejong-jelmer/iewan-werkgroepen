@@ -10,6 +10,6 @@ class BinderForm extends Model
 
     public function workgroups()
     {
-        return $this->belongsToMany('App\Workgroup', binder_workgroup);
+        return $this->belongsToMany('App\Workgroup', 'binder_workgroup');
     }
 }

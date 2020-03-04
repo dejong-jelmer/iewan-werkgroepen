@@ -4,11 +4,11 @@ return [
   "host" => "smtp.mailtrap.io",
   "port" => 2525,
   "from" => array(
-      "address" => "from@example.com",
-      "name" => "Example"
+      "address" => "webgroep@iewan.nl",
+      "name" => "Iewan"
   ),
-  "username" => "484437383a9210",
-  "password" => "b8cf8f4d846ba5",
+  "username" => "dbc4d4c3a74d60",
+  "password" => "03ce3ce7e83a79",
   "sendmail" => "/usr/sbin/sendmail -bs"
 ];
 

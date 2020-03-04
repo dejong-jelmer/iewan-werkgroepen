@@ -11,15 +11,17 @@
 // @import '~@fortawesome/fontawesome-free/css/all.css';
 
 
-body,
-.btn {
-	font-size: 16px;
-}
 
 .content {
 	min-height: auto;
 }
 
+.content-header > h2 {
+
+	margin: 0;
+	font-size: 24px;
+
+}
 
 .field {
 	margin: 1.5em auto;
@@ -30,12 +32,93 @@ body,
 	font-weight: bold;
 }
 
+.forum-messages td {
+	height: 55px;
+}
 
 
-.navbar-nav > li .logout {
+.skin-blue .main-header .navbar .nav li .btn.logout:hover {
+
+	background: rgba(0, 0, 0, 0.1);
+	color: #f6f6f6;
+}
+
+.navbar-nav > li.user-menu .logout {
 
 	padding-top: 14px;
 	padding-bottom: 14px;
-	line-height: 20px;
+	line-height: inherit;
+	border-radius: 0 !important;
+	color: #ffffff;
+}
+
+.main-header .navbar .nav > li > a > .label {
+
+	position: absolute;
+	top: 6px;
+	right: 2px;
+	text-align: center;
+	padding: 4px 5px;
+	line-height: .9;
+}
+
+table .iw-icon-cell {
+	width: 40px;
+}
+
+
+
+
+
+
+.inschrijven .content-wrapper,
+.inschrijven .main-footer {
+	margin-left: 0
+}
+
+.inschrijven #app {
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.iw-no-notifications {
+	position: relative;
+	display: block;
+	padding: 15px 15px;
+	color: #72afd2;
+}
+
+
+.users-list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.users-list li {
+	width: 50%;
+	float: none;
+}
+
+.users-list-name {
+	font-weight: normal;
+	white-space: normal;
+	text-overflow: unset;
+	font-size: .9em;
+}
+
+@media (min-width:768px) {
+	.navbar-nav > li > a {
+		line-height: inherit;
+
+	}
+}
+
+@media (min-width:1140px) {
+
+	body,
+	.btn {
+		font-size: 16px;
+	}
 
 }

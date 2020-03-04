@@ -19,6 +19,7 @@ class CreateForumPostsTable extends Migration
             $table->longText('body');
             $table->integer('user_id')->default(0);
             $table->integer('post_id')->default(0);
+            $table->boolean('new')->default(false);
             $table->timestamps();
         });
     }

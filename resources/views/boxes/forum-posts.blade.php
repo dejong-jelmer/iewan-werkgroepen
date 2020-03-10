@@ -26,34 +26,8 @@
 				</div>
 			</div>
 
-			<div class="form-group col-md-12">
-				<label for="exampleInputFile">Voeg een bestand toe</label>
-				<input type="file" id="exampleInputFile" class="btn btn-default btn-flat">
-
-			</div>
-
-			<div class="form-group form-group-sm col-md-5 pull-left">
-				<label class="sr-only">soort document</label>
-				<select class="form-control">
-					<option>Selecteer documentsoort</option>
-					<option>Notulen</option>
-					<option>Verslagen</option>
-					<option>Voorstellen</option>
-					<option>Handleidingen</option>
-					<option>Overigen</option>
-				</select>
-			</div>
-
-			<!-- On files template -->
-			<div class="form-group form-group-sm col-md-5 pull-left">
-				<label class="sr-only">Werkgroep</label>
-				<select class="form-control">
-					<option>Selecteer Werkgroep</option>
-					@foreach(auth()->user()->workgroups as $workgroup)
-					<option value="{{ $workgroup->id}}">{{ $workgroup->name  }}</option>
-					@endforeach
-				</select>
-			</div>
+@boxes('UploadFile')
+{{-- @include('boxes.upload-file') --}}
 
 		</div>
 		<div class="box-footer">

@@ -12,7 +12,7 @@ TODO: Pagination -- do we need that?
 @if($errors->any())
 <div class="alert alert-danger alert-dismissible">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <h4><i class="icon fa fa-ban"></i> Uploaden mislukt.</h4>
+    <h4><i class="icon fa fa-times"></i> Uploaden mislukt.</h4>
     <ul>
         @foreach($errors->all() as $error)
         <li>{{ $error }}</li>
@@ -73,10 +73,12 @@ TODO: Pagination -- do we need that?
             @forelse($files as $file)
             <tr>
                 <td><i class="{{ getFileIcon($file->ext) }}"></i></td>
-                <td><a href={{ route('file-download', ['file_id'=> $file->id]) }}>{{ $file->name }}</a></td>
+                <td><a href="{{ route('file-download', ['file_id'=> $file->id]) }}">{{ $file->name }}</a></td>
                 <td><span class="label label-default">{{ $file->type }}</span></td>
 
+@if(Request::route()->getName() == 'files')
                 <td><span class="label label-primary">{{ $file->workgroup->name }}</span></td>
+                @endif
 
 
                 <td>{{ formatBytes($file->size) }}</td>

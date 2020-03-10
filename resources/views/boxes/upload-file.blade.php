@@ -29,7 +29,8 @@
 					</select>
 				</div>
 
-				<!-- On files template -->
+                @if(Request::route()->getName() == 'files')
+
 				<div class="form-group form-group-sm col-md-5 pull-left">
 					<label class="sr-only">Werkgroep</label>
 					<select name="workgroup" class="form-control">
@@ -40,6 +41,10 @@
 
 					</select>
 				</div>
+				@else
+				<!-- Hoe krijg ik de workgroup-id hier als value -->
+				<input name="workgroup" type="hidden" value="">
+				@endif
 
 
 			</div>

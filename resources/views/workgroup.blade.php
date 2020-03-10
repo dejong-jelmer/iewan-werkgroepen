@@ -3,7 +3,7 @@ TODO: archive workgroup function
 ------------------------->
 
 @extends('layout.layout')
-@section('title') {{ $workgroup->name }} @endsection
+@section('title') {{ ucwords($workgroup->name) }} @endsection
 @section('content')
 
 <!-- Content Header (Page header) -->
@@ -12,7 +12,6 @@ TODO: archive workgroup function
 </section>
 
 
-<!-- TODO: Staat dit hier goed? -->
 @if(auth()->user()->inWorkgroup($workgroup->id) || auth()->user()->hasAppliedForWorkgroup($workgroup->id))
 <form name="leave-workgroup-form" id="leave-workgroup-form" action="{{ route('leave-workgroup', ['workgroup_id' => $workgroup->id]) }}" method="POST">@csrf</form>
 @else

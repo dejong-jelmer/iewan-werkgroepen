@@ -33,7 +33,7 @@
 				<div class="form-group form-group-sm col-md-5 pull-left">
 					<label class="sr-only">Werkgroep</label>
 					<select name="workgroup" class="form-control">
-						<option disabled="disabled" selected="selected">Selecteer Werkgroep</option>
+						<option disabled="disabled" selected="selected">Selecteer werkgroep</option>
 						@foreach(auth()->user()->activeWorkgroups as $workgroup)
     						<option value="{{ $workgroup->id}}">{{ $workgroup->name  }}</option>
 						@endforeach

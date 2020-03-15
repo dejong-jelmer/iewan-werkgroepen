@@ -54,7 +54,7 @@
 
 						<!-- /.row -->
 						@empty
-						<p>Er woont helemaal niemand bij Iewan</p>
+						<p>Er woont helemaal niemand bij Iewan :(</p>
 						@endforelse
 
 					</table>

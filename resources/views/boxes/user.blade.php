@@ -4,7 +4,7 @@
         	<td><a href="{{ route('user', ['user_name' =>  $user->name]) }}">{{ ucfirst($user->name) }}</a></td>
         	<td><a href="mailto:{{ $user->email }}" class="text-muted">{{ $user->email }}</a></td>
         	<td>
-        		@forelse($user->workgroups as $workgroup)
+        		@forelse($user->activeWorkgroups as $workgroup)
         		<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}" class="label label-sm label-default">{{ $workgroup->name }}</a>
         		@empty
 

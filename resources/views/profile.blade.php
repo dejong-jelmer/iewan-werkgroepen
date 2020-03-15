@@ -133,7 +133,7 @@ berwerk button voor editing van profiel
 					<div class="box-body">
 
 
-						@foreach($user->workgroups as $workgroup)
+						@foreach($user->activeWorkgroups as $workgroup)
 
 
 						<button class="btn label-default btn-xs margin-bottom">

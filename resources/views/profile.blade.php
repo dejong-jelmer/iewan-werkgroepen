@@ -133,13 +133,11 @@ berwerk button voor editing van profiel
 					<div class="box-body">
 
 
-						@foreach($user->activeWorkgroups as $workgroup)
+	@forelse($user->activeWorkgroups as $workgroup)
+        		<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}" class="label label-sm label-default">{{ ucfirst($workgroup->name)}}</a>
+        		@empty
 
-
-						<button class="btn label-default btn-xs margin-bottom">
-							<span class="sr-only">Verlaat </span>{{ $workgroup->name }} <i class="fa fa-trash"></i>
-						</button>
-						@endforeach
+        		@endforelse
 					</div>
 					<!-- /.box-body -->
 					<div class="box-footer text-center">
@@ -232,6 +230,130 @@ berwerk button voor editing van profiel
 
 @else
 {{-- content voor de niet ingelogde user --}}
+
+
+	<section class="content-header">
+		<h1>Profiel</h1>
+	</section>
+
+
+
+
+
+
+	<section class="content">
+
+		<div class="row">
+			<div class="col-md-3 pull-right">
+
+				<div class="box">
+
+					<div class="box-body form-group">
+
+						<img id="avatar" src="{{ loadPhoto($user) }}" alt="Avatar" class="w-100" width="100%">
+					</div>
+
+				</div>
+
+			</div>
+			<!-- /.col -->
+			<div class="col-md-3">
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">Contact</h3>
+
+						<div class="box-tools pull-right">
+
+						</div>
+					</div>
+					<!-- /.box-header -->
+
+					<div class="box-body">
+						<ul class="list-group list-group-unbordered">
+
+							<li class="list-group-item form-group">
+								<label for="name" class="control-label">Naam</label>
+								<span class="pull-right">{{ ucfirst($user->name) }}</span>
+
+							</li>
+
+							<li class="list-group-item form-group">
+								<label for="email" class="control-label">Email</label>
+                                <span class="pull-right"><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></span>
+
+
+							</li>
+
+							<li class="list-group-item form-group">
+                                <label for="telephone" class="control-label">Telefoon</label> <span class="pull-right"><a href="tel:{{ $user->telephone }}">{{ $user->telephone }}</a></span>
+
+							</li>
+
+
+
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">Werkgroepen</h3>
+
+						<div class="box-tools pull-right">
+
+
+						</div>
+					</div>
+					<!-- /.box-header -->
+
+					<div class="box-body">
+
+
+@forelse($user->activeWorkgroups as $workgroup)
+        		<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}" class="label label-sm label-default">{{ ucfirst($workgroup->name) }}</a>
+        		@empty
+
+        		@endforelse
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="col-md-6">
+
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">Over mij</h3>
+
+
+					</div>
+					<!-- /.box-header -->
+
+					<div class="box-body"><p>Bio tekst
+         </p>	</div>
+					<!-- /.box-body -->
+					<div class="box-footer text-center">
+
+					</div>
+					<!-- /.box-footer -->
+				</div>
+
+
+
+
+			</div>
+
+
+
+
+		</div>
+
+		<div class="row">
+
+		</div>
+	</section>
 
 @endif
 @endsection

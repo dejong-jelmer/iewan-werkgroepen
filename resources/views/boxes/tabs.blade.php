@@ -84,7 +84,7 @@ TODO: Whole tabs function
 				<div class="box-body">
 					<div class="form-group">
 						<label class="sr-only">Inhoud van het tablad</label>
-						<textarea class="form-control" rows="5"></textarea>
+						<textarea class="textarea editor" rows="5"></textarea>
 
 					</div>
 				</div>

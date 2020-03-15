@@ -42,7 +42,7 @@
 					</select>
 				</div>
 				@else
-				<!-- Hoe krijg ik de workgroup-id hier als value -->
+				<!-- Hoe krijg ik de workgroup-id hier als value? -->
 				<input name="workgroup" type="hidden" value="">
 				@endif
 

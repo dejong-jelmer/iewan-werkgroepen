@@ -16,29 +16,45 @@ TODO: archive workgroup function
 <section class="content">
 
 	<div class="row margin-bottom">
-		<div class="col-md-9">
+		<div class="col-md-6 margin-bottom">
 
 			<label class="label sr-only">Naam</label>
-			<div class="control">
+			<div class="control margin-bottom">
 				<input name="Naam" class="input form-control input-lg" type="text" placeholder="Naam voor de werkgroep">
 			</div>
 
 
-		</div>
-
-		<!-- /.col -->
-
-
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12">
 			<button class="btn btn-primary margin-top">Werkgroep aanmaken</button>
 
-			<button class="btn btn-default margin-top text-muted"><i class="fa fa-close"></i> Annuleren</button>
 		</div>
-	</div>
-	<!-- /.row -->
+
+    </div>
+
+<h4><i class="fa fa-archive"></i> Gearchiveerde werkgroep terughalen</h4>
+	<div class="row margin-bottom">
+		<div class="col-md-3">
+
+			<label class="label sr-only">Gearchiveerde werkgroep</label>
+			<div class="control">
+			
+			
+			
+				<select name="dearchive" class="input form-control">
+				<option>Bouw</option>
+				<option>Ontwerpteam</option>
+				
+                </select>
+			</div>
+        </div>
+        		<div class="col-md-3">
+
+
+			<button class="btn btn-default btn-sm margin-top"><i class="fa fa-refresh"></i> Werkgroep terughalen</button>
+
+		</div>
+
+    </div>
+
 
 </section>
 <!-- /.content -->

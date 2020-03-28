@@ -29,7 +29,7 @@
 								</tr>
 
 								@empty
-								<td>Geen nieuwe forumberichten</td>
+                                <td class="padding-md">Geen nieuwe forumberichten</td>
 								@endforelse
 
 							</tbody>

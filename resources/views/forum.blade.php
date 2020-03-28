@@ -92,7 +92,7 @@
 
 							@endif
 								@empty
-								<p>Geen berichten op het forum</p>
+                                <p class="text-center">Nog geen berichten op het forum</p>
 								@endforelse
 							</tbody>
 						</table>

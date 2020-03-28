@@ -41,6 +41,7 @@ class UserController extends Controller
             'name' => 'required|min:3|max:255', Rule::unique('users')->ignore($user->id),
             'email' => 'required|email', Rule::unique('users')->ignore($user->id),
             'telephone' => 'string|between:10,15',
+            'bio' => 'string',
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -70,6 +71,7 @@ class UserController extends Controller
             "name" => strtolower($request->name) ?? $user->name,
             "email" => $request->email ?? $user->email,
             "telephone" => $request->telephone ?? $user->telephone,
+            "bio" => $request->bio ?? $user->bio,
             'avatar' => $avatar_path ?? $user->avatar,
             'photo' => $photo_path ?? $user->photo
         ]);

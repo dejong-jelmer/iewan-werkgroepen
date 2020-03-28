@@ -159,7 +159,7 @@ berwerk button voor editing van profiel
 					<!-- /.box-header -->
 
 					<div class="box-body">
-						<textarea name="body" class="textarea editor" placeholder="Schrijfwat over jezelf..." row="6"></textarea>
+						<textarea name="body" class="textarea editor" placeholder="Schrijfwat over jezelf..." row="6">{{ $user->bio }}</textarea>
 					</div>
 					<!-- /.box-body -->
 					<div class="box-footer text-center">
@@ -331,8 +331,7 @@ berwerk button voor editing van profiel
 					</div>
 					<!-- /.box-header -->
 
-					<div class="box-body"><p>Bio tekst
-         </p>	</div>
+					<div class="box-body">{{ $user->bio }}</div>
 					<!-- /.box-body -->
 					<div class="box-footer text-center">
 

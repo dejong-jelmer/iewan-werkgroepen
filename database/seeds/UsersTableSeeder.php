@@ -21,8 +21,8 @@ class UsersTableSeeder extends Seeder
             //     $msg->receiver()->save(App\User::find($user_to));
             // });
         });
-        $users = \App\User::whereIn('id', [1,2,3,4])->get();
-        $names = ['jelmer', 'wen', 'thomas', 'ciarán'];
+        $users = \App\User::whereIn('id', [1,2,3])->get();
+        $names = ['jelmer', 'wen', 'thomas'];
         foreach ($users as $id => $user) {
             $user->email = $names[$id].'@test.com';
             $user->name = $names[$id];

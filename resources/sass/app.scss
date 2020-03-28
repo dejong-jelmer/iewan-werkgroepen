@@ -67,7 +67,13 @@ table .iw-icon-cell {
 }
 
 
+table tr .btn.iw-on-hover{
+    opacity:0;
+}
 
+table tr:hover .btn.iw-on-hover{
+    opacity: 100;
+}
 
 
 

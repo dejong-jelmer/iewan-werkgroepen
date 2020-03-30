@@ -30,6 +30,7 @@ TODO: archive workgroup function
 
     </div>
 
+@if(auth()->user()->hasWorkgroupRole('webgroep') )	
 <h4><i class="fa fa-archive"></i> Gearchiveerde werkgroep terughalen</h4>
 	<div class="row margin-bottom">
 		<div class="col-md-3">
@@ -55,6 +56,7 @@ TODO: archive workgroup function
 
     </div>
 
+@endif
 
 </section>
 <!-- /.content -->

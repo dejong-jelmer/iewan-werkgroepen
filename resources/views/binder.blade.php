@@ -58,7 +58,7 @@
                 @boxes('Veto')
 				{{-- @include('boxes.veto') --}}
 
-                @boxes('BinderList')
+                @boxes('BinderList', ['binderForms' => $binderForms])
 				{{-- @include('boxes.binder-list') --}}
 
 			</div>

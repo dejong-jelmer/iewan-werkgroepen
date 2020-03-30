@@ -83,6 +83,17 @@ TODO: Pagination -- do we need that?
 
                 <td>{{ formatBytes($file->size) }}</td>
                 <td>{{ $file->created_at->isoFormat('LL') }}</td>
+                               <td class="iw-icon-cell">
+                        		<button class="btn btn-default iw-on-hover" title="Bewerk"><i class="fa fa-edit"></i><span class="sr-only">Bewerken</span></button>
+                </td>
+                                               <td class="iw-icon-cell">
+                        		<button class="btn btn-default iw-on-hover" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button>
+                </td>
+                                               <td class="iw-icon-cell">
+                                <input type="text" value="{{ route('file-download', ['file_id'=> $file->id]) }}" id="document{{ $file->id }}" class="iw-hide">
+                        		<button class="btn btn-default iw-on-hover" title="Kopier URL naar klembord" onclick="copyURL('document{{ $file->id }}')" onmouseout="outFunc()"><i class="fa fa-clipboard"></i><span class="sr-only">Kopier URL naar klembord</span></button>
+                </td>
+
             </tr>
             @empty
             <tr>
@@ -144,7 +155,25 @@ TODO: Pagination -- do we need that?
         });
 
     }
+
+function copyURL(documentID) {
+    
+  var copyText = document.getElementById(documentID);
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+//  var tooltip = document.getElementById("myTooltip");
+//  tooltip.innerHTML = "Copied: " + copyText.value;
+}
+
+function outFunc() {
+//  var tooltip = document.getElementById("myTooltip");
+//  tooltip.innerHTML = "Copy to clipboard";
+}
 </script>
+
+
 @endpush
 <!-- /.box -->
 @boxes('UploadFile')

@@ -75,6 +75,11 @@ table tr:hover .btn.iw-on-hover{
     opacity: 100;
 }
 
+.iw-hide{
+    position: absolute;
+    left: -999999px;
+}
+
 
 
 .inschrijven .content-wrapper,

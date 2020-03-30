@@ -43,7 +43,7 @@
 				</div>
 				@else
 				<!-- Hoe krijg ik de workgroup-id hier als value? -->
-				<input name="workgroup" type="hidden" value="">
+				<input name="workgroup" type="hidden" value="{{ $workgroup->id}}">
 				@endif
 
 

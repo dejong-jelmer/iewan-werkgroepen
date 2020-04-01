@@ -26,8 +26,7 @@
 				</div>
 			</div>
 
-@boxes('UploadFile')
-{{-- @include('boxes.upload-file') --}}
+
 
 		</div>
 		<div class="box-footer">

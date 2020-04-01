@@ -165,7 +165,7 @@ function copyURL(documentID, documentName) {
   copyText.select();
   copyText.setSelectionRange(0, 99999);
   document.execCommand("copy");
-    alert( documentName + " gekopieerd naar het klembord")
+    alert( "Locatie van \"" + documentName + "\" gekopieerd naar het klembord")
   
   var tooltip = document.getElementById("myTooltip");
   tooltip.innerHTML = "Copied: " + copyText.value;

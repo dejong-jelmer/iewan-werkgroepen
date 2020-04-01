@@ -23,6 +23,8 @@
 				<th class="iw-icon-cell"></th>
 				<th class="iw-icon-cell"></th>
 				<th class="iw-icon-cell"></th>
+								<th class="iw-icon-cell"></th>
+
 
 			</tr>
 			@foreach ($applications as $application)
@@ -33,10 +35,17 @@
 				<td>Ani Öhman</td>
 				<td>Eenpersoons</td>
 				<td>Gezinswoning</td>
-				<td class="iw-icon-cell"><a href="{{ route('release-form', ['form_id' => $application->id]) }}" class="btn btn-success" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></a></td>
-				<td><button class="btn btn-default" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
-				<td><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
+				<td class="iw-icon-cell"><a href="{{ route('release-form', ['form_id' => $application->id]) }}" class="btn btn-success iw-on-hover" title="Accepteren"><i class="fa fa-check"></i><span class="sr-only">Accepteren</span></a></td>
+				<td><button class="btn btn-default iw-on-hover" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button></td>
+				<td><button class="btn btn-default iw-on-hover" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button></td>
 
+        				  <td class="iw-icon-cell">
+                 {{--               <input type="text" value="{{ route('binder-form', ['form_id' => $application->id]) }}" id="form{{ $application->id }}" class="iw-hide"> --}}
+                                
+                        		<button class="btn btn-default iw-on-hover" title="Kopier URL naar klembord" onclick="copyURL('form{{ $application->id }}', '{{ $application->name }}')">
+                                 
+               <i class="fa fa-clipboard"></i><span class="sr-only">Kopier URL naar klembord</span></button>
+                </td>
 			</tr>
 			@endforeach
 

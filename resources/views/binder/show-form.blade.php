@@ -42,7 +42,7 @@
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
-					<ul class="list-group list-group-unbordered non-edit-user">
+					<ul class="list-group  non-edit-user">
 						<li class="list-group-item">
 
 
@@ -52,7 +52,7 @@
 						@if(auth()->user()->hasWorkgroupRole('aanname'))
 
 						<li class="list-group-item">
-							<b>Email</b> <a href="mailto:" class="pull-right">thomas@test.com</a>
+							<b>Email</b> <a href="mailto:" class="pull-right">{{ $form->email }}</a>
 						</li>
 
 						@endif
@@ -78,7 +78,7 @@
 						<li class="list-group-item">
 
 
-							<b>Ingeschreven sinds</b> <span class="pull-right">1 mei 2015</span>
+							<b>Ingeschreven sinds</b> <span class="pull-right">{{ $form->filled_in }}</span>
 						</li>
 
 
@@ -105,14 +105,12 @@
 
 				<div class="box-body">
 
-					<ul class="list-group list-group-unbordered non-edit-user">
+					<ul class="list-group list-group-unbordered  non-edit-user">
 						<li class="list-group-item" v-for="(response, name, index) in responses">
 							<div v-if="fields[index].type == 'text' || fields[index].type == 'textarea'">
 								<b>@{{ print(name) }}:</b><br>@{{ print(response) }}
 							</div>
-						</li>
 
-						<li class="list-group-item" v-for="(response, name, index) in responses">
 							<div v-if="fields[index].type == 'checkbox'">
 								<b>@{{ print(name) }}:</b><br>@{{ print(response) }}
 							</div>

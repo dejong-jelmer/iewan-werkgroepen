@@ -80,6 +80,15 @@ table tr:hover .btn.iw-on-hover{
     left: -999999px;
 }
 
+a.iw-downloadfile .fa-download{
+    opacity: 0;
+}
+
+a.iw-downloadfile:active .fa-download,
+a.iw-downloadfile:hover .fa-download{
+    opacity: 100;
+}
+
 
 /* tooltip */
 .tooltip {

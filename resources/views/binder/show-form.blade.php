@@ -46,7 +46,7 @@
 						<li class="list-group-item">
 
 
-							<b>Naam</b> <span class="pull-right">Thomas Mennen</span>
+							<b>Naam</b> <span class="pull-right">{{ $form->name }}</span>
 						</li>
 
 						@if(auth()->user()->hasWorkgroupRole('aanname'))

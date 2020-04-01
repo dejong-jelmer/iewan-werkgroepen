@@ -1,3 +1,5 @@
+@if(!$applications->isEmpty())
+
 <div class="box">
 	<div class="box-header">
 		<h3 class="box-title">Nieuwe klapper aanmeldingen</h3>
@@ -46,3 +48,6 @@
 	<!-- /.box-body -->
 </div>
 <!-- /.box -->
+
+
+@endif

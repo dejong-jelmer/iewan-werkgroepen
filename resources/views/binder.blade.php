@@ -71,3 +71,23 @@
 <!-- /.content-wrapper -->
 
 @endsection
+			@push('script-partials')
+<script>
+
+
+function copyURL(formID, formName) {
+    
+  var copyText = document.getElementById(formID);
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+    alert( "Link naar formulier van \"" + formName + "\" gekopieerd naar het klembord")
+  
+
+}
+
+
+</script>
+
+
+@endpush

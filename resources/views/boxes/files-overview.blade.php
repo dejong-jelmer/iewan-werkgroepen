@@ -92,7 +92,7 @@ TODO: Pagination -- do we need that?
                                                <td class="iw-icon-cell">
                                 <input type="text" value="{{ route('file-download', ['file_id'=> $file->id]) }}" id="document{{ $file->id }}" class="iw-hide">
                                 
-                        		<button class="btn btn-default iw-on-hover" title="Kopier URL naar klembord" onclick="copyURL('document{{ $file->id }}', '{{ $file->name }}')" onmouseout="outFunc()">
+                        		<button class="btn btn-default iw-on-hover" title="Kopier URL naar klembord" onclick="copyURL('document{{ $file->id }}', '{{ $file->name }}')">
                                  
                <i class="fa fa-clipboard"></i><span class="sr-only">Kopier URL naar klembord</span></button>
                 </td>
@@ -167,14 +167,14 @@ function copyURL(documentID, documentName) {
   document.execCommand("copy");
     alert( "Locatie van \"" + documentName + "\" gekopieerd naar het klembord")
   
-  var tooltip = document.getElementById("myTooltip");
-  tooltip.innerHTML = "Copied: " + copyText.value;
+//  var tooltip = document.getElementById("myTooltip");
+//  tooltip.innerHTML = "Copied: " + copyText.value;
 }
 
-function outFunc() {
-  var tooltip = document.getElementById("myTooltip");
-  tooltip.innerHTML = "Copy to clipboard";
-}
+// function outFunc() {
+//  var tooltip = document.getElementById("myTooltip");
+//  tooltip.innerHTML = "Copy to clipboard";
+// }
 </script>
 
 

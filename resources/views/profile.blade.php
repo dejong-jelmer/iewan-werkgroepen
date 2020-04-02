@@ -348,10 +348,11 @@ berwerk button voor editing van profiel
 
 
 		</div>
-
-		<div class="row">
-
-		</div>
+@if(Gate::allows('edit-profile', $user))
+			<div class="pull-right form-group">
+            <button class="btn btn-default btn-lg margin-bottom" title="Bewerk"><i class="fa fa-edit"></i> Bewerk profiel</button>
+			</div>
+			@endif
 	</section>
 
 @endif

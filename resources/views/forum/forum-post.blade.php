@@ -15,7 +15,7 @@
 
 		<div class="col-lg-2 pull-right">
 
-			<a class="btn btn-default" href="{{ route('forum') }}">Terug naar het forum overzicht</a>
+			<a class="btn btn-default" href="{{ route('forum') }}">Terug naar het forumoverzicht</a>
 
 		</div>
 

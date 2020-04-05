@@ -29,9 +29,8 @@ TODO: Pagination -- do we need that?
 
 
         <div class="box-tools">
-            <div class="row">
                 <!-- select -->
-                <div class="form-group form-group-sm hidden-xs col-xs-4">
+                <div class="col-md-4">
                     <label class="sr-only">soort document</label>
                     <select id="type_filter" class="form-control" onchange="filterTable()">
                         <option value="">Filter documenten</option>
@@ -43,7 +42,7 @@ TODO: Pagination -- do we need that?
 
                 <!-- On files template -->
                 @if(Request::route()->getName() == 'files')
-                <div class="form-group form-group-sm hidden-xs col-xs-4">
+                <div class="col-md-4">
                     <label class="sr-only">Werkgroep</label>
                     <select id="workgroup_filter" class="form-control" onchange="filterTable()">
                         <option value="">Filter op Werkgroep</option>
@@ -56,8 +55,9 @@ TODO: Pagination -- do we need that?
                 </div>
                 @endif
 
+                <div class="col-md-4">
 
-                <div class="input-group input-group-sm hidden-xs col-xs-3">
+                <div class="input-group">
                     <input type="text" id="search_filter" name="search_filter" class="form-control" placeholder="Zoek bestand" onkeydown="filterTable()">
 
                     <div class="input-group-btn">

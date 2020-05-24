@@ -59,7 +59,7 @@
 								</li>
 								@endif
 
-								@foreach(auth()->user()->workgroups as $workgroup)
+								@foreach(auth()->user()->activeWorkgroups as $workgroup)
 								@if($workgroup->numberOfApplicants() == 1)
 								<li>
 									<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}">

@@ -60,7 +60,8 @@ class ForumController extends Controller
         // set new responses for this user post back to false
         foreach (Auth::user()->posts as $userPost) {
             foreach($userPost->responses as $response) {
-                $response->where('post_id', $post->id)->update(['new' => false]);
+
+                $response->where('user_id', '!=', Auth::user()->id)->where('post_id', $post->id)->update(['new' => false]);
             }
         }
         return view('forum.forum-post', compact('post','isEdit'));
@@ -69,10 +70,10 @@ class ForumController extends Controller
     public function createPostResponse(Request $request, $post_id)
     {
         $post = Forumpost::find($post_id);
-        $response = Forumpost::create($request->only('body'));
+        $request->request->add(['new' => true]);
+        $response = Forumpost::create($request->only('body', 'new'));
         $post->responses()->save($response);
         $response->user()->associate(Auth::user());
-        $response->new = true;
         $response->save();
 
         return redirect()->route('forum-posts', ['post_id' => $post->id]);

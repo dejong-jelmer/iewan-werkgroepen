@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Workgroup extends Model
 {
+    protected $fillable = ['id', 'name'];
+
     public function users()
     {
         return $this->belongsToMany('App\User')->withPivot('active');

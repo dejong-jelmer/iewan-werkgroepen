@@ -25,20 +25,19 @@
 					<textarea name="body" class="textarea editor" placeholder="Schrijf nieuw een forum bericht..." row="6"></textarea>
 				</div>
 			</div>
-
-@boxes('UploadFile')
-{{-- @include('boxes.upload-file') --}}
-
+            {{-- @todo is een form in een form, daardoor wekrt forum bericht posten niet meer --}}
+        {{-- @boxes('UploadFile') --}}
 		</div>
 		<div class="box-footer">
 			<div class="pull-right">
 				<div class="control">
-					<button type="submit" class="btn btn-primary">Plaats</button>
+					<input type="submit" class="btn btn-primary" value="Plaats">
 
 					<button onclick="event.preventDefault();" class="btn btn-default toggle-forumpost-field">Annuleren</button>
 				</div>
 			</div>
 		</div>
 	</form>
+        @boxes('UploadFile')
 
 </div>

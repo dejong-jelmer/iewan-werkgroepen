@@ -48,9 +48,15 @@ TODO: Pagination -- do we need that?
                     <select id="workgroup_filter" class="form-control" onchange="filterTable()">
                         <option value="">Filter op Werkgroep</option>
                         @isset($workgroups)
+                        @php
+                            $workgroups->prepend(new \App\workgroup(['id' => 10, 'name' => 'algemeen']));
+                        @endphp
                         @foreach($workgroups as $workgroup)
                         <option value="{{ $workgroup->name }}">{{ $workgroup->name  }}</option>
                         @endforeach
+                        @php
+                            $workgroups->shift();
+                        @endphp
                         @endisset
                     </select>
                 </div>
@@ -77,7 +83,7 @@ TODO: Pagination -- do we need that?
                 <td><span class="label label-default">{{ $file->type }}</span></td>
 
 @if(Request::route()->getName() == 'files')
-                <td><span class="label label-primary">{{ $file->workgroup->name }}</span></td>
+                <td><span class="label label-primary">{{ $file->workgroup->name ?? 'algemeen' }}</span></td>
                 @endif
 
 
@@ -114,7 +120,7 @@ TODO: Pagination -- do we need that?
 </div>
 @push('script-partials')
 <script>
-    // @todo: dropdowns combineren, lege value alles weergeven
+    // @todo: in app.js krijgen zodat hij op andere plekken aanroepbaar is.
     function filterTable() {
         // Declare variables
         var search_filter, workgroup_filter, type_filter, tds, td_name, td_type, td_workgroup, nameTxtValue, typeTxtValue, workgroupTxtValue;
@@ -147,5 +153,9 @@ TODO: Pagination -- do we need that?
 </script>
 @endpush
 <!-- /.box -->
-@boxes('UploadFile')
+@isset($workgroup)
+    @boxes('UploadFile',  ['workgroup' => $workgroup])
+@else
+    @boxes('UploadFile')
+@endisset
 {{-- @include('boxes.upload-file') --}}

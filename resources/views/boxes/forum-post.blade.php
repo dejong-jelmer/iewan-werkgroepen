@@ -3,7 +3,7 @@
 <div class="box-header">
 	<div class="user-block">
 		<!-- TODO UserAvatar -->
-		<img class="img-circle" src="{{ !empty($post->user->avatar) ? Storage::url($post->user->avatar) : asset('img/empty-avatar.jpg') }}" alt="User Image">
+		<img class="img-circle" src="{{ loadAvatar($post->user) }}" alt="User Image">
 		<span class="username">
 			<a href="{{ route('user', ['user_name' =>  $post->user->name]) }}">{{ ucfirst($post->user->name) }}</a>
 		</span>

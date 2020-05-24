@@ -72,8 +72,10 @@ TODO: Pagination -- do we need that?
         <table id="files_table" class="table table-hover">
             @forelse($files as $file)
             <tr>
-                <td><i class="{{ getFileIcon($file->ext) }}"></i></td>
-                <td><a href="{{ route('file-download', ['file_id'=> $file->id]) }}" class="iw-downloadfile">{{ $file->name }} <i class="fa fa-download"></i></a></td>
+                <td class="iw-fileicon"><i class="{{ getFileIcon($file->ext) }}"></i></td>
+                <td><a href="{{ route('file-download', ['file_id'=> $file->id]) }}">{{ $file->name }}</a></td>
+                                <td><a href="{{ route('file-download', ['file_id'=> $file->id]) }}" class="iw-downloadfile"><i class="fa fa-download"></i></a></td>
+
                 <td><span class="label label-default">{{ $file->type }}</span></td>
 
 @if(Request::route()->getName() == 'files')

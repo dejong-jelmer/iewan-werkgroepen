@@ -24,7 +24,7 @@
                 </div>
                 <div class="box-body">
                     <ul class="list-group">
-                        @forelse(auth()->user()->workgroups as $workgroup)
+                        @forelse(auth()->user()->activeWorkgroups as $workgroup)
 
                         <li class="list-group-item">
                             <a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}">{{ $workgroup->name }}</a>

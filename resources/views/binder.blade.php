@@ -21,6 +21,8 @@
 		<div class="col-md-3 pull-right">
 			<button class="btn btn-primary btn-block margin-bottom toggle" data-target="email-form">Stuur een nieuw formulier</button>
 
+        
+        @if(!$pending->isEmpty())
 			<div class="box box-solid">
 				<div class="box-header with-border">
 					<h3 class="box-title">In afwachting</h3>
@@ -30,6 +32,7 @@
 					<ul class="list-group">
 						@foreach($pending as $p)
 						<li class="list-group-item"><strong>{{ $p->name }}</strong> <span class="text-muted pull-right">{{ $p->created_at->locale('nl')->isoFormat('D MMM YY') }}</span></li>
+						
 						@endforeach
 					</ul>
 
@@ -37,7 +40,7 @@
 				<!-- /.box-body -->
 			</div>
 			<!-- /. box -->
-
+@endif
 			<!-- /.box -->
 		</div>
 		<!-- /.col -->
@@ -71,3 +74,23 @@
 <!-- /.content-wrapper -->
 
 @endsection
+			@push('script-partials')
+<script>
+
+
+function copyURL(formID, formName) {
+    
+  var copyText = document.getElementById(formID);
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+    alert( "Link naar formulier van \"" + formName + "\" gekopieerd naar het klembord")
+  
+
+}
+
+
+</script>
+
+
+@endpush

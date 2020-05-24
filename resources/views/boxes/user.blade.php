@@ -11,13 +11,13 @@
         		@endforelse
 
         	</td>
-        	<td>
+        	<td class="iw-icon-cell">
         		@if(Gate::allows('aanname') || Gate::allows('edit-profile', $user))
         		<button class="btn btn-default iw-on-hover" title="Bewerken"><i class="fa fa-pencil"></i><span class="sr-only">Bewerken</span></button>
         		@endif
         	</td>
 
-        	<td>
+        	<td class="iw-icon-cell">
         		@if(Gate::allows('aanname') || Gate::allows('delete-profile', $user))
         		<button class="btn btn-default iw-on-hover" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button>
         		@endif

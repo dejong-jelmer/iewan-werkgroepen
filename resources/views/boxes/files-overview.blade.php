@@ -29,9 +29,8 @@ TODO: Pagination -- do we need that?
 
 
         <div class="box-tools">
-            <div class="row">
                 <!-- select -->
-                <div class="form-group form-group-sm hidden-xs col-xs-4">
+                <div class="col-md-4">
                     <label class="sr-only">soort document</label>
                     <select id="type_filter" class="form-control" onchange="filterTable()">
                         <option value="">Filter documenten</option>
@@ -43,7 +42,7 @@ TODO: Pagination -- do we need that?
 
                 <!-- On files template -->
                 @if(Request::route()->getName() == 'files')
-                <div class="form-group form-group-sm hidden-xs col-xs-4">
+                <div class="col-md-4">
                     <label class="sr-only">Werkgroep</label>
                     <select id="workgroup_filter" class="form-control" onchange="filterTable()">
                         <option value="">Filter op Werkgroep</option>
@@ -62,8 +61,9 @@ TODO: Pagination -- do we need that?
                 </div>
                 @endif
 
+                <div class="col-md-4">
 
-                <div class="input-group input-group-sm hidden-xs col-xs-3">
+                <div class="input-group">
                     <input type="text" id="search_filter" name="search_filter" class="form-control" placeholder="Zoek bestand" onkeydown="filterTable()">
 
                     <div class="input-group-btn">
@@ -78,8 +78,10 @@ TODO: Pagination -- do we need that?
         <table id="files_table" class="table table-hover">
             @forelse($files as $file)
             <tr>
-                <td><i class="{{ getFileIcon($file->ext) }}"></i></td>
+                <td class="iw-fileicon"><i class="{{ getFileIcon($file->ext) }}"></i></td>
                 <td><a href="{{ route('file-download', ['file_id'=> $file->id]) }}">{{ $file->name }}</a></td>
+                                <td><a href="{{ route('file-download', ['file_id'=> $file->id]) }}" class="iw-downloadfile"><i class="fa fa-download"></i></a></td>
+
                 <td><span class="label label-default">{{ $file->type }}</span></td>
 
 @if(Request::route()->getName() == 'files')
@@ -89,6 +91,20 @@ TODO: Pagination -- do we need that?
 
                 <td>{{ formatBytes($file->size) }}</td>
                 <td>{{ $file->created_at->isoFormat('LL') }}</td>
+                               <td class="iw-icon-cell">
+                        		<button class="btn btn-default iw-on-hover" title="Bewerk"><i class="fa fa-edit"></i><span class="sr-only">Bewerken</span></button>
+                </td>
+                                               <td class="iw-icon-cell">
+                        		<button class="btn btn-default iw-on-hover" title="Verwijderen"><i class="fa fa-trash"></i><span class="sr-only">Verwijderen</span></button>
+                </td>
+                                               <td class="iw-icon-cell">
+                                <input type="text" value="{{ route('file-download', ['file_id'=> $file->id]) }}" id="document{{ $file->id }}" class="iw-hide">
+                                
+                        		<button class="btn btn-default iw-on-hover" title="Kopier URL naar klembord" onclick="copyURL('document{{ $file->id }}', '{{ $file->name }}')">
+                                 
+               <i class="fa fa-clipboard"></i><span class="sr-only">Kopier URL naar klembord</span></button>
+                </td>
+
             </tr>
             @empty
             <tr>
@@ -150,7 +166,26 @@ TODO: Pagination -- do we need that?
         });
 
     }
+
+function copyURL(documentID, documentName) {
+    
+  var copyText = document.getElementById(documentID);
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+    alert( "Locatie van \"" + documentName + "\" gekopieerd naar het klembord")
+  
+//  var tooltip = document.getElementById("myTooltip");
+//  tooltip.innerHTML = "Copied: " + copyText.value;
+}
+
+// function outFunc() {
+//  var tooltip = document.getElementById("myTooltip");
+//  tooltip.innerHTML = "Copy to clipboard";
+// }
 </script>
+
+
 @endpush
 <!-- /.box -->
 @isset($workgroup)

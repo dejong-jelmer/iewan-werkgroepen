@@ -4,34 +4,17 @@
 
 
 
-<section class="content-header">
-	<h1>Klapperformulier</h1>
+<section class="content-header clearfix">
+	<h1 class="pull-left">Klapperformulier</h1>
+	<div class="no-padding pull-right">
+	    			<a class="btn btn-default clearfix" href="{{ route('binder') }}">Terug naar het klapperoverzicht</a>
+
+	</div>
 </section>
 
 <section class="content">
 
 	<div class="row">
-		<div class="col-md-3 pull-right">
-
-			@if(auth()->user()->hasWorkgroupRole('aanname') && !$form->released)
-
-
-			<a href="{{ route('release-form', ['form_id' => $form->id]) }}" class="btn btn-success btn-lg margin-bottom" title="Accepteren"><i class="fa fa-check"></i> Formulier vrijgeven</a>
-
-			<a href="" class="btn btn-default btn-lg margin-bottom" title="Verwijderen"><i class="fa fa-trash"></i></a>
-
-			@endif
-
-
-			<div class="box">
-				<div class="box-body form-group">
-
-					<img id="profile-image" src="{{ !empty($user->avatar) ? Storage::url($user->avatar) : asset('img/empty-profile.jpg') }}" alt="Profielfoto" class="w-100" width="100%">
-				</div>
-
-			</div>
-		</div>
-
 		<div class="col-md-3">
 
 			<div class="box">
@@ -42,17 +25,17 @@
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
-					<ul class="list-group list-group-unbordered non-edit-user">
+					<ul class="list-group  non-edit-user">
 						<li class="list-group-item">
 
 
-							<b>Naam</b> <span class="pull-right">Thomas Mennen</span>
+							<b>Naam</b> <span class="pull-right">{{ $form->name }}</span>
 						</li>
 
 						@if(auth()->user()->hasWorkgroupRole('aanname'))
 
 						<li class="list-group-item">
-							<b>Email</b> <a href="mailto:" class="pull-right">thomas@test.com</a>
+							<b>Email</b> <a href="mailto:" class="pull-right">{{ $form->email }}</a>
 						</li>
 
 						@endif
@@ -78,7 +61,7 @@
 						<li class="list-group-item">
 
 
-							<b>Ingeschreven sinds</b> <span class="pull-right">1 mei 2015</span>
+							<b>Ingeschreven sinds</b> <span class="pull-right">{{ $form->filled_in }}</span>
 						</li>
 
 
@@ -105,14 +88,12 @@
 
 				<div class="box-body">
 
-					<ul class="list-group list-group-unbordered non-edit-user">
+					<ul class="list-group list-group-unbordered  non-edit-user">
 						<li class="list-group-item" v-for="(response, name, index) in responses">
 							<div v-if="fields[index].type == 'text' || fields[index].type == 'textarea'">
 								<b>@{{ print(name) }}:</b><br>@{{ print(response) }}
 							</div>
-						</li>
 
-						<li class="list-group-item" v-for="(response, name, index) in responses">
 							<div v-if="fields[index].type == 'checkbox'">
 								<b>@{{ print(name) }}:</b><br>@{{ print(response) }}
 							</div>
@@ -132,7 +113,29 @@
 
 
 		</div>
+		<div class="col-md-3 pull-right margin-bottom">
+            
+     		<div class="box">
+				<div class="box-body form-group">
 
+					<img id="profile-image" src="{{ !empty($user->avatar) ? Storage::url($user->avatar) : asset('img/empty-profile.jpg') }}" alt="Profielfoto" class="w-100" width="100%">
+				</div>
+
+			</div>
+			<div class="pull-right">
+			        			@if(auth()->user()->hasWorkgroupRole('aanname')) 
+
+@if(!$form->released)
+			<a href="{{ route('release-form', ['form_id' => $form->id]) }}" class="btn btn-success btn-lg margin-bottom" title="Accepteren"><i class="fa fa-check"></i> Formulier vrijgeven</a>
+            @endif
+
+            <button class="btn btn-default btn-lg margin-bottom" title="Bewerk"><i class="fa fa-edit"></i></button>
+
+            <button class="btn btn-default btn-lg margin-bottom" title="Verwijderen"><i class="fa fa-trash"></i></button>
+
+			@endif  
+            </div>
+		</div>
 	</div>
 </section>
 

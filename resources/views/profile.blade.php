@@ -136,7 +136,7 @@ berwerk button voor editing van profiel
 	@forelse($user->activeWorkgroups as $workgroup)
         		<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}" class="label label-sm label-default">{{ ucfirst($workgroup->name)}}</a>
         		@empty
-
+                        <p><em>{{ ucfirst($user->name) }} zit niet in een werkgroep</em></p>
         		@endforelse
 					</div>
 					<!-- /.box-body -->
@@ -313,6 +313,7 @@ berwerk button voor editing van profiel
 @forelse($user->activeWorkgroups as $workgroup)
         		<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}" class="label label-sm label-default">{{ ucfirst($workgroup->name) }}</a>
         		@empty
+                        <p><em>{{ ucfirst($user->name) }} zit niet in een werkgroep</em></p>
 
         		@endforelse
 					</div>
@@ -348,10 +349,11 @@ berwerk button voor editing van profiel
 
 
 		</div>
-
-		<div class="row">
-
-		</div>
+@if(Gate::allows('edit-profile', $user))
+			<div class="pull-right form-group">
+            <button class="btn btn-default btn-lg margin-bottom" title="Bewerk"><i class="fa fa-edit"></i> Bewerk profiel</button>
+			</div>
+			@endif
 	</section>
 
 @endif

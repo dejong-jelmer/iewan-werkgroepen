@@ -7,8 +7,8 @@ TODO: archive workgroup function
 @section('content')
 
 <!-- Content Header (Page header) -->
-<section class="content-header">
-	<h1>{{ ucwords($workgroup->name) }}</h1>
+<section class="content-header clearfix">
+	<h1 class="pull-left">{{ ucwords($workgroup->name) }}</h1> <a href="mailto:{{ str_replace(' ', '', $workgroup->name ) }}@iewan.nl" class="pull-right">{{ str_replace(' ', '', $workgroup->name ) }}@iewan.nl</a>
 </section>
 
 

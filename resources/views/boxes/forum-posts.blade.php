@@ -27,6 +27,7 @@
 			</div>
             {{-- @todo is een form in een form, daardoor wekrt forum bericht posten niet meer --}}
         {{-- @boxes('UploadFile') --}}
+
 		</div>
 		<div class="box-footer">
 			<div class="pull-right">

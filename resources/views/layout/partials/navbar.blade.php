@@ -62,7 +62,7 @@
 								@foreach(auth()->user()->activeWorkgroups as $workgroup)
 								@if($workgroup->numberOfApplicants() == 1)
 								<li>
-									<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}">
+									<a href="{{ route('workgroup', ['workgroup' => $workgroup->name]) }}">
 										<i class="fa fa-clipboard text-green"></i>
 										{{ $workgroup->numberOfApplicants() }} {{ $workgroup->name }} aanmelding
 									</a>
@@ -70,7 +70,7 @@
 
 								@elseif($workgroup->numberOfApplicants() >= 2)
 								<li>
-									<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}">
+									<a href="{{ route('workgroup', ['workgroup' => $workgroup->name]) }}">
 										<i class="fa fa-clipboard text-green"></i>
 										{{ $workgroup->numberOfApplicants() }} {{ $workgroup->name }} aanmeldingen
 									</a>

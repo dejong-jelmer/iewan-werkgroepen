@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 50)->create()->each(function($user){
+        App\User::factory(50)->create()->each(function($user){
             $workgroup = random_int(1, count(App\Workgroup::all()));
             $user->workgroups()->save(App\Workgroup::find($workgroup));
             // factory(App\Message::class, 20)->create()->each(function($msg) use ($user){

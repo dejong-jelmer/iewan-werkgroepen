@@ -27,7 +27,7 @@
                         @forelse(auth()->user()->activeWorkgroups as $workgroup)
 
                         <li class="list-group-item">
-                            <a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}">{{ $workgroup->name }}</a>
+                            <a href="{{ route('workgroup', ['workgroup' => $workgroup->name]) }}">{{ $workgroup->name }}</a>
                             @if($workgroup->numberOfApplicants() > 0)
                             <span class="pull-right-container" title="Nieuwe aanmeldingen voor deze groep">
                                 <small class="label pull-right bg-red">{{ $workgroup->numberOfApplicants() }}</small>

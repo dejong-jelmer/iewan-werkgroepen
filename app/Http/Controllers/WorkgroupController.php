@@ -31,14 +31,14 @@ class WorkgroupController extends Controller
             return redirect()->back();
         }
         Auth::user()->workgroups()->attach($workgroup);
-        return redirect()->route('workgroup', ['workgroup_id' => $workgroup->name])->with('success', "Je aanmelding voor de werkgroep " . ucwords($workgroup->name) . " is verstuurd.");
+        return redirect()->route('workgroup', ['workgroup' => $workgroup->name])->with('success', "Je aanmelding voor de werkgroep " . ucwords($workgroup->name) . " is verstuurd.");
     }
 
     public function leaveWorkgroup($workgroup_id)
     {
         $workgroup = Workgroup::find($workgroup_id);
         $workgroup->users()->detach(Auth::user());
-        return redirect()->route('workgroup', ['workgroup_id' => $workgroup->name])->with('success', "Je hebt " . ucwords($workgroup->name) . " verlaten");
+        return redirect()->route('workgroup', ['workgroup' => $workgroup->name])->with('success', "Je hebt " . ucwords($workgroup->name) . " verlaten");
     }
 
     public function showWorkgroupMembers($workgroup_id)
@@ -63,7 +63,7 @@ class WorkgroupController extends Controller
         $user->workgroups()->newPivotStatementForId($workgroup->id)->update(['active' => true]);
         // now user is an active workgroup member, so let's go back
       //  return redirect()->back();
-		return redirect()->route('workgroup', ['workgroup_id' => $workgroup->name])->with('success', "Je hebt $user->name aan de werkgroep " . ucwords($workgroup->name) . " toegevoegd.");
+		return redirect()->route('workgroup', ['workgroup' => $workgroup->name])->with('success', "Je hebt $user->name aan de werkgroep " . ucwords($workgroup->name) . " toegevoegd.");
 
     }
 
@@ -83,6 +83,6 @@ class WorkgroupController extends Controller
         $user->workgroups()->detach($workgroup->id);
         // now user application is removed, so let's go back
    //     return redirect()->back();
-		return redirect()->route('workgroup', ['workgroup_id' => $workgroup->name])->with('error', "Je hebt de aanmelding van $user->name voor de werkgroep " . ucwords($workgroup->name) . " gewijgerd.");
+		return redirect()->route('workgroup', ['workgroup' => $workgroup->name])->with('error', "Je hebt de aanmelding van $user->name voor de werkgroep " . ucwords($workgroup->name) . " gewijgerd.");
     }
 }

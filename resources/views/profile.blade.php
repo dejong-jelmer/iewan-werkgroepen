@@ -134,7 +134,7 @@ berwerk button voor editing van profiel
 
 
 	@forelse($user->activeWorkgroups as $workgroup)
-        		<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}" class="label label-sm label-default">{{ ucfirst($workgroup->name)}}</a>
+        		<a href="{{ route('workgroup', ['workgroup' => $workgroup->name]) }}" class="label label-sm label-default">{{ ucfirst($workgroup->name)}}</a>
         		@empty
                         <p><em>{{ ucfirst($user->name) }} zit niet in een werkgroep</em></p>
         		@endforelse
@@ -311,7 +311,7 @@ berwerk button voor editing van profiel
 
 
 @forelse($user->activeWorkgroups as $workgroup)
-        		<a href="{{ route('workgroup', ['workgroup_id' => $workgroup->name]) }}" class="label label-sm label-default">{{ ucfirst($workgroup->name) }}</a>
+        		<a href="{{ route('workgroup', ['workgroup' => $workgroup->name]) }}" class="label label-sm label-default">{{ ucfirst($workgroup->name) }}</a>
         		@empty
                         <p><em>{{ ucfirst($user->name) }} zit niet in een werkgroep</em></p>
 

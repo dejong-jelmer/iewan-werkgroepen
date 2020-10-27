@@ -96,7 +96,7 @@
 				<div class="box-body">
 
 					@forelse($user->workgroups as $workgroup)
-					<a href="{{ route('workgroup', ['workgroup_name' => $workgroup->name]) }}" class="label label-default">{{ $workgroup->name }}</a>
+					<a href="{{ route('workgroup', ['workgroup' => $workgroup->name]) }}" class="label label-default">{{ $workgroup->name }}</a>
 					@empty
 					<span>{{$user->name}} zit nog niet in een werkgroep</span>
 					@endforelse

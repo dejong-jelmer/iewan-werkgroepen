@@ -1,18 +1,5 @@
 <?php
 return [
-  "driver" => "smtp",
-  "host" => "smtp.mailtrap.io",
-  "port" => 2525,
-  "from" => array(
-      "address" => "webgroep@iewan.nl",
-      "name" => "Iewan"
-  ),
-  "username" => "dbc4d4c3a74d60",
-  "password" => "03ce3ce7e83a79",
-  "sendmail" => "/usr/sbin/sendmail -bs"
-];
-
-return [
 
     /*
     |--------------------------------------------------------------------------
